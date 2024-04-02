@@ -1,0 +1,44 @@
+@import '@/assets/scss/color.scss';
+
+.header-container {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    background: $header-black;
+    border-bottom: 1px solid $line-black;
+
+    .left-section {
+        .logo-btn {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .right-section {
+        margin-right: 20px;
+
+        .profile-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            background: $white;
+            cursor: pointer;
+        }
+    }
+}
