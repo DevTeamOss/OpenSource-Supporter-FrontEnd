@@ -61,7 +61,7 @@ export default function SupporterCard() {
                         <div className="username-text">github-test-user</div>
                         <div className="info-line">
                             <div className="info-title">Total Donated</div>
-                            <div className="info-content">$ 350</div>
+                            <div className="info-content">350 P</div>
                         </div>
                         <div className="info-line">
                             <div className="info-title">Donated For</div>
@@ -73,7 +73,7 @@ export default function SupporterCard() {
                             <div className="progress-bar-background">
                                 <div className="progress-bar-value" />
                             </div>
-                            <div className="progress-text">$ 350 / 500</div>
+                            <div className="progress-text">350 / 500 P</div>
                         </div>
                     </div>
                 </div>

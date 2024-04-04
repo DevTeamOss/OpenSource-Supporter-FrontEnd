@@ -13,9 +13,7 @@ export default function ProfileBox() {
                     <div className="username-text">github-test-user</div>
                 </div>
                 <div className="profile-info-section">
-                    <div className="point-text">
-                        <FontAwesomeIcon icon={faCoins} /> 159 / 308
-                    </div>
+                    <div className="point-text">159 / 308 P</div>
                 </div>
             </div>
         </div>
