@@ -1,4 +1,5 @@
 import ProfileBox from '@/components/profile-box'
+import SupporterCard from '@/components/supporter-card'
 
 export default function AsideLeft() {
     return (
@@ -8,8 +9,7 @@ export default function AsideLeft() {
                 <ProfileBox />
                 <div className="divide-line" />
                 <div className="content-title">Support Tier</div>
-                <div className="divide-line" />
-                <div className="content-title">Contributions</div>
+                <SupporterCard />
             </div>
         </div>
     )

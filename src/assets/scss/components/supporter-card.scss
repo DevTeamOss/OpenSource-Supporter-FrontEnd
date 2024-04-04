@@ -1,0 +1,97 @@
+.supporter-card-container {
+    margin: 10px;
+    cursor: pointer;
+
+    .card-base {
+        width: 280px;
+        height: 175px;
+        border-radius: 10px;
+
+        .card-plate {
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            padding: 10px;
+            width: 100%;
+            height: 100%;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            color: #fff;
+
+            .logo-text {
+                display: flex;
+                font-size: 14px;
+
+                .text-opensource {
+                    font-weight: 300;
+                }
+
+                .text-supporter {
+                    font-weight: 700;
+                }
+            }
+
+            .card-content-box {
+                position: relative;
+                height: 100%;
+                margin: 15px 10px 10px;
+
+                .level-text {
+                    font-size: 12px;
+                    font-weight: 300;
+                    line-height: 0.5;
+                }
+
+                .username-text {
+                    font-size: 22px;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                }
+
+                .info-line {
+                    display: flex;
+                    font-size: 12px;
+                    margin: 2px 0;
+
+                    .info-title {
+                        font-weight: 700;
+                        width: 90px;
+                    }
+
+                    .info-content {
+                        font-weight: 300;
+                    }
+                }
+
+                .progress-line {
+                    position: absolute;
+                    bottom: -15px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+
+                    .progress-bar-background {
+                        position: relative;
+                        width: 240px;
+                        height: 3px;
+                        background: rgba(255, 255, 255, 0.5);
+                    }
+
+                    .progress-bar-value {
+                        position: absolute;
+                        width: 168px;
+                        height: 3px;
+                        background: #fff;
+                    }
+
+                    .progress-text {
+                        display: flex;
+                        margin-top: 2px;
+                        justify-content: right;
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
