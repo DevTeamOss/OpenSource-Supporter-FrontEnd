@@ -1,7 +1,7 @@
 import AsideLeft from '@/pages/base-page/aside-left.jsx'
 import AsideRight from '@/pages/base-page/aside-right.jsx'
 
-import '@/assets/scss/components/base-page.scss'
+import '@/assets/scss/pages/base-page.scss'
 
 export default function BasePage({ children }) {
     return (
