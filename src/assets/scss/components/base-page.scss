@@ -1,0 +1,83 @@
+@import '@/assets/scss/color.scss';
+
+/* Base Page Common */
+.base-page-container {
+    display: flex;
+    width: 100vw;
+    min-height: calc(100vh);
+
+    .left-section {
+        width: 300px;
+        height: calc(100vh - 60px);
+        background: $aside-black;
+        border-right: 1px solid $line-black;
+        padding-top: 60px;
+        flex-grow: 0;
+    }
+
+    .center-section {
+        min-height: calc(100vh - 60px);
+        padding-top: 60px;
+        flex-grow: 1;
+    }
+
+    .right-section {
+        width: 300px;
+        height: calc(100vh - 60px);
+        background: $aside-black;
+        border-left: 1px solid $line-black;
+        padding-top: 60px;
+        flex-grow: 0;
+    }
+
+    .divide-line {
+        border-bottom: 1px solid $line-black;
+        margin: 10px 40px;
+        width: 220px;
+    }
+}
+
+/* Aside Left */
+.aside-left-container {
+    position: fixed;
+    padding-top: 20px;
+
+    .content-box {
+        .content-title {
+            padding-left: 20px;
+            font-weight: 700;
+        }
+    }
+}
+
+/* Aside Right */
+.aside-right-container {
+    position: fixed;
+    width: 100%;
+
+    .menu-box {
+        padding-top: 80px;
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 25px 40px;
+            color: $light-gray;
+            cursor: pointer;
+
+            &:hover {
+                background: $line-black;
+            }
+
+            &.red {
+                color: $red;
+            }
+
+            .menu-item-text {
+                margin-left: 10px;
+                padding-bottom: 2px;
+            }
+        }
+    }
+}
