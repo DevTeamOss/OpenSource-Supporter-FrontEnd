@@ -7,7 +7,7 @@ export default function AsideLeft() {
             <div className="content-box">
                 <div className="content-title">Profile</div>
                 <ProfileBox />
-                <div className="divide-line" />
+                <div className="divide-line large-space" />
                 <div className="content-title">Support Tier</div>
                 <SupporterCard />
             </div>

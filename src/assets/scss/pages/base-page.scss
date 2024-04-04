@@ -32,6 +32,10 @@
         border-bottom: 1px solid $line-black;
         margin: 10px 40px;
         width: 220px;
+
+        &.large-space {
+            margin: 30px 40px;
+        }
     }
 }
 

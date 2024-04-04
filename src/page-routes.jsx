@@ -2,6 +2,7 @@ import { useRoutes } from 'react-router-dom'
 
 import WelcomePage from '@/pages/welcome-page'
 import MainPage from '@/pages/main-page'
+import Header from '@/components/header'
 import BasePage from '@/pages/base-page'
 
 const PATH = {
@@ -18,10 +19,21 @@ export default function PageRoutes() {
         {
             path: PATH.MAIN,
             element: (
-                <BasePage>
-                    <MainPage />
-                </BasePage>
+                <WithHeader>
+                    <BasePage>
+                        <MainPage />
+                    </BasePage>
+                </WithHeader>
             ),
         },
     ])
+}
+
+function WithHeader({ children }) {
+    return (
+        <>
+            <Header />
+            {children}
+        </>
+    )
 }

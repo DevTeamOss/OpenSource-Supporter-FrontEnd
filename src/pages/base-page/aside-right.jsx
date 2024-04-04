@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faBook,
@@ -8,6 +9,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 export default function AsideRight() {
+    const navigate = useNavigate()
+
     return (
         <div className="aside-right-container">
             <div className="menu-box">
@@ -34,7 +37,9 @@ export default function AsideRight() {
                 <div className="divide-line" />
                 <div className="menu-item">Opensource Licenses</div>
                 <div className="divide-line" />
-                <div className="menu-item red">Logout</div>
+                <div className="menu-item red" onClick={() => navigate('/')}>
+                    Logout
+                </div>
             </div>
         </div>
     )

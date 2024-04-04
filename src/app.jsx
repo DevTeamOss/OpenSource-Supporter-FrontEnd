@@ -8,7 +8,6 @@ import '@/assets/scss/basic.scss'
 export default function App() {
     return (
         <BrowserRouter>
-            <Header />
             <PageRoutes />
         </BrowserRouter>
     )
