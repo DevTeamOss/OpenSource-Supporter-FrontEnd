@@ -9,6 +9,7 @@
     width: 100%;
     background: $header-black;
     border-bottom: 1px solid $line-black;
+    z-index: 10;
 
     .left-section {
         .logo-btn {

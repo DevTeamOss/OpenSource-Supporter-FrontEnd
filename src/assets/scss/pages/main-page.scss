@@ -57,3 +57,27 @@
         height: calc((100vw - 600px) * 0.18);
     }
 }
+
+/* Content Section */
+.content-section-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 80px;
+
+    .main-content-box {
+        margin: 10px 20px;
+
+        .content-title-text {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .card-group-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+        }
+    }
+}

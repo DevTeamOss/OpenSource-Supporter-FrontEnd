@@ -1,0 +1,13 @@
+@import '@/assets/scss/color.scss';
+
+.tag-chip-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 0 6px 2px;
+    margin: 3px;
+    border-radius: 20px;
+    background: $chip-purple;
+}
