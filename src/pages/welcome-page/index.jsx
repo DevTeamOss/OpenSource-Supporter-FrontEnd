@@ -26,7 +26,7 @@ export default function WelcomePage() {
                     <div className="btn-text">Sign in With GitHub</div>
                 </div>
                 <div className="text-btn" onClick={() => navigate('/main')}>
-                    아니요, 계정없이 이용할래요.
+                    No, I want to use without an account.
                 </div>
             </div>
         </div>
