@@ -46,3 +46,14 @@
         }
     }
 }
+
+/* Carousel Section */
+.carousel-section-container {
+    width: calc(100vw - 600px);
+    height: calc((100vw - 600px) * 0.18);
+
+    .carousel-slide-img {
+        width: calc(100vw - 600px);
+        height: calc((100vw - 600px) * 0.18);
+    }
+}
