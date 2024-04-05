@@ -1,12 +1,16 @@
+import { useNavigate } from 'react-router-dom'
+
 import LogoImg from '/logo.svg'
 
 import '@/assets/scss/components/header.scss'
 
 export default function Header() {
+    const navigate = useNavigate()
+
     return (
         <div className="header-container">
             <div className="left-section">
-                <div className="logo-btn">
+                <div className="logo-btn" onClick={() => navigate('/main')}>
                     <img
                         className="logo-img"
                         src={LogoImg}
@@ -16,7 +20,10 @@ export default function Header() {
                 </div>
             </div>
             <div className="right-section">
-                <div className="profile-btn"></div>
+                <div
+                    className="profile-btn"
+                    onClick={() => navigate('/profile')}
+                />
             </div>
         </div>
     )

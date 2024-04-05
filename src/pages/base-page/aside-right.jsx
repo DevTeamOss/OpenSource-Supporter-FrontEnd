@@ -14,7 +14,7 @@ export default function AsideRight() {
     return (
         <div className="aside-right-container">
             <div className="menu-box">
-                <div className="menu-item">
+                <div className="menu-item" onClick={() => navigate('/profile')}>
                     <FontAwesomeIcon icon={faUser} />
                     <div className="menu-item-text">Your Profile</div>
                 </div>

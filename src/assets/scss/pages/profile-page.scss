@@ -1,0 +1,66 @@
+@import '@/assets/scss/color.scss';
+
+/* Profile Page Common */
+.profile-page-container {
+    padding-top: 60px;
+    width: 100vw;
+}
+
+/* Profile Info Section */
+.profile-info-section-container {
+    display: flex;
+    margin: 20px;
+    border-bottom: 1px solid $line-black;
+
+    .content-box {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-right: 60px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        &:nth-child(1) {
+            width: 250px;
+        }
+
+        .content-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+/* Content Section */
+.profile-content-section-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+
+    .profile-content-box {
+        padding-bottom: 25px;
+        border-bottom: 1px solid $line-black;
+
+        &:last-child {
+            padding-top: 20px;
+            border: none;
+        }
+
+        .content-title-text {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .card-group-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+    }
+}

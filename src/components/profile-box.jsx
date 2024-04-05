@@ -1,12 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoins } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 
 import '@/assets/scss/components/profile-box.scss'
 
 export default function ProfileBox() {
+    const navigate = useNavigate()
+
     return (
         <div className="profile-box-container">
-            <div className="profile-img" />
+            <div className="profile-img" onClick={() => navigate('/profile')} />
             <div className="profile-info-box">
                 <div className="profile-info-section">
                     <div className="name-text">테스트유저</div>

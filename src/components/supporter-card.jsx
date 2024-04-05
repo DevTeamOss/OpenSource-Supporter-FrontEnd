@@ -53,7 +53,7 @@ export default function SupporterCard() {
                             textShadow: `1px 1px 1px ${subColor}`,
                         }}
                     >
-                        <div className="text-opensource">OpenSource </div>
+                        <div className="text-opensource">OpenSource</div>
                         <div className="text-supporter">Supporter.</div>
                     </div>
                     <div className="card-content-box">

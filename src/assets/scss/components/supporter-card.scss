@@ -1,5 +1,4 @@
 .supporter-card-container {
-    margin: 10px;
     cursor: pointer;
 
     .card-base {
@@ -24,6 +23,7 @@
 
                 .text-opensource {
                     font-weight: 300;
+                    margin-right: 3px;
                 }
 
                 .text-supporter {

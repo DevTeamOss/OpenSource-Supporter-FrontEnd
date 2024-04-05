@@ -8,8 +8,6 @@
 
     .left-section {
         width: 300px;
-        background: $aside-black;
-        border-right: 1px solid $line-black;
         padding-top: 60px;
         flex-grow: 0;
     }
@@ -22,8 +20,6 @@
 
     .right-section {
         width: 300px;
-        background: $aside-black;
-        border-left: 1px solid $line-black;
         padding-top: 60px;
         flex-grow: 0;
     }
@@ -43,6 +39,10 @@
 .aside-left-container {
     position: fixed;
     padding-top: 20px;
+    background: $aside-black;
+    border-right: 1px solid $line-black;
+    width: 300px;
+    height: 9999px;
 
     .content-box {
         .content-title {
@@ -53,13 +53,20 @@
                 margin-top: 20px;
             }
         }
+
+        .supporter-card-box {
+            margin: 10px;
+        }
     }
 }
 
 /* Aside Right */
 .aside-right-container {
     position: fixed;
-    width: 100%;
+    background: $aside-black;
+    border-left: 1px solid $line-black;
+    width: 300px;
+    height: 9999px;
 
     .menu-box {
         padding-top: 80px;
