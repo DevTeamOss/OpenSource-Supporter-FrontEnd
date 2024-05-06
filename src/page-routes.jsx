@@ -5,11 +5,13 @@ import MainPage from '@/pages/main-page'
 import ProfilePage from '@/pages/profile-page'
 import Header from '@/components/header'
 import BasePage from '@/pages/base-page'
+import SearchPage from './pages/search-page'
 
 const PATH = {
     WELCOME: '/',
     MAIN: '/main',
     PROFILE: '/profile',
+    SEARCH: '/search'
 }
 
 export default function PageRoutes() {
@@ -33,6 +35,16 @@ export default function PageRoutes() {
             element: (
                 <WithHeader>
                     <ProfilePage />
+                </WithHeader>
+            ),
+        },
+        {
+            path: PATH.SEARCH,
+            element: (
+                <WithHeader>
+                    <BasePage>
+                        <SearchPage />
+                    </BasePage>
                 </WithHeader>
             ),
         },

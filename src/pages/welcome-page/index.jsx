@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-import LogoImg from '/logo.svg'
+import LogoImg from '@/assets/img/logo.svg'
 
 import '@/assets/scss/pages/welcome-page.scss'
 
