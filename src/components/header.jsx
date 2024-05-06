@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-import LogoImg from '/logo.svg'
+import LogoImg from '@/assets/img/logo.svg'
 
 import '@/assets/scss/components/header.scss'
 
