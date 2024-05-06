@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import { useUserController } from '@/controllers/index.js'
+
 import '@/assets/scss/components/supporter-card.scss'
 
 const VARIANTS = {
@@ -26,7 +28,9 @@ const VARIANTS = {
 }
 
 export default function SupporterCard() {
-    const [level] = useState('SILVER')
+    const userController = useUserController()
+
+    const [level] = useState('NORMAL')
     const [mainColor, setMainColor] = useState('')
     const [subColor, setSubColor] = useState('')
     const [levelText, setLevelText] = useState('')
@@ -58,22 +62,25 @@ export default function SupporterCard() {
                     </div>
                     <div className="card-content-box">
                         <div className="level-text">{levelText}</div>
-                        <div className="username-text">github-test-user</div>
+                        <div className="username-text">
+                            {userController.data.login}
+                        </div>
                         <div className="info-line">
                             <div className="info-title">Total Donated</div>
-                            <div className="info-content">350 P</div>
+                            <div className="info-content">0 P</div>
                         </div>
                         <div className="info-line">
                             <div className="info-title">Donated For</div>
-                            <div className="info-content">
-                                5 of opensource projects
-                            </div>
+                            <div className="info-content">none</div>
                         </div>
                         <div className="progress-line">
                             <div className="progress-bar-background">
-                                <div className="progress-bar-value" />
+                                <div
+                                    className="progress-bar-value"
+                                    style={{ width: 0 }}
+                                />
                             </div>
-                            <div className="progress-text">350 / 500 P</div>
+                            <div className="progress-text">0 / 16 P</div>
                         </div>
                     </div>
                 </div>
