@@ -2,8 +2,9 @@ import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-import LogoImg from '@/assets/img/logo.svg'
+import { GITHUB_AUTH_URL } from '@/constants/config.js'
 
+import LogoImg from '@/assets/img/logo.svg'
 import '@/assets/scss/pages/welcome-page.scss'
 
 export default function WelcomePage() {
@@ -21,10 +22,10 @@ export default function WelcomePage() {
                 <div className="logo-text">Supporter</div>
             </div>
             <div className="btn-box">
-                <div className="sign-in-btn" onClick={() => navigate('/main')}>
+                <a className="sign-in-btn" href={GITHUB_AUTH_URL}>
                     <FontAwesomeIcon className="github-logo" icon={faGithub} />
                     <div className="btn-text">Sign in With GitHub</div>
-                </div>
+                </a>
                 <div className="text-btn" onClick={() => navigate('/main')}>
                     No, I want to use without an account.
                 </div>

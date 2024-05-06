@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 
-import LogoImg from '@/assets/img/logo.svg'
+import { useUserController } from '@/controllers/index.js'
 
+import LogoImg from '@/assets/img/logo.svg'
 import '@/assets/scss/components/header.scss'
 
 export default function Header() {
+    const userController = useUserController()
     const navigate = useNavigate()
 
     return (
@@ -20,10 +22,19 @@ export default function Header() {
                 </div>
             </div>
             <div className="right-section">
-                <div
-                    className="profile-btn"
-                    onClick={() => navigate('/profile')}
-                />
+                {userController.data.avatar_url ? (
+                    <img
+                        src={userController.data.avatar_url}
+                        alt={userController.data.login}
+                        className="profile-btn"
+                        onClick={() => navigate('/profile')}
+                    />
+                ) : (
+                    <div
+                        className="profile-btn"
+                        onClick={() => navigate('/profile')}
+                    />
+                )}
             </div>
         </div>
     )
