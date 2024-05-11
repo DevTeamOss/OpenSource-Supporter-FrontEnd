@@ -33,3 +33,192 @@
         }
     }
 }
+
+/* Stage01 Modal */
+.stage01-container {
+    margin: 20px 20px 0 20px;
+
+    .stage01-header {
+        display: flex;
+
+        .profile-img {
+            width: 30px;
+            height: 30px;
+            background: $white;
+            border-radius: 50px;
+            margin-right: 10px;
+        }
+
+        .selection-description {
+            font-size: 15px;
+        }
+    }
+}
+
+/* Stage02 Modal */
+.stage02-container {
+    .stage02-header {
+        margin: 30px 10px;
+
+        .description-title {
+            margin: 10px 10px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+    }
+
+    .stage02-body {
+        margin: 0 35px;
+        font-size: 14px;
+        color: $light-blue;
+
+        input, textarea {
+            box-sizing: border-box;
+            background: $input-black;
+            border: 1.5px solid $input-blue;
+            border-radius: 4px;
+            font-size: 13px;
+            color: $white;
+        }
+
+        .name-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            
+            .input-box {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    margin-bottom: 2px;
+                    width: 230px; 
+                }
+
+                input {
+                    width: 230px;
+                }
+            }
+        }
+
+        .description-section {
+            margin-bottom: 25px;
+
+            .input-box {
+                display: flex;
+                flex-direction: column;
+        
+                label {
+                    margin-bottom: 2px;
+                    width: 230px;
+                }
+
+                textarea {
+                    width: 550px;
+                }
+            }
+        }
+
+        .tag-section {
+            display: flex;
+            margin-bottom: 25px;
+
+            .input-box {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    margin-bottom: 2px;
+                    width: 120px;
+                }
+
+                .tag-input-group {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 5px;
+
+                    input {
+                        width: 120px;
+                        margin-right: 3px;
+                    }
+
+                    .tag-add-btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 18px;
+                        height: 18px;
+                        border: 1px solid $gray;
+                        font-weight: 700;
+                        border-radius: 3px;
+                        font-size: 11px;
+                        color: $light-gray;
+                        background: $line-black;
+                        cursor: pointer;
+                    }
+                }
+
+                .tag-list-box {
+                    display: flex;
+                    width: 550px;
+                    height: 30px;
+                    box-sizing: border-box;
+                    background: $input-black;
+                    border: 1.5px solid $input-blue;
+                    border-radius: 4px;
+                    padding: 3px;
+                }
+            }
+        }
+    }
+
+    .stage02-footer {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 20px 0 20px;
+
+        .delete-btn {
+            display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 70px;
+                height: 30px;
+                border-radius: 5px;
+                font-size: 12px;
+                color: $red;
+                background: $unposted-black;
+                cursor: pointer;
+        }
+
+        .footer-right-section {
+            display: flex;
+
+            .cancel-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 70px;
+                height: 30px;
+                border: 1px solid $gray;
+                border-radius: 5px;
+                font-size: 12px;
+                color: $light-gray;
+                background: $line-black;
+                margin-right: 10px;
+                cursor: pointer;
+            }
+
+            .submit-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 70px;
+                height: 30px;
+                border-radius: 5px;
+                font-size: 12px;
+                background: $text-blue;
+                cursor: pointer;
+           }
+        }
+    }
+}
