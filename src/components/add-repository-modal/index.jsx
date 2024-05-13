@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { useGithubRepoListController } from '@/controllers/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 import Stage01 from '@/components/add-repository-modal/stage-01'
 import Stage02 from '@/components/add-repository-modal/stage-02'
@@ -7,6 +8,8 @@ import Stage02 from '@/components/add-repository-modal/stage-02'
 import '@/assets/scss/components/add-repository-modal.scss'
 
 export default function AddRepositoryModal({ close }) {
+    const githubRepoListController = useGithubRepoListController()
+
     const [stage, setStage] = useState(0)
 
     function nextStage() {
@@ -19,6 +22,7 @@ export default function AddRepositoryModal({ close }) {
 
     useEffect(() => {
         setStage(1)
+        githubRepoListController.getList().then()
     }, [])
 
     return (
@@ -54,7 +58,9 @@ export default function AddRepositoryModal({ close }) {
                 </div>
                 <div className="add-repository-modal-body">
                     {stage === 1 && <Stage01 nextStage={nextStage} />}
-                    {stage === 2 && <Stage02 prevStage={prevStage} />}
+                    {stage === 2 && (
+                        <Stage02 prevStage={prevStage} close={close} />
+                    )}
                 </div>
             </div>
         </BaseModal>
