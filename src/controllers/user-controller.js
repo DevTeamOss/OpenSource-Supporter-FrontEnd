@@ -13,13 +13,25 @@ export function useUserController() {
                 params: { code },
             })
 
-            const { login, name, avatar_url } = data
+            const {
+                userName,
+                customName,
+                email,
+                avatarUrl,
+                accessToken,
+                remainingPoint,
+                totalPoint,
+            } = data
 
             dispatch(
                 userSlice.actions.set({
-                    username: login,
-                    name,
-                    avatarUrl: avatar_url,
+                    username: userName,
+                    name: customName,
+                    email,
+                    avatarUrl,
+                    accessToken,
+                    remainingPoint,
+                    totalPoint,
                 }),
             )
         } catch (err) {
@@ -29,6 +41,8 @@ export function useUserController() {
 
     return {
         data: user,
+        isLoggedIn: user.username !== 'guest',
+
         login,
     }
 }
