@@ -39,10 +39,15 @@ export function useUserController() {
         }
     }
 
+    function logout() {
+        dispatch(userSlice.actions.clear())
+    }
+
     return {
         data: user,
         isLoggedIn: user.username !== 'guest',
 
         login,
+        logout,
     }
 }

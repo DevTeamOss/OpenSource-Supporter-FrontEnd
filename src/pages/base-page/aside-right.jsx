@@ -8,13 +8,19 @@ import {
     faUser,
 } from '@fortawesome/free-solid-svg-icons'
 
+import { useUserController } from '@/controllers/index.js'
 import { useModal } from '@/hooks/useModal.js'
 import AddRepositoryModal from '@/components/add-repository-modal/index.jsx'
 
 export default function AsideRight() {
     const navigate = useNavigate()
-
+    const userController = useUserController()
     const addRepositoryModal = useModal()
+
+    function logout() {
+        userController.logout()
+        navigate('/')
+    }
 
     return (
         <>
@@ -49,10 +55,7 @@ export default function AsideRight() {
                     <div className="divide-line" />
                     <div className="menu-item">Opensource Licenses</div>
                     <div className="divide-line" />
-                    <div
-                        className="menu-item red"
-                        onClick={() => navigate('/')}
-                    >
+                    <div className="menu-item red" onClick={logout}>
                         Logout
                     </div>
                 </div>
