@@ -33,6 +33,40 @@
             font-weight: 700;
             margin-bottom: 10px;
         }
+
+        .github-calendar-container {
+            display: flex;
+            margin-top: 50px;
+
+            .github-calendar {
+                border-radius: 6px;
+                border: 1px solid $line-black;
+                padding: 40px 20px;
+                margin-bottom: 30px;
+                width: 622px;
+                height: 197px;
+                box-sizing: border-box;
+            }
+
+            .year-btn-box {
+                margin-left: 25px;
+                font-size: 11px;
+
+                .year-btn {
+                    border-radius: 5px;
+                    width: 80px;
+                    color: $gray;
+                    padding: 10px 20px 10px 10px;
+                    margin: 0 5px 5px 5px;
+                    cursor: pointer;
+                         
+                    &.active{
+                        background: $dark-blue;
+                        color: $white;
+                    }
+                }
+            }
+        }
     }
 }
 
