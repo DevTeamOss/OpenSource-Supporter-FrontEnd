@@ -13,7 +13,15 @@ export function useUserController() {
                 params: { code },
             })
 
-            dispatch(userSlice.actions.set({ ...data }))
+            const { login, name, avatar_url } = data
+
+            dispatch(
+                userSlice.actions.set({
+                    username: login,
+                    name,
+                    avatarUrl: avatar_url,
+                }),
+            )
         } catch (err) {
             console.error(err)
         }

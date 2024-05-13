@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    login: 'guest',
+    username: 'guest',
     name: 'guest-user',
-    avatar_url: '',
-    supported_point: 0,
-    gained_point: 0,
+    avatarUrl: '',
+    supportedPoint: 0,
+    gainedPoint: 0,
 }
 
 export const userSlice = createSlice({

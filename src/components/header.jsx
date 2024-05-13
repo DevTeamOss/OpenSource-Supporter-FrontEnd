@@ -22,10 +22,10 @@ export default function Header() {
                 </div>
             </div>
             <div className="right-section">
-                {userController.data.avatar_url ? (
+                {userController.data.avatarUrl ? (
                     <img
-                        src={userController.data.avatar_url}
-                        alt={userController.data.login}
+                        src={userController.data.avatarUrl}
+                        alt={userController.data.username}
                         className="profile-btn"
                         onClick={() => navigate('/profile')}
                     />

@@ -16,7 +16,7 @@ export default function GithubAuthPage() {
     }, [])
 
     useEffect(() => {
-        if (userController.data.login) {
+        if (userController.data.username !== 'guest') {
             navigate('/main')
         }
     }, [userController.data])

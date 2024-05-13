@@ -63,7 +63,7 @@ export default function SupporterCard() {
                     <div className="card-content-box">
                         <div className="level-text">{levelText}</div>
                         <div className="username-text">
-                            {userController.data.login}
+                            {userController.data.username}
                         </div>
                         <div className="info-line">
                             <div className="info-title">Total Donated</div>

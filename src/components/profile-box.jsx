@@ -12,15 +12,15 @@ export default function ProfileBox() {
         <div className="profile-box-container">
             <img
                 className="profile-img"
-                src={userController.data.avatar_url}
-                alt={userController.data.login}
+                src={userController.data.avatarUrl}
+                alt={userController.data.username}
                 onClick={() => navigate('/profile')}
             />
             <div className="profile-info-box">
                 <div className="profile-info-section">
                     <div className="name-text">{userController.data.name}</div>
                     <div className="username-text">
-                        {userController.data.login}
+                        {userController.data.username}
                     </div>
                 </div>
                 <div className="profile-info-section">
