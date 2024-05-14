@@ -11,6 +11,10 @@ const client = axios.create({
         'ngrok-skip-browser-warning': '69420',
     },
     transformRequest: [
+        (data) => {
+            return JSON.stringify(data)
+        },
+
         (data, headers) => {
             const { accessToken } = store.getState().user
             if (accessToken) {
