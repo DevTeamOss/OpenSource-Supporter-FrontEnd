@@ -1,22 +1,44 @@
+import { useState } from 'react'
+
 import TagChip from '../tag-chip'
 import {
     useGithubRepoListController,
     useUserController,
 } from '@/controllers/index.js'
 
-export default function Stage02({ prevStage, close }) {
+export default function Stage02({ close, repoName, cancel }) {
     const userController = useUserController()
     const githubRepoListController = useGithubRepoListController()
+
+    const [description, setDescription] = useState('')
+    const [newTagName, setNewTagName] = useState('')
+    const [tags, setTags] = useState([])
 
     async function submit() {
         await githubRepoListController.addRepository({
             username: userController.data.username,
-            // repoName: 상위 컴포넌트에서 받아와야 할 것
-            // description: 현재 스테이지에서 입력받을 것
-            // tags: [현재 스테이지에서 입력받을 것들]
+            repoName,
+            description,
+            tags,
         })
 
         close()
+    }
+
+    function addTag() {
+        const newTag = newTagName.split(' ').join('')
+        if (newTag === '') {
+            return
+        }
+        setTags((prev) => [...prev, newTag])
+        setNewTagName('')
+    }
+
+    function deleteTag(ind) {
+        console.log('delete')
+        const newTags = [...tags]
+        newTags[ind] = ''
+        setTags(newTags.filter((value) => value !== ''))
     }
 
     return (
@@ -31,13 +53,13 @@ export default function Stage02({ prevStage, close }) {
                     <div className="name-section">
                         <div className="input-box">
                             <label htmlFor="username">Username</label>
-                            <input type="text" id="username" />
+                            <input type="text" id="username" value={userController.data.username} disabled/>
                         </div>
                         <div className="input-box">
                             <label htmlFor="repositoryname">
                                 Repository name
                             </label>
-                            <input type="text" id="repositoryname" />
+                            <input type="text" id="repositoryname" value={repoName} disabled/>
                         </div>
                     </div>
                     <div className="description-section">
@@ -47,6 +69,8 @@ export default function Stage02({ prevStage, close }) {
                                 name="description"
                                 id="description"
                                 rows={5}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                             ></textarea>
                         </div>
                     </div>
@@ -54,13 +78,11 @@ export default function Stage02({ prevStage, close }) {
                         <div className="input-box">
                             <label htmlFor="tags">Tags</label>
                             <div className="tag-input-group">
-                                <input type="text" id="tags" />
-                                <div className="tag-add-btn">+</div>
+                                <input type="text" id="tags" value={newTagName} onChange={(e) => setNewTagName(e.target.value)}/>
+                                <div className="tag-add-btn" onClick={addTag}>+</div>
                             </div>
                             <div className="tag-list-box">
-                                <TagChip>#test</TagChip>
-                                <TagChip>#opensource</TagChip>
-                                <TagChip>#project</TagChip>
+                                {tags.map((tag, ind) => <TagChip key={ind} onClick={() => deleteTag(ind)}>#{tag}</TagChip>)}
                             </div>
                         </div>
                     </div>
@@ -71,10 +93,10 @@ export default function Stage02({ prevStage, close }) {
                     <div className="delete-btn">Delete</div>
                 </div>
                 <div className="footer-right-section">
-                    <div className="cancel-btn" onClick={prevStage}>
+                    <div className="cancel-btn" onClick={cancel}>
                         Cancel
                     </div>
-                    <div className="submit-btn">Submit</div>
+                    <div className="submit-btn" onClick={submit}>Submit</div>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ export default function AddRepositoryModal({ close }) {
     const githubRepoListController = useGithubRepoListController()
 
     const [stage, setStage] = useState(0)
+    const [repoName, setRepoName] = useState('')
 
     function nextStage() {
         setStage((prev) => prev + 1)
@@ -20,10 +21,21 @@ export default function AddRepositoryModal({ close }) {
         setStage((prev) => prev - 1)
     }
 
+    function cancelSelection() {
+        setRepoName('')
+        prevStage()
+    }
+
     useEffect(() => {
         setStage(1)
         githubRepoListController.getList().then()
     }, [])
+
+    useEffect(() => {
+        if (repoName !== ''){
+            nextStage()
+        }
+    }, [repoName])
 
     return (
         <BaseModal close={close}>
@@ -57,9 +69,9 @@ export default function AddRepositoryModal({ close }) {
                     </div>
                 </div>
                 <div className="add-repository-modal-body">
-                    {stage === 1 && <Stage01 nextStage={nextStage} />}
+                    {stage === 1 && <Stage01 select={setRepoName} />}
                     {stage === 2 && (
-                        <Stage02 prevStage={prevStage} close={close} />
+                        <Stage02 close={close} repoName={repoName} cancel={cancelSelection} />
                     )}
                 </div>
             </div>

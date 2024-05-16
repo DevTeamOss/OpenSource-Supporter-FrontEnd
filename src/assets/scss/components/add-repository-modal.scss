@@ -53,6 +53,16 @@
             font-size: 15px;
         }
     }
+
+    .stage01-body {
+        overflow-y: scroll;
+        -ms-overflow-style: none;   // no scroll bar
+        scrollbar-width: none;      //
+                                    //
+        &::-webkit-scrollbar {      //
+            display: none;          //
+        }                           //
+    }
 }
 
 /* Stage02 Modal */
@@ -160,8 +170,9 @@
 
                 .tag-list-box {
                     display: flex;
+                    flex-wrap: wrap;
                     width: 550px;
-                    height: 30px;
+                    min-height: 30px;
                     box-sizing: border-box;
                     background: $input-black;
                     border: 1.5px solid $input-blue;
