@@ -19,9 +19,14 @@ export function useRepoInfoController() {
         }
     }
 
+    function clearData() {
+        dispatch(repoInfoSlice.actions.clear())
+    }
+
     return {
         data: repoInfo,
 
+        clearData,
         getRepoInfo,
     }
 }

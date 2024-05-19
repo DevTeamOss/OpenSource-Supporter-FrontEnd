@@ -30,10 +30,21 @@ export function useGithubRepoListController() {
         }
     }
 
+    async function deleteRepository({ repoId }) {
+        try {
+            const { data } = await client.delete('/api/repo', {
+                data: { repoId },
+            })
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return {
         data: githubRepoList,
 
         getList,
         addRepository,
+        deleteRepository,
     }
 }

@@ -9,6 +9,9 @@ export const repoInfoSlice = createSlice({
         set: (state, action) => {
             return { ...action.payload }
         },
+        clear: () => {
+            return { ...initialState }
+        },
     },
 })
 
