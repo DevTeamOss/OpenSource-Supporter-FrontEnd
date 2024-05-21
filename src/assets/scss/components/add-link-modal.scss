@@ -1,0 +1,129 @@
+@import '@/assets/scss/color.scss';
+
+/* Add Link Modal Common */
+.add-link-modal-container {
+    .add-link-modal-header {
+        display: flex;
+        justify-content: center;
+
+        .btn-box {
+            display: flex;
+            position: relative;
+            background: $line-black;
+            width: 330px;
+            height: 40px;
+            border-radius: 20px;
+            box-shadow: 1px 1px 1px 1px $header-black;
+
+            .option-btn {
+                display: flex;
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+                background-color: $line-black;
+                color: $gray;
+                font-size: 12px;
+                font-weight: 500;
+                border-radius: 20px;
+                transition-property: color;
+                transition-duration: 0.3s;
+                transition-timing-function: ease-out;
+                cursor: pointer;
+
+                &.btn-active {
+                    color: $white;
+                }
+            }
+
+            .option-clip {
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 161px;
+                height: 36px;
+                border-radius: 20px;
+                background: rgba(255, 255, 255, 0.4);
+                box-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+                transition-property: left;
+                transition-duration: 0.3s;
+                transition-timing-function: ease-out;
+            }
+        }
+    }
+}
+
+/* Option01 Modal */
+.option01-container {
+    margin: 20px 15px 20px 15px;
+
+    .option01-header {
+        .description-text {
+            font-size: 17px;
+            font-weight: 600;
+        }
+    }
+
+    .option01-body {
+        display: flex;
+        margin: 0 50px 20px 50px;
+
+        .link-box {
+            display: flex;
+            align-items: center;
+            width: 490px;
+            margin-top: 35px;
+            background: $header-black;
+            font-weight: 100;
+            border-radius: 10px;
+
+            .link-text {
+                margin: 15px 5px 15px 25px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .btn-box {
+                margin-right: 25px;
+            }
+        }
+    }
+}
+
+/* Option02 Modal */
+.option02-container {
+    margin: 20px 15px 20px 15px;
+
+    .option02-header {
+        .description-text {
+            font-size: 17px;
+            font-weight: 600;
+        }
+    }
+
+    .option02-body {
+        display: flex;
+        margin: 0 50px 20px 50px;
+
+        .link-box {
+            display: flex;
+            align-items: center;
+            width: 490px;
+            margin-top: 35px;
+            background: $header-black;
+            font-weight: 100;
+            border-radius: 10px;
+
+            .link-text {
+                margin: 15px 5px 15px 25px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .btn-box {
+                margin-right: 25px;
+            }
+        }
+    }
+}

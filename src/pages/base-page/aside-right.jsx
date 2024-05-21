@@ -11,11 +11,13 @@ import {
 import { useUserController } from '@/controllers/index.js'
 import { useModal } from '@/hooks/useModal.js'
 import AddRepositoryModal from '@/components/add-repository-modal/index.jsx'
+import AddLinkModal from '@/components/add-link-modal'
 
 export default function AsideRight() {
     const navigate = useNavigate()
     const userController = useUserController()
     const addRepositoryModal = useModal()
+    const addLinkModal = useModal()
 
     function logout() {
         userController.logout()
@@ -40,7 +42,10 @@ export default function AsideRight() {
                         <FontAwesomeIcon icon={faBook} />
                         <div className="menu-item-text">Your Repositories</div>
                     </div>
-                    <div className="menu-item">
+                    <div
+                        className="menu-item"
+                        onClick={addLinkModal.open}
+                    >
                         <FontAwesomeIcon icon={faGlobe} />
                         <div className="menu-item-text">Your Links</div>
                     </div>
@@ -61,6 +66,9 @@ export default function AsideRight() {
                 </div>
                 {addRepositoryModal.visible && (
                     <AddRepositoryModal close={addRepositoryModal.close} />
+                )}
+                {addLinkModal.visible && (
+                    <AddLinkModal close={addLinkModal.close} />
                 )}
             </div>
         </>
