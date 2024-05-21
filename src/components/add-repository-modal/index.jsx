@@ -4,6 +4,7 @@ import { useGithubRepoListController } from '@/controllers/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 import Stage01 from '@/components/add-repository-modal/stage-01'
 import Stage02 from '@/components/add-repository-modal/stage-02'
+import LoadingScreen from '@/components/loading-screen'
 
 import '@/assets/scss/components/add-repository-modal.scss'
 
@@ -12,6 +13,7 @@ export default function AddRepositoryModal({ close }) {
 
     const [stage, setStage] = useState(0)
     const [repoName, setRepoName] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     function nextStage() {
         setStage((prev) => prev + 1)
@@ -23,16 +25,23 @@ export default function AddRepositoryModal({ close }) {
 
     function cancelSelection() {
         setRepoName('')
+
         prevStage()
+    }
+
+    async function loadData() {
+        setIsLoading(true)
+        await githubRepoListController.getList()
+        setIsLoading(false)
     }
 
     useEffect(() => {
         setStage(1)
-        githubRepoListController.getList().then()
+        loadData().then()
     }, [])
 
     useEffect(() => {
-        if (repoName !== ''){
+        if (repoName !== '') {
             nextStage()
         }
     }, [repoName])
@@ -71,10 +80,15 @@ export default function AddRepositoryModal({ close }) {
                 <div className="add-repository-modal-body">
                     {stage === 1 && <Stage01 select={setRepoName} />}
                     {stage === 2 && (
-                        <Stage02 close={close} repoName={repoName} cancel={cancelSelection} />
+                        <Stage02
+                            close={close}
+                            repoName={repoName}
+                            cancel={cancelSelection}
+                        />
                     )}
                 </div>
             </div>
+            {isLoading && <LoadingScreen />}
         </BaseModal>
     )
 }

@@ -1,0 +1,21 @@
+@import '@/assets/scss/color.scss';
+
+.loading-screen-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 20;
+
+    .loading-screen-spinner {
+        width: 100px;
+        height: 100px;
+    }
+}

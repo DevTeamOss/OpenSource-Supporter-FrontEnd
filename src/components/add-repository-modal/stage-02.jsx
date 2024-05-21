@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-import TagChip from '../tag-chip'
+import TagChip from '@/components/tag-chip'
+import LoadingScreen from '@/components/loading-screen'
 import {
     useGithubRepoListController,
     useUserController,
@@ -13,15 +14,17 @@ export default function Stage02({ close, repoName, cancel }) {
     const [description, setDescription] = useState('')
     const [newTagName, setNewTagName] = useState('')
     const [tags, setTags] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     async function submit() {
+        setIsLoading(true)
         await githubRepoListController.addRepository({
             username: userController.data.username,
             repoName,
             description,
             tags,
         })
-
+        setIsLoading(false)
         close()
     }
 
@@ -53,13 +56,23 @@ export default function Stage02({ close, repoName, cancel }) {
                     <div className="name-section">
                         <div className="input-box">
                             <label htmlFor="username">Username</label>
-                            <input type="text" id="username" value={userController.data.username} disabled/>
+                            <input
+                                type="text"
+                                id="username"
+                                value={userController.data.username}
+                                disabled
+                            />
                         </div>
                         <div className="input-box">
                             <label htmlFor="repositoryname">
                                 Repository name
                             </label>
-                            <input type="text" id="repositoryname" value={repoName} disabled/>
+                            <input
+                                type="text"
+                                id="repositoryname"
+                                value={repoName}
+                                disabled
+                            />
                         </div>
                     </div>
                     <div className="description-section">
@@ -78,11 +91,27 @@ export default function Stage02({ close, repoName, cancel }) {
                         <div className="input-box">
                             <label htmlFor="tags">Tags</label>
                             <div className="tag-input-group">
-                                <input type="text" id="tags" value={newTagName} onChange={(e) => setNewTagName(e.target.value)}/>
-                                <div className="tag-add-btn" onClick={addTag}>+</div>
+                                <input
+                                    type="text"
+                                    id="tags"
+                                    value={newTagName}
+                                    onChange={(e) =>
+                                        setNewTagName(e.target.value)
+                                    }
+                                />
+                                <div className="tag-add-btn" onClick={addTag}>
+                                    +
+                                </div>
                             </div>
                             <div className="tag-list-box">
-                                {tags.map((tag, ind) => <TagChip key={ind} onClick={() => deleteTag(ind)}>#{tag}</TagChip>)}
+                                {tags.map((tag, ind) => (
+                                    <TagChip
+                                        key={ind}
+                                        onClick={() => deleteTag(ind)}
+                                    >
+                                        #{tag}
+                                    </TagChip>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -96,9 +125,12 @@ export default function Stage02({ close, repoName, cancel }) {
                     <div className="cancel-btn" onClick={cancel}>
                         Cancel
                     </div>
-                    <div className="submit-btn" onClick={submit}>Submit</div>
+                    <div className="submit-btn" onClick={submit}>
+                        Submit
+                    </div>
                 </div>
             </div>
+            {isLoading && <LoadingScreen />}
         </div>
     )
 }
