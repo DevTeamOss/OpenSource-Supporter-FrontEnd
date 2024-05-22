@@ -14,35 +14,31 @@ const initialState = {
 }
 
 describe('User Controller Test', () => {
+    function createTestHook() {
+        return renderHook(() => useUserController(), { wrapper: ReduxProvider })
+    }
+
     test('유저 컨트롤러는 선언 시 초기값을 갖는다', () => {
-        const { result } = renderHook(() => useUserController(), {
-            wrapper: ReduxProvider,
-        })
+        const { result } = createTestHook()
 
         expect(result.current.data).toStrictEqual(initialState)
     })
 
     test('로그인에 성공하면 isLoggedIn이 true가 된다', async () => {
-        const { result, rerender } = renderHook(() => useUserController(), {
-            wrapper: ReduxProvider,
-        })
-
+        const { result } = createTestHook()
         await result.current.login({ code: 'cec6f9d35b782d7cb31b' })
-        rerender()
+
         expect(result.current.isLoggedIn).toBe(true)
     })
 
     test('로그아웃에 성공하면 isLoggedIn이 false가 된다', async () => {
-        const { result, rerender } = renderHook(() => useUserController(), {
-            wrapper: ReduxProvider,
-        })
-
+        const { result } = createTestHook()
         await result.current.login({ code: 'cec6f9d35b782d7cb31b' })
-        rerender()
+
         expect(result.current.isLoggedIn).toBe(true)
 
         await result.current.logout()
-        rerender()
+
         expect(result.current.isLoggedIn).toBe(false)
     })
 })
