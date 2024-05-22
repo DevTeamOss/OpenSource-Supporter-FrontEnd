@@ -1,8 +1,10 @@
-# React + Vite
+# OpenSource Supporter Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Contributors
+- @kmwyatt (고강민)
+- @khanna (김한나)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Controllers
+- [userController](doc/user-controller.md): 유저 정보를 관리하는 컨트롤러
+- [githubRepoListController](doc/github-repo-list-controller.md): GitHub에서 받아온 레포지토리 목록을 관리하는 컨트롤러
+- [repoInfoController](doc/repo-info-controller.md): OpenSource Supporter에 등록된 레포지토리의 정보를 관리하는 컨트롤러
