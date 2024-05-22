@@ -33,7 +33,9 @@ const initialState = {}
 <div>
     <div>레포지토리 이름: {repoInfoController.data.repoName}</div>
     <div>설명: {repoInfoController.data.description}</div>
-    {repoInfoController.data.tags.map((tag) => (<div>{tag}</div>))}
+    <div>
+        {repoInfoController.data.tags.map((tag) => (<div>{tag}</div>))}
+    </div>
 </div>
 ```
 위의 코드와 같이 repoInfoController.data에서 필요한 값 사용 가능
@@ -54,6 +56,6 @@ const initialState = {}
 
 #### 사용법
 ```javascript
-await githubRepoListController.getRepoInfo()
+await repoInfoController.getRepoInfo()
 ```
 위의 코드와 같이 getRepoInfo 사용 가능
