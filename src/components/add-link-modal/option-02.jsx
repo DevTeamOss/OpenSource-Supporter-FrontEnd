@@ -6,8 +6,17 @@ import { useState } from 'react'
 export default function Option02() {
     const [copyState, setCopyState] = useState(false)
 
-    function clickCopyBtn() {
-        setCopyState(true)
+    const copyToClipboard = () => {
+        navigator.clipboard
+            .writeText(
+                'https://www.opensource-supporter.com/card/Share?userName',
+            )
+            .then(() => {
+                setCopyState((prev) => !prev)
+                setTimeout(() => {
+                    setCopyState((prev) => !prev)
+                }, 5000)
+            })
     }
 
     return (
@@ -23,20 +32,19 @@ export default function Option02() {
                         https://www.opensource-supporter.com/card/Share?userName
                     </div>
                     <div className="btn-box">
+                        <div className="tooltip-text">
+                            {copyState ? 'Copied' : 'Copy'}
+                        </div>
                         {!copyState ? (
-                            <div className="copy-btn">
+                            <div className="copy-icon">
                                 <FontAwesomeIcon
                                     icon={faCopy}
-                                    onClick={clickCopyBtn}
-                                    style={{ color: '#58a6ff' }}
+                                    onClick={copyToClipboard}
                                 />
                             </div>
                         ) : (
-                            <div className="check-icon">
-                                <FontAwesomeIcon
-                                    icon={faCheck}
-                                    style={{ color: '#58a6ff' }}
-                                />
+                            <div className="copy-icon">
+                                <FontAwesomeIcon icon={faCheck} />
                             </div>
                         )}
                     </div>

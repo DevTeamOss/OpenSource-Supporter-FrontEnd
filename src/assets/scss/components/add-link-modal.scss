@@ -85,6 +85,45 @@
 
             .btn-box {
                 margin-right: 25px;
+                position: relative;
+
+                .tooltip-text {
+                    position: absolute;
+                    bottom: 150%;
+                    width: 50px;
+                    background-color: $dark-gray;
+                    color: $white;
+                    font-size: 13px;
+                    font-weight: 300;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px;
+                    margin-left: -25px;
+                    opacity: 0;
+                    visibility: hidden;
+                    z-index: 1;
+                    transition: opacity 0.3s;
+                }
+
+                .tooltip-text::after {
+                    content: '';
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: $dark-gray transparent transparent transparent;
+                }
+
+                &:hover .tooltip-text {
+                    visibility: visible;
+                    opacity: 1;
+                }
+
+                .copy-icon {
+                    color: $text-blue;
+                }
             }
         }
     }
@@ -123,6 +162,45 @@
 
             .btn-box {
                 margin-right: 25px;
+                position: relative;
+
+                .tooltip-text {
+                    position: absolute;
+                    bottom: 150%;
+                    width: 50px;
+                    background-color: $dark-gray;
+                    color: $white;
+                    font-size: 13px;
+                    font-weight: 300;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px;
+                    margin-left: -25px;
+                    opacity: 0;
+                    visibility: hidden;
+                    z-index: 1;
+                    transition: opacity 0.3s;
+                }
+
+                .tooltip-text::after {
+                    content: '';
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: $dark-gray transparent transparent transparent;
+                }
+
+                &:hover .tooltip-text {
+                    visibility: visible;
+                    opacity: 1;
+                }
+
+                .copy-icon {
+                    color: $text-blue;
+                }
             }
         }
     }
