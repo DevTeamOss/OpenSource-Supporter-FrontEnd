@@ -2,7 +2,7 @@
 
 ### Contributors
 - @kmwyatt (고강민)
-- @khanna (김한나)
+- @khanna01 (김한나)
 
 ### Controllers
 - [userController](doc/user-controller.md): 유저 정보를 관리하는 컨트롤러
