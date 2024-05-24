@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import { useUserController } from '@/controllers/index.js'
-import { useModal } from '@/hooks/useModal.js'
+import { useModal } from '@/hooks/use-modal.js'
 import AddRepositoryModal from '@/components/add-repository-modal/index.jsx'
 import AddLinkModal from '@/components/add-link-modal'
 
@@ -42,10 +42,7 @@ export default function AsideRight() {
                         <FontAwesomeIcon icon={faBook} />
                         <div className="menu-item-text">Your Repositories</div>
                     </div>
-                    <div
-                        className="menu-item"
-                        onClick={addLinkModal.open}
-                    >
+                    <div className="menu-item" onClick={addLinkModal.open}>
                         <FontAwesomeIcon icon={faGlobe} />
                         <div className="menu-item-text">Your Links</div>
                     </div>
