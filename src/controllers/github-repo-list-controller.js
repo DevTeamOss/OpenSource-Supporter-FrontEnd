@@ -40,11 +40,24 @@ export function useGithubRepoListController() {
         }
     }
 
+    async function modifyRepository({ repoId, description, tags }) {
+        try {
+            const { data } = await client.put('/api/repo', {
+                repoId,
+                description,
+                tags,
+            })
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return {
         data: githubRepoList,
 
         getList,
         addRepository,
         deleteRepository,
+        modifyRepository,
     }
 }

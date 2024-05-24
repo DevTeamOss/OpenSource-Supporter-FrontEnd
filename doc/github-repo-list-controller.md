@@ -97,3 +97,27 @@ await githubRepoListController.addRepository({
 await githubRepoListController.deleteRepository({ repoId: '[레포지토리의 인덱스 값]' })
 ```
 위의 코드와 같이 deleteRepository 사용 가능
+
+
+### async function modifyRepository({ repoId, description, tags })
+
+#### 용도
+OpenSource Supporter에 등록된 레포지토리 정보 수정
+
+#### 입력사항
+- repoId: 레포지토리 인덱스 값 (number)
+- description: 레포지토리 설명 (string)
+- tags: 태그를 담은 배열 (string[])
+
+#### 실행 시 변화
+없음
+
+#### 사용법
+```javascript
+await githubRepoListController.modifyRepository({
+    repoId: '[레포지토리 인덱스 값]',
+    desciption: '[레포지토리 설명]',
+    tags: ['[태그1]', '[태그2]', '[태그3]'],
+})
+```
+위의 코드와 같이 modifyRepository 사용 가능
