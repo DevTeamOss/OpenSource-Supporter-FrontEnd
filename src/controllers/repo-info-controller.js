@@ -7,11 +7,21 @@ export function useRepoInfoController() {
     const repoInfo = useSelector((state) => state.repoInfo)
     const dispatch = useDispatch()
 
-    async function getRepoInfo({ repoId }) {
+    async function getRepoInfo({ id }) {
         try {
             const { data } = await client.get('/api/repo', {
-                params: { id: repoId },
+                params: { id },
             })
+
+            dispatch(repoInfoSlice.actions.set({ ...data }))
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    async function getInfoWithViewCount({ id }) {
+        try {
+            const { data } = await client.put('/api/repo/view-count', { id })
 
             dispatch(repoInfoSlice.actions.set({ ...data }))
         } catch (err) {
@@ -28,5 +38,6 @@ export function useRepoInfoController() {
 
         clearData,
         getRepoInfo,
+        getInfoWithViewCount,
     }
 }
