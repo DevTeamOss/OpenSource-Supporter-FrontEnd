@@ -31,5 +31,5 @@ jobs:
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > OSSKey.pem
           chmod 600 OSSKey.pem
-          ssh -i OSSKey.pem -o StrictHostKeyChecking=no ubuntu@ec2-13-124-206-202.ap-northeast-2.compute.amazonaws.com "cd OpenSource-Supporter-FrontEnd && git pull origin main && sudo cp -r dist/* /var/www/html/ && sudo systemctl restart nginx"
+          ssh -i OSSKey.pem -o StrictHostKeyChecking=no ubuntu@ec2-13-124-206-202.ap-northeast-2.compute.amazonaws.com "cd OpenSource-Supporter-FrontEnd && sudo git pull origin main && sudo cp -r dist/* /var/www/html/ && sudo systemctl restart nginx"
           rm -f OSSKey.pem
