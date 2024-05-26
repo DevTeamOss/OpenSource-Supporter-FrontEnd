@@ -1,0 +1,40 @@
+name: Front CI/CD with GitHub Actions
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+          
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: Build Production Bundle
+        run: npm run build
+        
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.OSS_KEY }}
+          script: |
+            cd OpenSource-Supporter-FrontEnd
+            git pull origin main
+            sudo cp -r dist/* /var/www/html/
+            sudo systemctl restart nginx
