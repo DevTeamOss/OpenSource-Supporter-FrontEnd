@@ -28,13 +28,6 @@ jobs:
         run: npm run build
         
       - name: Deploy to EC2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd OpenSource-Supporter-FrontEnd
-            git pull origin main
-            sudo cp -r dist/* /var/www/html/
-            sudo systemctl restart nginx
+        run: |
+          sudo apt-get update && sudo apt-get install -y openssh-client
+          ssh -i ${{ secrets.EC2_SSH_KEY }} ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "cd OpenSource-Supporter-FrontEnd && git pull origin main && sudo cp -r dist/* /var/www/html/ && sudo systemctl restart nginx"
