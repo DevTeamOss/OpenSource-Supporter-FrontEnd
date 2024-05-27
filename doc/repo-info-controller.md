@@ -52,7 +52,7 @@ const initialState = {}
 - id: 레포지토리 인덱스 값 (number)
 
 #### 실행 시 변화
-데이터 값이 업데이트 된다.
+데이터 값이 업데이트 되고, 성공 여부를 true 또는 false로 반환
 
 #### 사용법
 ```javascript
@@ -70,7 +70,7 @@ await repoInfoController.getRepoInfo({ id: '[레포지토리 인덱스 값]'})
 - id: 레포지토리 인덱스 값 (number)
 
 #### 실행 시 변화
-데이터 값이 업데이트 된다.
+데이터 값이 업데이트 되고, 성공 여부를 true 또는 false로 반환한다.
 
 #### 사용법
 ```javascript

@@ -9,23 +9,35 @@ export function useRepoInfoController() {
 
     async function getRepoInfo({ id }) {
         try {
-            const { data } = await client.get('/api/repo', {
+            const { status, data } = await client.get('/api/repo', {
                 params: { id },
             })
+            if (status !== 200) {
+                return false
+            }
 
             dispatch(repoInfoSlice.actions.set({ ...data }))
+            return true
         } catch (err) {
             console.error(err)
+            return false
         }
     }
 
     async function getInfoWithViewCount({ id }) {
         try {
-            const { data } = await client.put('/api/repo/view-count', { id })
+            const { status, data } = await client.put('/api/repo/view-count', {
+                id,
+            })
+            if (status !== 200) {
+                return false
+            }
 
             dispatch(repoInfoSlice.actions.set({ ...data }))
+            return true
         } catch (err) {
             console.error(err)
+            return false
         }
     }
 

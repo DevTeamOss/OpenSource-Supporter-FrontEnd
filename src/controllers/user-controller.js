@@ -9,9 +9,12 @@ export function useUserController() {
 
     async function login({ code }) {
         try {
-            const { data } = await client.get('/api/auth/login', {
+            const { status, data } = await client.get('/api/auth/login', {
                 params: { code },
             })
+            if (status !== 200) {
+                return false
+            }
 
             const {
                 userName,
@@ -34,8 +37,10 @@ export function useUserController() {
                     totalPoint,
                 }),
             )
+            return true
         } catch (err) {
             console.error(err)
+            return false
         }
     }
 

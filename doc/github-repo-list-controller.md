@@ -49,7 +49,7 @@ const initialState = []
 없음
 
 #### 실행 시 변화
-데이터 배열이 업데이트 된다.
+데이터 배열이 업데이트 되고, 성공 여부를 true 또는 false로 반환한다.
 
 #### 사용법
 ```javascript
@@ -70,7 +70,7 @@ OpenSource Supporter에 레포지토리 등록
 - tags: 태그를 담은 배열 (string[])
 
 #### 실행 시 변화
-없음
+성공 여부를 true 또는 false로 반환한다.
 
 #### 사용법
 ```javascript
@@ -90,7 +90,7 @@ await githubRepoListController.addRepository({
 - repoId: 레포지토리의 인덱스 값 (number)
 
 #### 실행 시 변화
-없음
+성공 여부를 true 또는 false로 반환한다.
 
 #### 사용법
 ```javascript
@@ -110,7 +110,7 @@ OpenSource Supporter에 등록된 레포지토리 정보 수정
 - tags: 태그를 담은 배열 (string[])
 
 #### 실행 시 변화
-없음
+성공 여부를 true 또는 false로 반환한다.
 
 #### 사용법
 ```javascript

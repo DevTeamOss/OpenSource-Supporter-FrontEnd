@@ -49,7 +49,7 @@ const initialState = {
 - code: GitHub에서 보내준 일회성 토큰 값 (string)
 
 #### 실행 시 변화
-데이터 값이 업데이트 된다.
+데이터 값이 업데이트 되고, 성공 여부를 true 또는 false로 반환한다.
 
 #### 사용법
 ```javascript
