@@ -1,22 +1,35 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 export default function Option01() {
     const [copyState, setCopyState] = useState(false)
+    const textAreaRef = useRef(null)
 
     const copyToClipboard = () => {
-        navigator.clipboard
-            .writeText(
-                'https://www.opensource-supporter.com/github/Share?userName',
-            )
-            .then(() => {
-                setCopyState((prev) => !prev)
-                setTimeout(() => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard
+                .writeText(
+                    'https://www.opensource-supporter.com/github/Share?userName',
+                )
+                .then(() => {
                     setCopyState((prev) => !prev)
-                }, 5000)
-            })
+                    setTimeout(() => {
+                        setCopyState((prev) => !prev)
+                    }, 5000)
+                })
+        } else {
+            const textArea = textAreaRef.current
+            textArea.value =
+                'https://www.opensource-supporter.com/github/Share?userName'
+            textArea.select()
+            document.execCommand('copy')
+            setCopyState((prev) => !prev)
+            setTimeout(() => {
+                setCopyState((prev) => !prev)
+            }, 5000)
+        }
     }
 
     return (
@@ -28,6 +41,12 @@ export default function Option01() {
             </div>
             <div className="option01-body">
                 <div className="link-box">
+                    <textarea
+                        ref={textAreaRef}
+                        value="https://www.opensource-supporter.com/github/Share?userName"
+                        readOnly
+                        style={{ position: 'absolute', left: '-9999px' }}
+                    />
                     <div className="link-text">
                         https://www.opensource-supporter.com/github/Share?userName
                     </div>

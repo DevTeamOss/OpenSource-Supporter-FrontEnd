@@ -38,7 +38,7 @@ export default function SelectionRepository({ select, data }) {
                 </div>
                 <div
                     className="next-stage-arrow"
-                    onClick={() => select(data.repoName)}
+                    onClick={() => select(data.repoId, data.repoName)}
                 >
                     <FontAwesomeIcon icon={faChevronRight} />
                 </div>
