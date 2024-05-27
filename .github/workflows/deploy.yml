@@ -32,26 +32,25 @@ jobs:
     needs: build
     
     steps:
-      - name: Checkout Repository
+      - name: Checkout Original Repository
         uses: actions/checkout@v2
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
         with:
-          node-version: '18'
-
+          repository: DevTeamOss/OpenSource-Supporter-FrontEnd
+          ref: main
+          path: original_repo  # 다른 디렉토리에 원본 레포지터리를 체크아웃합니다.
+        
+      - name: Copy .env file
+        run: cp original_repo/.env .   # 원본 레포지터리의 .env 파일을 현재 디렉토리로 복사합니다.
+        
       - name: Deploy to EC2
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > OSSKey.pem
           chmod 600 OSSKey.pem
-          git add .   # 모든 변경사항을 추가합니다.
-          git commit -m "Stashing local changes for deployment"   # 변경사항을 커밋합니다.
-          git stash   # 변경사항을 스태시하여 숨깁니다.
           ssh -i OSSKey.pem -o StrictHostKeyChecking=no ubuntu@ec2-13-124-206-202.ap-northeast-2.compute.amazonaws.com "
             cd OpenSource-Supporter-FrontEnd &&
-            git pull origin main &&
+            git fetch --all &&
+            git reset --hard origin/main &&
             cp -r dist/* /var/www/html/ &&
             sudo systemctl restart nginx
           "
           rm -f OSSKey.pem
-          git stash pop  # 변경사항을 다시 적용합니다.
