@@ -13,6 +13,7 @@ export default function AddRepositoryModal({ close }) {
 
     const [stage, setStage] = useState(0)
     const [repoName, setRepoName] = useState('')
+    const [repoId, setRepoId] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
 
     function nextStage() {
@@ -23,9 +24,14 @@ export default function AddRepositoryModal({ close }) {
         setStage((prev) => prev - 1)
     }
 
+    function setRepoInfo(id, name) {
+        setRepoId(id)
+        setRepoName(name)
+    }
+
     function cancelSelection() {
         setRepoName('')
-
+        setRepoId(null)
         prevStage()
     }
 
@@ -44,7 +50,7 @@ export default function AddRepositoryModal({ close }) {
         if (repoName !== '') {
             nextStage()
         }
-    }, [repoName])
+    }, [repoName, repoId])
 
     return (
         <BaseModal close={close}>
@@ -78,11 +84,12 @@ export default function AddRepositoryModal({ close }) {
                     </div>
                 </div>
                 <div className="add-repository-modal-body">
-                    {stage === 1 && <Stage01 select={setRepoName} />}
+                    {stage === 1 && <Stage01 select={setRepoInfo} />}
                     {stage === 2 && (
                         <Stage02
                             close={close}
                             repoName={repoName}
+                            repoId={repoId}
                             cancel={cancelSelection}
                         />
                     )}

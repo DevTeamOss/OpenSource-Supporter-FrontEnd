@@ -1,15 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import TagChip from '@/components/tag-chip'
 import LoadingScreen from '@/components/loading-screen'
 import {
     useGithubRepoListController,
     useUserController,
+    useRepoInfoController,
 } from '@/controllers/index.js'
 
-export default function Stage02({ close, repoName, cancel }) {
+export default function Stage02({ close, repoName, repoId, cancel }) {
     const userController = useUserController()
     const githubRepoListController = useGithubRepoListController()
+    const repoInfoController = useRepoInfoController()
 
     const [description, setDescription] = useState('')
     const [newTagName, setNewTagName] = useState('')
@@ -18,11 +20,28 @@ export default function Stage02({ close, repoName, cancel }) {
 
     async function submit() {
         setIsLoading(true)
-        await githubRepoListController.addRepository({
-            username: userController.data.username,
-            repoName,
-            description,
-            tags,
+        if (repoId === null) {
+            await githubRepoListController.addRepository({
+                username: userController.data.username,
+                repoName,
+                description,
+                tags,
+            })
+        } else {
+            await githubRepoListController.modifyRepository({
+                repoId,
+                description,
+                tags,
+            })
+        }
+        setIsLoading(false)
+        close()
+    }
+
+    async function deleteRepo() {
+        setIsLoading(true)
+        await githubRepoListController.deleteRepository({
+            repoId,
         })
         setIsLoading(false)
         close()
@@ -38,11 +57,28 @@ export default function Stage02({ close, repoName, cancel }) {
     }
 
     function deleteTag(ind) {
-        console.log('delete')
         const newTags = [...tags]
         newTags[ind] = ''
         setTags(newTags.filter((value) => value !== ''))
     }
+
+    async function loadData() {
+        setIsLoading(true)
+        await repoInfoController.getRepoInfo({ id: repoId })
+        setIsLoading(false)
+    }
+
+    useEffect(() => {
+        repoInfoController.clearData()
+        if (repoId !== null) {
+            loadData().then()
+        }
+    }, [repoId])
+
+    useEffect(() => {
+        setDescription(repoInfoController.data.description)
+        setTags(repoInfoController.data.tags || [])
+    }, [repoInfoController.data])
 
     return (
         <div className="stage02-container">
@@ -119,7 +155,11 @@ export default function Stage02({ close, repoName, cancel }) {
             </div>
             <div className="stage02-footer">
                 <div className="footer-left-section">
-                    <div className="delete-btn">Delete</div>
+                    {repoId && (
+                        <div className="delete-btn" onClick={deleteRepo}>
+                            Delete
+                        </div>
+                    )}
                 </div>
                 <div className="footer-right-section">
                     <div className="cancel-btn" onClick={cancel}>

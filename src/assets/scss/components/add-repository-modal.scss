@@ -55,13 +55,13 @@
     }
 
     .stage01-body {
+        max-height: 405px;
         overflow-y: scroll;
-        -ms-overflow-style: none;   // no scroll bar
-        scrollbar-width: none;      //
-                                    //
-        &::-webkit-scrollbar {      //
-            display: none;          //
-        }                           //
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 }
 
@@ -82,7 +82,8 @@
         font-size: 14px;
         color: $light-blue;
 
-        input, textarea {
+        input,
+        textarea {
             box-sizing: border-box;
             background: $input-black;
             border: 1.5px solid $input-blue;
@@ -95,14 +96,14 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 25px;
-            
+
             .input-box {
                 display: flex;
                 flex-direction: column;
 
                 label {
                     margin-bottom: 2px;
-                    width: 230px; 
+                    width: 230px;
                 }
 
                 input {
@@ -117,7 +118,7 @@
             .input-box {
                 display: flex;
                 flex-direction: column;
-        
+
                 label {
                     margin-bottom: 2px;
                     width: 230px;
@@ -173,7 +174,7 @@
                     display: flex;
                     flex-wrap: wrap;
                     width: 550px;
-                    min-height: 30px;
+                    min-height: 32px;
                     box-sizing: border-box;
                     background: $input-black;
                     border: 1.5px solid $input-blue;
@@ -191,15 +192,15 @@
 
         .delete-btn {
             display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 70px;
-                height: 30px;
-                border-radius: 5px;
-                font-size: 12px;
-                color: $red;
-                background: $unposted-black;
-                cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: $red;
+            background: $unposted-black;
+            cursor: pointer;
         }
 
         .footer-right-section {
@@ -230,7 +231,7 @@
                 font-size: 12px;
                 background: $text-blue;
                 cursor: pointer;
-           }
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import moment from 'moment'
 
 import '@/assets/scss/components/selection-repository.scss'
@@ -11,7 +12,7 @@ export default function SelectionRepository({ select, data }) {
     return (
         <div className="selection-repository-container">
             <div className="selection-repository-section">
-                <div className="repository-img" />
+                <FontAwesomeIcon icon={faGithub} className="repository-img" />
                 <div className="repository-description">
                     <div className="repository-title">
                         {userController.data.username} / {data.repoName}
@@ -37,7 +38,7 @@ export default function SelectionRepository({ select, data }) {
                 </div>
                 <div
                     className="next-stage-arrow"
-                    onClick={() => select(data.repoName)}
+                    onClick={() => select(data.repoId, data.repoName)}
                 >
                     <FontAwesomeIcon icon={faChevronRight} />
                 </div>
