@@ -44,11 +44,13 @@ jobs:
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > OSSKey.pem
           chmod 600 OSSKey.pem
+          git add .   # 모든 변경사항을 추가합니다.
+          git commit -m "Stashing local changes for deployment"   # 변경사항을 커밋합니다.
           git stash   # 변경사항을 스태시하여 숨깁니다.
           ssh -i OSSKey.pem -o StrictHostKeyChecking=no ubuntu@ec2-13-124-206-202.ap-northeast-2.compute.amazonaws.com "
             cd OpenSource-Supporter-FrontEnd &&
-            sudo git pull origin main &&
-            sudo cp -r dist/* /var/www/html/ &&
+            git pull origin main &&
+            cp -r dist/* /var/www/html/ &&
             sudo systemctl restart nginx
           "
           rm -f OSSKey.pem
