@@ -40,7 +40,7 @@ jobs:
           path: original_repo  # 다른 디렉토리에 원본 레포지터리를 체크아웃합니다.
         
       - name: Copy .env file
-        run: cp OpenSource-Supporter-FrontEnd/.env .   # 원본 레포지터리의 .env 파일을 현재 디렉토리로 복사합니다.
+        run: cp ~/OpenSource-Supporter-FrontEnd/.env .   # 원본 레포지터리의 .env 파일을 현재 디렉토리로 복사합니다.
         
       - name: Deploy to EC2
         run: |
