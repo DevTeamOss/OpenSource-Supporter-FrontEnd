@@ -44,6 +44,7 @@ jobs:
         run: |
           echo "${{ secrets.EC2_SSH_KEY }}" > OSSKey.pem
           chmod 600 OSSKey.pem
+          git stash   # 변경사항을 스태시하여 숨깁니다.
           ssh -i OSSKey.pem -o StrictHostKeyChecking=no ubuntu@ec2-13-124-206-202.ap-northeast-2.compute.amazonaws.com "
             cd OpenSource-Supporter-FrontEnd &&
             sudo git pull origin main &&
@@ -51,3 +52,4 @@ jobs:
             sudo systemctl restart nginx
           "
           rm -f OSSKey.pem
+          git stash pop  # 변경사항을 다시 적용합니다.
