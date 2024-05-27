@@ -47,6 +47,7 @@ jobs:
           ssh -i OSSKey.pem -o StrictHostKeyChecking=no ubuntu@ec2-13-124-206-202.ap-northeast-2.compute.amazonaws.com "
             cd OpenSource-Supporter-FrontEnd &&
             sudo git pull origin main &&
+            sudo npm run build &&
             sudo cp -r dist/* /var/www/html/ &&
             sudo systemctl restart nginx
           "
