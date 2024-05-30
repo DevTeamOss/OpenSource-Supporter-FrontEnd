@@ -1,17 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import client from '@/client.js'
 import { repoInfoSlice } from '@/store/index.js'
+import { repoService } from '@/services/index.js'
 
 export function useRepoInfoController() {
     const repoInfo = useSelector((state) => state.repoInfo)
     const dispatch = useDispatch()
 
-    async function getRepoInfo({ id }) {
+    async function getRepoInfo(payload) {
         try {
-            const { status, data } = await client.get('/api/repo', {
-                params: { id },
-            })
+            const { status, data } = await repoService.callGetInfo(payload)
             if (status !== 200) {
                 return false
             }
@@ -24,11 +22,10 @@ export function useRepoInfoController() {
         }
     }
 
-    async function getInfoWithViewCount({ id }) {
+    async function getInfoWithViewCount(payload) {
         try {
-            const { status, data } = await client.put('/api/repo/view-count', {
-                id,
-            })
+            const { status, data } =
+                await repoService.callGetInfoWithViewCount(payload)
             if (status !== 200) {
                 return false
             }

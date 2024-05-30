@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import client from '@/client'
 import { githubRepoListSlice } from '@/store'
+import { repoService, reposService } from '@/services/index.js'
 
 export function useGithubRepoListController() {
     const githubRepoList = useSelector((state) => state.githubRepoList)
@@ -9,7 +9,7 @@ export function useGithubRepoListController() {
 
     async function getList() {
         try {
-            const { status, data } = await client.get('/api/repos/modal')
+            const { status, data } = await reposService.callGetList()
             if (status !== 200) {
                 return false
             }
@@ -22,14 +22,10 @@ export function useGithubRepoListController() {
         }
     }
 
-    async function addRepository({ username, repoName, description, tags }) {
+    async function addRepository(payload) {
         try {
-            const { status, data } = await client.post('/api/repo', {
-                userName: username,
-                repoName,
-                description,
-                tags,
-            })
+            const { status, data } =
+                await repoService.callAddRepository(payload)
             if (status !== 200) {
                 return false
             }
@@ -41,11 +37,10 @@ export function useGithubRepoListController() {
         }
     }
 
-    async function deleteRepository({ repoId }) {
+    async function deleteRepository(payload) {
         try {
-            const { status, data } = await client.delete('/api/repo', {
-                data: { repoId },
-            })
+            const { status, data } =
+                await repoService.callDeleteRepository(payload)
             if (status !== 200) {
                 return false
             }
@@ -57,13 +52,10 @@ export function useGithubRepoListController() {
         }
     }
 
-    async function modifyRepository({ repoId, description, tags }) {
+    async function modifyRepository(payload) {
         try {
-            const { status, data } = await client.put('/api/repo', {
-                repoId,
-                description,
-                tags,
-            })
+            const { status, data } =
+                await repoService.callModifyRepository(payload)
             if (status !== 200) {
                 return false
             }
