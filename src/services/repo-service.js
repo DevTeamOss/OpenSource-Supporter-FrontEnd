@@ -45,4 +45,46 @@ export const repoService = {
 
         return { status, data }
     },
+
+    callGetRecentlyCommitList: async ({ page }) => {
+        const { status, data } = await client.get(
+            '/api/repo/recommended/recentlyCommit',
+            {
+                params: {
+                    page,
+                    size: 3,
+                },
+            },
+        )
+
+        return { status, data }
+    },
+
+    callGetMostViewedList: async ({ page }) => {
+        const { status, data } = await client.get(
+            '/api/repo/recommended/mostViewed',
+            {
+                params: {
+                    page,
+                    size: 3,
+                },
+            },
+        )
+
+        return { status, data }
+    },
+
+    callGetMyPartnersList: async ({ page }) => {
+        const { status, data } = await client.get(
+            '/api/repo/recommended/myPartners',
+            {
+                params: {
+                    page,
+                    size: 3,
+                },
+            },
+        )
+
+        return { status, data }
+    },
 }
