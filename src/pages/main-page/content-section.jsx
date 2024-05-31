@@ -1,4 +1,4 @@
-import RepositoryCard from '@/components/repostitory-card'
+import RepositoryCardList from '@/pages/main-page/repository-card-list'
 
 export default function ContentSection() {
     return (
@@ -8,33 +8,21 @@ export default function ContentSection() {
                     <div className="title-text">My</div>
                     <div className="title-text">Partners</div>
                 </div>
-                <div className="card-group-container">
-                    <RepositoryCard />
-                    <RepositoryCard />
-                    <RepositoryCard />
-                </div>
+                <RepositoryCardList type="MY_PARTNERS" />
             </div>
             <div className="main-content-box">
                 <div className="content-title-text">
                     <div className="title-text">Most</div>
                     <div className="title-text">Viewed</div>
                 </div>
-                <div className="card-group-container">
-                    <RepositoryCard />
-                    <RepositoryCard />
-                    <RepositoryCard />
-                </div>
+                <RepositoryCardList type="MOST_VIEWED" />
             </div>
             <div className="main-content-box">
                 <div className="content-title-text">
                     <div className="title-text">Recently Commit</div>
                     <div className="title-text">Repositories</div>
                 </div>
-                <div className="card-group-container">
-                    <RepositoryCard />
-                    <RepositoryCard />
-                    <RepositoryCard />
-                </div>
+                <RepositoryCardList type="RECENTLY_COMMIT" />
             </div>
         </div>
     )
