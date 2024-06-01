@@ -1,0 +1,229 @@
+@import '@/assets/scss/color.scss';
+
+/* Ranking Page Common */
+.ranking-page-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* User Ranking Section */
+.user-ranking-section-container {
+    .user-ranking-header {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+
+        .ranking-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .ranking-progress-gauge-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            width: 230px;
+            margin-top: 25px;
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+                background: $white;
+                border-radius: 50%;
+            }
+
+            .user-info-box {
+                position: absolute;
+                bottom: 0px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .name-text {
+                    font-size: 21px;
+                    font-weight: 500;
+                }
+
+                .username-text {
+                    color: $count-gray;
+                    font-weight: 200;
+                }
+            }
+        }
+    }
+
+    .user-ranking-info-container {
+        display: flex;
+        justify-content: space-evenly;
+        background: #303641;
+
+        .info-box {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+
+            .info-title {
+                font-weight: 300;
+                font-size: 15px;
+                color: $light-silver;
+            }
+
+            .point-text {
+                font-size: 44px;
+                font-weight: 700;
+
+                .points {
+                    color: $point-blue;
+                }
+            }
+
+            .tier-text {
+                font-size: 19px;
+                font-weight: 600;
+                color: $light-silver;
+
+                .tier {
+                    font-size: 55px;
+                    color: $gold;
+                    font-weight: 700;
+
+                    &.platinum {
+                        background: #fffefc;
+                        background: linear-gradient(
+                            to right,
+                            #fffefc 0%,
+                            #c9c9c7 100%
+                        );
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+
+                    &.gold {
+                        background: #ffd700;
+                        background: linear-gradient(
+                            to right,
+                            #ffd700 0%,
+                            #bd9f00 100%
+                        );
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+
+                    &.silver {
+                        background: #d6d6d6;
+                        background: linear-gradient(
+                            to right,
+                            #d6d6d6 0%,
+                            #a6a6a6 100%
+                        );
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+
+                    &.bronze {
+                        background: #f0943a;
+                        background: linear-gradient(
+                            to right,
+                            #f0943a 0%,
+                            #b26f2c 100%
+                        );
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
+            }
+
+            .ranking-text {
+                font-size: 44px;
+                font-weight: 700;
+
+                .number {
+                    color: $number-green;
+                }
+
+                .ranking-top {
+                    display: flex;
+                    justify-content: center;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .info-divide-line {
+            border-left: 1px solid $gray;
+        }
+    }
+}
+
+/* Total Ranking Seection */
+.total-ranking-section-container {
+    margin: 15px 0;
+
+    .total-ranking-section-header {
+        display: flex;
+        width: 100%;
+        margin: 10px 0;
+        font-size: 12px;
+        color: $light-gray;
+
+        .position-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 10%;
+            margin-left: 15px;
+        }
+
+        .user-title {
+            width: 60%;
+            margin-left: 20px;
+
+            .user-title-text {
+                display: flex;
+                justify-content: center;
+                width: 50px;
+            }
+        }
+
+        .points-title {
+            display: flex;
+            justify-content: center;
+            width: 15%;
+        }
+
+        .tier-title {
+            display: flex;
+            justify-content: center;
+            width: 15%;
+            margin-right: 10px;
+        }
+    }
+
+    .total-ranking-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 15px 0;
+
+        .show-more-btn {
+            color: $text-blue;
+            cursor: pointer;
+            font-weight: 300;
+            font-size: 14px;
+        }
+    }
+}

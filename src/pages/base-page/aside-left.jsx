@@ -25,6 +25,7 @@ export default function AsideLeft() {
                 <div className="supporter-card-box">
                     <SupporterCard />
                 </div>
+                <div className="divide-line large-space" />
                 <div className="content-title">Contributions</div>
                 <div className="github-calendar">
                     <GitHubCalendar
