@@ -50,7 +50,10 @@ export default function AsideRight() {
                         <FontAwesomeIcon icon={faCoins} />
                         <div className="menu-item-text">Your Points</div>
                     </div>
-                    <div className="menu-item">
+                    <div
+                        className="menu-item"
+                        onClick={() => navigate('/ranking')}
+                    >
                         <FontAwesomeIcon icon={faTrophy} />
                         <div className="menu-item-text">Your Rank</div>
                     </div>

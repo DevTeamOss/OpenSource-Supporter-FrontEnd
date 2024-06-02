@@ -5,12 +5,12 @@
     height: 155px;
     margin: 10px 5px;
     border-radius: 10px;
-    background: $header-black;
+    background: $card-black;
     cursor: pointer;
 
     .repository-box-header {
         display: flex;
-        
+
         .box-header-section {
             margin: 10px 10px 5px;
             display: flex;
@@ -23,22 +23,20 @@
                 background: $white;
                 margin-right: 10px;
             }
-    
+
             .repository-name-text {
                 display: flex;
                 font-weight: 600;
                 color: $text-blue;
-    
+
                 .text-slash {
                     margin: 0px 5px;
                 }
             }
         }
-
     }
 
     .repository-box-body {
-
         .repository-description {
             margin: 5px 10px;
             font-size: 15px;

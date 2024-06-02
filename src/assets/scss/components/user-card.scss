@@ -8,7 +8,7 @@
     height: 70px;
     margin: 10px 5px;
     border-radius: 10px;
-    background: $header-black;
+    background: $card-black;
     cursor: pointer;
 
     .profile-img {
@@ -25,7 +25,7 @@
         font-weight: 500;
         color: $text-blue;
 
-        .text-slash{
+        .text-slash {
             margin: 0px 5px;
         }
     }

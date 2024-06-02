@@ -24,7 +24,10 @@ export default function ProfileBox() {
                     </div>
                 </div>
                 <div className="profile-info-section">
-                    <div className="point-text">0 / 0 P</div>
+                    <div className="point-text">
+                        {userController.data.remainingPoint} /{' '}
+                        {userController.data.totalPoint} P
+                    </div>
                 </div>
             </div>
         </div>
