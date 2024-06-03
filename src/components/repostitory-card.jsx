@@ -11,7 +11,11 @@ export default function RepositoryCard({ repoInfo }) {
         <div className="repository-card-container">
             <div className="repository-card-header">
                 <div className="card-header-section">
-                    <div className="profile-img" />
+                    <img
+                        className="profile-img"
+                        src={repoInfo.avatarUrl}
+                        alt={repoInfo.userName}
+                    />
                     <div className="profile-username-text">
                         {repoInfo.userName}
                     </div>
