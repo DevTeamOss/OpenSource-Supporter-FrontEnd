@@ -7,7 +7,8 @@ import SearchPage from './pages/search-page'
 import ProfilePage from '@/pages/profile-page'
 import Header from '@/components/header'
 import BasePage from '@/pages/base-page'
-import RankingPage from './pages/ranking-page'
+import RankingPage from '@/pages/ranking-page'
+import AdvertisementPage from '@/pages/advertisement-page'
 
 const PATH = {
     WELCOME: '/',
@@ -16,6 +17,7 @@ const PATH = {
     PROFILE: '/profile',
     SEARCH: '/search',
     RANKING: '/ranking',
+    ADVERTISEMENT: '/advertisement',
 }
 
 export default function PageRoutes() {
@@ -65,6 +67,10 @@ export default function PageRoutes() {
                     </BasePage>
                 </WithHeader>
             ),
+        },
+        {
+            path: PATH.ADVERTISEMENT,
+            element: <AdvertisementPage />,
         },
     ])
 }
