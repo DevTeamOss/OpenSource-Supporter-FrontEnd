@@ -1,4 +1,4 @@
-import RepositoryCard from '@/components/repostitory-card.jsx'
+import RepositoryCard from '@/components/dummy-repository-card.jsx'
 
 export default function ProfileContentSection() {
     return (
