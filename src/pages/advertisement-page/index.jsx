@@ -1,13 +1,20 @@
 import { useEffect, useState } from 'react'
 import { CircularProgressbar } from 'react-circular-progressbar'
+import { useUserController } from '@/controllers/index.js'
 
 import '@/assets/scss/pages/advertisement-page.scss'
 
 export default function AdvertisementPage() {
+    const userController = useUserController()
+
     const [remainingTime, setRemainingTime] = useState(30)
 
     function navigateGithub() {
-        window.location.href = 'https://github.com'
+        console.log(userController.data.username)
+        if (userController.data.username === 'guest')
+            window.location.href = 'https://github.com'
+        else
+            window.location.href = `https://github.com/${userController.data.username}`
     }
 
     useEffect(() => {

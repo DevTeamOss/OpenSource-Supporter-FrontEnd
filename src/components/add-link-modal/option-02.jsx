@@ -2,8 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef } from 'react'
+import { useUserController } from '@/controllers/index.js'
 
 export default function Option02() {
+    const userController = useUserController()
+
     const [copyState, setCopyState] = useState(false)
     const textAreaRef = useRef(null)
 
@@ -11,7 +14,7 @@ export default function Option02() {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard
                 .writeText(
-                    'https://www.opensource-supporter.com/card/Share?userName',
+                    `https://www.opensource-supporter.com/card/Share?${userController.data.username}`,
                 )
                 .then(() => {
                     setCopyState((prev) => !prev)
@@ -21,8 +24,7 @@ export default function Option02() {
                 })
         } else {
             const textArea = textAreaRef.current
-            textArea.value =
-                'https://www.opensource-supporter.com/card/Share?userName'
+            textArea.value = `https://www.opensource-supporter.com/card/Share?${userController.data.username}`
             textArea.select()
             document.execCommand('copy')
             setCopyState((prev) => !prev)
@@ -43,12 +45,13 @@ export default function Option02() {
                 <div className="link-box">
                     <textarea
                         ref={textAreaRef}
-                        value="https://www.opensource-supporter.com/card/Share?userName"
+                        value={`https://www.opensource-supporter.com/card/Share?${userController.data.username}`}
                         readOnly
                         style={{ position: 'absolute', left: '-9999px' }}
                     />
                     <div className="link-text">
-                        https://www.opensource-supporter.com/card/Share?userName
+                        https://www.opensource-supporter.com/card/Share?
+                        {userController.data.username}
                     </div>
                     <div className="btn-box">
                         <div className="tooltip-text">
