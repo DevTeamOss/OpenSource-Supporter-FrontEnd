@@ -4,7 +4,9 @@ import { repoService } from '@/services/index.js'
 
 export function useRepoList(type) {
     const [list, setList] = useState([])
+    const [hasNextPage, setHasNextPage] = useState(false)
     const [currentPage, setCurrentPage] = useState(0)
+    const [isLoading, setIsLoading] = useState(false)
 
     let getList
     if (type === 'RECENTLY_COMMIT') {
@@ -17,37 +19,52 @@ export function useRepoList(type) {
     }
 
     async function nextPage() {
+        setIsLoading(true)
         const { data } = await getList(currentPage + 1)
+        setIsLoading(false)
+
         if (data.length === 0) {
             alert('마지막 페이지입니다')
             return false
         }
 
-        setList(data)
+        setList([...data.data])
+        setHasNextPage(data.hasNextPage)
         setCurrentPage((prev) => prev + 1)
         return true
     }
 
     async function prevPage() {
-        if (currentPage === 0) {
-            alert('첫번째 페이지입니다')
-            return false
-        }
-
+        setIsLoading(true)
         const { data } = await getList(currentPage - 1)
-        setList(data)
+        setIsLoading(false)
+
+        setList([...data.data])
+        setHasNextPage(data.hasNextPage)
         setCurrentPage((prev) => prev - 1)
         return true
     }
 
     async function initList() {
+        setIsLoading(true)
         const { data } = await getList(0)
-        setList(data)
+        setIsLoading(false)
+
+        setList([...data.data])
+        setHasNextPage(data.hasNextPage)
     }
 
     useEffect(() => {
         initList().then()
     }, [])
 
-    return { data: list, nextPage, prevPage }
+    return {
+        data: list,
+        hasPrevPage: currentPage !== 0,
+        hasNextPage,
+        isLoading,
+
+        nextPage,
+        prevPage,
+    }
 }
