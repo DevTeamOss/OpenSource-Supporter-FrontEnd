@@ -23,11 +23,6 @@ export function useRepoList(type) {
         const { data } = await getList(currentPage + 1)
         setIsLoading(false)
 
-        if (data.length === 0) {
-            alert('마지막 페이지입니다')
-            return false
-        }
-
         setList([...data.data])
         setHasNextPage(data.hasNextPage)
         setCurrentPage((prev) => prev + 1)
