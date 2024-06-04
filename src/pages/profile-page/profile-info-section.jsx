@@ -4,8 +4,20 @@ import SupporterCard from '@/components/supporter-card'
 import GitHubCalendar from 'react-github-calendar'
 import { useUserController } from '@/controllers/index.js'
 
+// dummy controller
+function useProfileController() {
+    const [data, setData] = useState({})
+
+    async function getProfileData() {
+        setData({ username: 'khanna01' })
+    }
+
+    return { data, getProfileData }
+}
+
 export default function ProfileInfoSection() {
     const userController = useUserController()
+    const profileController = useProfileController()
 
     const currentYear = new Date().getFullYear()
     const [selectedYear, setSelectedYear] = useState(currentYear)
@@ -13,6 +25,10 @@ export default function ProfileInfoSection() {
     function changeYear(year) {
         setSelectedYear(year)
     }
+
+    useEffect(() => {
+        profileController.getProfileData().then()
+    }, [])
 
     return (
         <div className="profile-info-section-container">
@@ -72,6 +88,10 @@ export default function ProfileInfoSection() {
                         </div>
                     </div>
                 </div>
+                {userController.data.username ===
+                    profileController.data.username && (
+                    <div className="account-delete-btn">Delete Account</div>
+                )}
             </div>
         </div>
     )
