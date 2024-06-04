@@ -3,7 +3,7 @@
 .selection-repository-container {
     display: flex;
     justify-content: space-between;
-    background: $header-black;
+    background: $card-black;
     border-radius: 10px;
     margin: 15px;
     padding: 15px 15px;
@@ -23,6 +23,8 @@
             .repository-title {
                 color: $text-blue;
                 font-size: 13px;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .repository-info {

@@ -16,7 +16,9 @@ export default function Stage01({ select }) {
                     className="profile-img"
                     alt="user avatar img"
                 />
-                <div className="selection-description">user's Repository</div>
+                <div className="selection-description">
+                    {userController.data.username}'s Repository
+                </div>
             </div>
             <div className="stage01-body">
                 {githubRepoListController.data.map((data, ind) => (
