@@ -27,7 +27,9 @@ export default function Header() {
                         src={userController.data.avatarUrl}
                         alt={userController.data.username}
                         className="profile-btn"
-                        onClick={() => navigate('/profile')}
+                        onClick={() =>
+                            navigate(`/profile/${userController.data.username}`)
+                        }
                     />
                 ) : (
                     <div

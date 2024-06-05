@@ -19,4 +19,20 @@ export const userService = {
 
         return { status, data: dataToUse }
     },
+
+    callGetCardInfo: async ({ username }) => {
+        const { status, data } = await client.get('/api/user/card', {
+            params: { userName: username },
+        })
+
+        const { userName, totalDonated, donatedRepoList } = data
+
+        const dataToUse = {
+            username: userName,
+            totalDonated,
+            donatedRepoNames: donatedRepoList.join(', '),
+        }
+
+        return { status, data: dataToUse }
+    },
 }

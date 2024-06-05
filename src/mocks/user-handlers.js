@@ -22,6 +22,17 @@ const userHandlers = [
             { status: 200 },
         )
     }),
+
+    http.get(`${BACKEND_URL}/api/user/card`, () => {
+        return HttpResponse.json(
+            {
+                userName: 'ambition-kwon',
+                totalDonated: 900,
+                donatedRepoList: [],
+            },
+            { status: 200 },
+        )
+    }),
 ]
 
 export default userHandlers
