@@ -1,9 +1,9 @@
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+import { useRankInfo } from '@/hooks/use-rank-info.js'
 
 export default function UserRankingSection() {
-    const percentage = 90
-    const tierText = 'gold'
+    const rankInfo = useRankInfo()
 
     return (
         <div className="user-ranking-section-container">
@@ -22,7 +22,7 @@ export default function UserRankingSection() {
                         </defs>
                     </svg>
                     <CircularProgressbarWithChildren
-                        value={percentage}
+                        value={rankInfo.data.progress}
                         strokeWidth={16}
                         circleRatio={0.75}
                         styles={{
@@ -46,11 +46,17 @@ export default function UserRankingSection() {
                             },
                         }}
                     >
-                        <div className="profile-img"></div>
+                        <img
+                            className="profile-img"
+                            src={rankInfo.data.avatarUrl}
+                            alt={rankInfo.data.username}
+                        />
                     </CircularProgressbarWithChildren>
                     <div className="user-info-box">
-                        <div className="name-text">권혁원</div>
-                        <div className="username-text">ambition-kwon</div>
+                        <div className="name-text">{rankInfo.data.name}</div>
+                        <div className="username-text">
+                            {rankInfo.data.username}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,22 +66,33 @@ export default function UserRankingSection() {
                         Points needed for the next Tier
                     </div>
                     <div className="point-text">
-                        <span className="points">3840</span> P
+                        <span className="points">
+                            {rankInfo.data.toNextTier}
+                        </span>{' '}
+                        P
                     </div>
                 </div>
                 <div className="info-divide-line"></div>
                 <div className="info-box">
                     <div className="info-title">Current Tier</div>
                     <div className="tier-text">
-                        <span className={`tier ${tierText}`}>Gold</span>Partner
+                        <span
+                            className={`tier ${rankInfo.data.level.toLowerCase()}`}
+                        >
+                            {rankInfo.data.tierText}
+                        </span>
+                        Partner
                     </div>
                 </div>
                 <div className="info-divide-line"></div>
                 <div className="info-box">
                     <div className="info-title">Real-time Ranking</div>
                     <div className="ranking-text">
-                        <span className="number">No.</span> 38463
-                        <div className="ranking-top">(Top 10.8%)</div>
+                        <span className="number">No.</span>
+                        {rankInfo.data.rank}
+                        <div className="ranking-top">
+                            (Top {rankInfo.data.topPercent}%)
+                        </div>
                     </div>
                 </div>
             </div>
