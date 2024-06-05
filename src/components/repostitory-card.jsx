@@ -2,6 +2,7 @@ import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 
+import { COLOR } from '@/constants/color.js'
 import TagChip from '@/components/tag-chip'
 
 import '@/assets/scss/components/repository-card.scss'
@@ -43,7 +44,10 @@ export default function RepositoryCard({ repoInfo, forProfile }) {
                 </div>
                 <div className="repository-info-line">
                     <div className="repository-info-section">
-                        <div className="language-circle" />
+                        <div
+                            className="language-circle"
+                            style={{ background: COLOR[repoInfo.mostLanguage] }}
+                        />
                         {repoInfo.mostLanguage}
                     </div>
                     <div className="repository-info-section">
