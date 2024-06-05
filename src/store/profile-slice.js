@@ -15,6 +15,9 @@ export const profileSlice = createSlice({
         set: (state, action) => {
             return { ...action.payload }
         },
+        clear: () => {
+            return { ...initialState }
+        },
     },
 })
 

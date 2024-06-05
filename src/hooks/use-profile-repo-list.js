@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import { reposService } from '@/services/index.js'
 import { useProfileController } from '@/controllers/index.js'
 
 export function useProfileRepoList(type) {
-    const profileController = useProfileController()
+    const { username } = useParams()
 
     const [list, setList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -13,16 +14,18 @@ export function useProfileRepoList(type) {
     if (type === 'SUPPORTED') {
         getList = async () =>
             reposService.callGetSupportedList({
-                username: profileController.data.username,
+                username,
             })
     } else if (type === 'SUPPORTING') {
         getList = async () =>
             reposService.callGetSupportingList({
-                username: profileController.data.username,
+                username,
             })
     }
 
     async function getRepoList() {
+        setList([])
+
         setIsLoading(true)
         const { data } = await getList()
         setIsLoading(false)
@@ -31,12 +34,8 @@ export function useProfileRepoList(type) {
     }
 
     useEffect(() => {
-        if (!profileController.data.username) {
-            return
-        }
-
         getRepoList().then()
-    }, [profileController.data])
+    }, [])
 
     return { data: list, isLoading }
 }
