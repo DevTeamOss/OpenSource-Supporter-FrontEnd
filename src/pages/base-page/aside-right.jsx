@@ -30,7 +30,9 @@ export default function AsideRight() {
                 <div className="menu-box">
                     <div
                         className="menu-item"
-                        onClick={() => navigate('/profile')}
+                        onClick={() =>
+                            navigate(`/profile/${userController.data.username}`)
+                        }
                     >
                         <FontAwesomeIcon icon={faUser} />
                         <div className="menu-item-text">Your Profile</div>

@@ -1,4 +1,5 @@
 import { http, HttpResponse } from 'msw'
+
 import { BACKEND_URL } from '@/constants/config.js'
 
 const reposHandlers = [
@@ -117,6 +118,104 @@ const reposHandlers = [
                     starCount: 0,
                     lastCommitAt: '2022-09-15T16:32:20',
                     posted: false,
+                },
+            ],
+            { status: 200 },
+        )
+    }),
+
+    http.get(`${BACKEND_URL}/api/repos/supported`, () => {
+        return HttpResponse.json(
+            [
+                {
+                    id: 6,
+                    userName: 'ambition-kwon',
+                    avatarUrl:
+                        'https://avatars.githubusercontent.com/u/5442985?v=4',
+                    repoName: 'AI_Tutor-BackEnd',
+                    description:
+                        'my first repository. please fork and add star my repo',
+                    tags: ['tag1', 'tag2', 'tag3', 'tag4'],
+                    mostLanguage: 'Java',
+                    license: 'Unlicensed',
+                    repositoryLink:
+                        'https://github.com/ambition-kwon/AI_Tutor-BackEnd',
+                    viewCount: 0,
+                    totalPoint: 0,
+                    lastCommitAt: '2024-01-16T08:34:03',
+                },
+                {
+                    id: 5,
+                    userName: 'ambition-kwon',
+                    avatarUrl:
+                        'https://avatars.githubusercontent.com/u/5442985?v=4',
+                    repoName: 'PreFlightCheck',
+                    description:
+                        'my first repository. please fork and add star my repo',
+                    tags: ['tag1', 'tag2', 'tag3', 'tag4'],
+                    mostLanguage: 'JavaScript',
+                    license: 'MIT License',
+                    repositoryLink:
+                        'https://github.com/ambition-kwon/PreFlightCheck',
+                    viewCount: 0,
+                    totalPoint: 0,
+                    lastCommitAt: '2023-11-01T03:40:36',
+                },
+            ],
+            { status: 200 },
+        )
+    }),
+
+    http.get(`${BACKEND_URL}/api/repos/supporting`, () => {
+        return HttpResponse.json(
+            [
+                {
+                    id: 3,
+                    userName: 'khanna01',
+                    avatarUrl:
+                        'https://avatars.githubusercontent.com/u/79962121?v=4',
+                    repoName: 'hoonsman_ft',
+                    description:
+                        'my first repository. please fork and add star my repo',
+                    tags: ['tag1', 'tag2', 'tag3', 'tag4'],
+                    mostLanguage: 'JavaScript',
+                    license: 'Unlicensed',
+                    repositoryLink: 'https://github.com/khanna01/hoonsman_ft',
+                    viewCount: 0,
+                    totalPoint: 3000,
+                    lastCommitAt: '2024-01-25T00:30:09',
+                },
+                {
+                    id: 4,
+                    userName: 'khanna01',
+                    avatarUrl:
+                        'https://avatars.githubusercontent.com/u/79962121?v=4',
+                    repoName: 'realhoonsman',
+                    description:
+                        'my first repository. please fork and add star my repo',
+                    tags: ['tag1', 'tag2', 'tag3', 'tag4'],
+                    mostLanguage: 'JavaScript',
+                    license: 'Unlicensed',
+                    repositoryLink: 'https://github.com/khanna01/realhoonsman',
+                    viewCount: 0,
+                    totalPoint: 4000,
+                    lastCommitAt: '2024-01-19T01:16:02',
+                },
+                {
+                    id: 2,
+                    userName: 'khanna01',
+                    avatarUrl:
+                        'https://avatars.githubusercontent.com/u/79962121?v=4',
+                    repoName: 'basicweb',
+                    description:
+                        'my first repository. please fork and add star my repo',
+                    tags: ['tag1', 'tag2', 'tag3', 'tag4'],
+                    mostLanguage: 'JavaScript',
+                    license: 'Unlicensed',
+                    repositoryLink: 'https://github.com/khanna01/basicweb',
+                    viewCount: 0,
+                    totalPoint: 2000,
+                    lastCommitAt: '2023-12-11T05:20:51',
                 },
             ],
             { status: 200 },

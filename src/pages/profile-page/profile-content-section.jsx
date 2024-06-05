@@ -1,6 +1,10 @@
-import RepositoryCard from '@/components/dummy-repository-card.jsx'
+import { useProfileRepoList } from '@/hooks/use-profile-repo-list.js'
+import RepositoryCard from '@/components/repostitory-card.jsx'
 
 export default function ProfileContentSection() {
+    const supportedList = useProfileRepoList('SUPPORTED')
+    const supportingList = useProfileRepoList('SUPPORTING')
+
     return (
         <div className="profile-content-section-container">
             <div className="profile-content-box">
@@ -9,11 +13,16 @@ export default function ProfileContentSection() {
                     <div className="title-text">Repositories</div>
                 </div>
                 <div className="card-group-container">
-                    <RepositoryCard />
-                    <RepositoryCard />
-                    <RepositoryCard />
-                    <RepositoryCard />
-                    <RepositoryCard />
+                    {supportedList.data.map((repoInfo, i) => (
+                        <RepositoryCard
+                            forProfile
+                            repoInfo={repoInfo}
+                            key={i}
+                        />
+                    ))}
+                    {supportedList.data.length === 0 && (
+                        <div className="not-found">Repository Not Found</div>
+                    )}
                 </div>
             </div>
             <div className="profile-content-box">
@@ -22,11 +31,16 @@ export default function ProfileContentSection() {
                     <div className="title-text">Repositories</div>
                 </div>
                 <div className="card-group-container">
-                    <RepositoryCard />
-                    <RepositoryCard />
-                    <RepositoryCard />
-                    <RepositoryCard />
-                    <RepositoryCard />
+                    {supportingList.data.map((repoInfo, i) => (
+                        <RepositoryCard
+                            forProfile
+                            repoInfo={repoInfo}
+                            key={i}
+                        />
+                    ))}
+                    {supportingList.data.length === 0 && (
+                        <div className="not-found">Repository Not Found</div>
+                    )}
                 </div>
             </div>
         </div>

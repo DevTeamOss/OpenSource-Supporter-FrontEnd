@@ -7,7 +7,7 @@ import '@/assets/scss/components/repository-card.scss'
 
 export default function RepositoryCard() {
     return (
-        <div className="repository-card-container">
+        <div className="repository-card-container my-card">
             <div className="repository-card-header">
                 <div className="card-header-section">
                     <div className="profile-img" />

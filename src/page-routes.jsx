@@ -15,7 +15,7 @@ const PATH = {
     WELCOME: '/',
     GITHUB_AUTH: '/github-auth',
     MAIN: '/main',
-    PROFILE: '/profile',
+    PROFILE: '/profile/:username',
     SEARCH: '/search',
     RANKING: '/ranking',
     ADVERTISEMENT: '/advertisement',

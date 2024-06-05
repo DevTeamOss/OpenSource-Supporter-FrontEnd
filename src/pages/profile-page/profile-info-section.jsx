@@ -1,23 +1,17 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import GitHubCalendar from 'react-github-calendar'
+
+import { useProfileController, useUserController } from '@/controllers/index.js'
+import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
 import ProfileBox from '@/components/profile-box'
 import SupporterCard from '@/components/supporter-card'
-import GitHubCalendar from 'react-github-calendar'
-import { useUserController } from '@/controllers/index.js'
-
-// dummy controller
-function useProfileController() {
-    const [data, setData] = useState({})
-
-    async function getProfileData() {
-        setData({ username: 'khanna01' })
-    }
-
-    return { data, getProfileData }
-}
 
 export default function ProfileInfoSection() {
+    const { username } = useParams()
     const userController = useUserController()
     const profileController = useProfileController()
+    const supporterInfo = useSupporterInfo(username)
 
     const currentYear = new Date().getFullYear()
     const [selectedYear, setSelectedYear] = useState(currentYear)
@@ -26,26 +20,22 @@ export default function ProfileInfoSection() {
         setSelectedYear(year)
     }
 
-    useEffect(() => {
-        profileController.getProfileData().then()
-    }, [])
-
     return (
         <div className="profile-info-section-container">
             <div className="content-box">
                 <div className="content-title">Profile</div>
-                <ProfileBox />
+                <ProfileBox data={profileController.data} />
             </div>
             <div className="content-box">
                 <div className="content-title">Support Tier</div>
-                <SupporterCard />
+                <SupporterCard data={supporterInfo.data} />
             </div>
             <div className="content-box">
                 <div className="content-title">Contributions</div>
                 <div className="github-calendar-container">
                     <div className="github-calendar">
                         <GitHubCalendar
-                            username={userController.data.username}
+                            username={username}
                             colorScheme="dark"
                             blockSize={10}
                             blockMargin={4}
@@ -88,8 +78,7 @@ export default function ProfileInfoSection() {
                         </div>
                     </div>
                 </div>
-                {userController.data.username ===
-                    profileController.data.username && (
+                {userController.data.username === username && (
                     <div className="account-delete-btn">Delete Account</div>
                 )}
             </div>

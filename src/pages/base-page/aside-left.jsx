@@ -2,9 +2,11 @@ import ProfileBox from '@/components/profile-box'
 import SupporterCard from '@/components/supporter-card'
 import GitHubCalendar from 'react-github-calendar'
 import { useUserController } from '@/controllers/index.js'
+import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
 
 export default function AsideLeft() {
     const userController = useUserController()
+    const supporterInfo = useSupporterInfo(userController.data.username)
 
     const selectContributionsOfDays = (contributions) => {
         const count = 210
@@ -19,11 +21,11 @@ export default function AsideLeft() {
         <div className="aside-left-container">
             <div className="content-box">
                 <div className="content-title">Profile</div>
-                <ProfileBox />
+                <ProfileBox data={userController.data} />
                 <div className="divide-line large-space" />
                 <div className="content-title">Support Tier</div>
                 <div className="supporter-card-box">
-                    <SupporterCard />
+                    <SupporterCard data={supporterInfo.data} />
                 </div>
                 <div className="divide-line large-space" />
                 <div className="content-title">Contributions</div>

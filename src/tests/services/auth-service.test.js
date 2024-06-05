@@ -7,8 +7,8 @@ describe('Auth Service Test', () => {
         })
 
         const properties = [
-            'userName',
-            'customName',
+            'username',
+            'name',
             'email',
             'avatarUrl',
             'remainingPoint',

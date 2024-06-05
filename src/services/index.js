@@ -1,3 +1,5 @@
 export * from './auth-service.js'
 export * from './repos-service.js'
 export * from './repo-service.js'
+export * from './user-service.js'
+export * from './rank-service.js'

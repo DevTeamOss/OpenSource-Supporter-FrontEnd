@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useUserController } from '@/controllers/index.js'
+import { MAX_POINT } from '@/constants/level'
 
 import '@/assets/scss/components/supporter-card.scss'
 
@@ -27,19 +27,16 @@ const VARIANTS = {
     },
 }
 
-export default function SupporterCard() {
-    const userController = useUserController()
-
-    const [level] = useState('NORMAL')
+export default function SupporterCard({ data }) {
     const [mainColor, setMainColor] = useState('')
     const [subColor, setSubColor] = useState('')
     const [levelText, setLevelText] = useState('')
 
     useEffect(() => {
-        setMainColor(VARIANTS[level].main)
-        setSubColor(VARIANTS[level].sub)
-        setLevelText(VARIANTS[level].text)
-    }, [level])
+        setMainColor(VARIANTS[data.level].main)
+        setSubColor(VARIANTS[data.level].sub)
+        setLevelText(VARIANTS[data.level].text)
+    }, [data.level])
 
     return (
         <div className="supporter-card-container">
@@ -62,25 +59,29 @@ export default function SupporterCard() {
                     </div>
                     <div className="card-content-box">
                         <div className="level-text">{levelText}</div>
-                        <div className="username-text">
-                            {userController.data.username}
-                        </div>
+                        <div className="username-text">{data.username}</div>
                         <div className="info-line">
                             <div className="info-title">Total Donated</div>
-                            <div className="info-content">0 P</div>
+                            <div className="info-content">
+                                {data.totalDonated} P
+                            </div>
                         </div>
                         <div className="info-line">
                             <div className="info-title">Donated For</div>
-                            <div className="info-content">none</div>
+                            <div className="info-content">
+                                {data.donatedRepoNames
+                                    ? data.donatedRepoNames
+                                    : 'none'}
+                            </div>
                         </div>
                         <div className="progress-line">
                             <div className="progress-bar-background">
                                 <div
                                     className="progress-bar-value"
-                                    style={{ width: 0 }}
+                                    style={{ width: data.progress }}
                                 />
                             </div>
-                            <div className="progress-text">0 / 16 P</div>
+                            <div className="progress-text">{`${data.totalDonated} / ${MAX_POINT[data.level]} P`}</div>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { repoService } from '@/services/index.js'
 
-export function useRepoList(type) {
+export function useRepoListPagination(type) {
     const [list, setList] = useState([])
     const [hasNextPage, setHasNextPage] = useState(false)
     const [currentPage, setCurrentPage] = useState(0)
@@ -19,30 +19,20 @@ export function useRepoList(type) {
     }
 
     async function nextPage() {
-        setIsLoading(true)
-        const { data } = await getList(currentPage + 1)
-        setIsLoading(false)
-
-        setList([...data.data])
-        setHasNextPage(data.hasNextPage)
+        await loadData(currentPage + 1)
         setCurrentPage((prev) => prev + 1)
         return true
     }
 
     async function prevPage() {
-        setIsLoading(true)
-        const { data } = await getList(currentPage - 1)
-        setIsLoading(false)
-
-        setList([...data.data])
-        setHasNextPage(data.hasNextPage)
+        await loadData(currentPage - 1)
         setCurrentPage((prev) => prev - 1)
         return true
     }
 
-    async function initList() {
+    async function loadData(page) {
         setIsLoading(true)
-        const { data } = await getList(0)
+        const { data } = await getList(page)
         setIsLoading(false)
 
         setList([...data.data])
@@ -50,7 +40,7 @@ export function useRepoList(type) {
     }
 
     useEffect(() => {
-        initList().then()
+        loadData(0).then()
     }, [])
 
     return {
