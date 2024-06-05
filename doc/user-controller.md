@@ -30,6 +30,8 @@ const initialState = {
 - accessToken: 액세스 토큰 값 (string)
 - remainingPoint: 남은 포인트 (number)
 - totalPoint: 총 포인트 (number)
+- adLink: 광고 시청 페이지 링크 (string)
+- cardLink: 서포터 카드 링크 (string)
 
 ### 활용 방법
 ```javascript

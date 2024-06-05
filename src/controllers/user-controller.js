@@ -22,6 +22,8 @@ export function useUserController() {
                 accessToken,
                 remainingPoint,
                 totalPoint,
+                adLink,
+                cardLink,
             } = data
 
             dispatch(
@@ -33,6 +35,8 @@ export function useUserController() {
                     accessToken,
                     remainingPoint,
                     totalPoint,
+                    adLink,
+                    cardLink,
                 }),
             )
             return true

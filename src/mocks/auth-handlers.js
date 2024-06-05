@@ -15,6 +15,8 @@ const authHandlers = [
                 accessToken: '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',
                 remainingPoint: 100,
                 totalPoint: 1000,
+                adLink: 'https://www.test.com/adLink',
+                cardLink: 'https://www.test.com/cardLink',
             },
             { status: 200 },
         )

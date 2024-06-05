@@ -8,6 +8,8 @@ const initialState = {
     accessToken: '',
     remainingPoint: 0,
     totalPoint: 0,
+    adLink: '',
+    cardLink: '',
 }
 
 export const userSlice = createSlice({

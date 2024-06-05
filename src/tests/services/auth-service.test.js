@@ -14,6 +14,8 @@ describe('Auth Service Test', () => {
             'remainingPoint',
             'totalPoint',
             'accessToken',
+            'adLink',
+            'cardLink',
         ]
 
         properties.forEach((prop) => {
