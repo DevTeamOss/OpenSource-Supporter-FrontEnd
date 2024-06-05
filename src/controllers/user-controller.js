@@ -14,31 +14,7 @@ export function useUserController() {
                 return false
             }
 
-            const {
-                userName,
-                customName,
-                email,
-                avatarUrl,
-                accessToken,
-                remainingPoint,
-                totalPoint,
-                adLink,
-                cardLink,
-            } = data
-
-            dispatch(
-                userSlice.actions.set({
-                    username: userName,
-                    name: customName,
-                    email,
-                    avatarUrl,
-                    accessToken,
-                    remainingPoint,
-                    totalPoint,
-                    adLink,
-                    cardLink,
-                }),
-            )
+            dispatch(userSlice.actions.set(data))
             return true
         } catch (err) {
             console.error(err)

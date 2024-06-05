@@ -6,6 +6,30 @@ export const authService = {
             params: { code },
         })
 
-        return { status, data }
+        const {
+            userName,
+            customName,
+            email,
+            avatarUrl,
+            accessToken,
+            remainingPoint,
+            totalPoint,
+            adLink,
+            cardLink,
+        } = data
+
+        const dataToUse = {
+            username: userName,
+            name: customName,
+            email,
+            avatarUrl,
+            accessToken,
+            remainingPoint,
+            totalPoint,
+            adLink,
+            cardLink,
+        }
+
+        return { status, data: dataToUse }
     },
 }

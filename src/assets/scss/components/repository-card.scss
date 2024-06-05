@@ -11,6 +11,10 @@
     background: $card-black;
     cursor: pointer;
 
+    &.my-card {
+        width: calc(100vw / 5 - 20px);
+    }
+
     .repository-card-header {
         display: flex;
         justify-content: space-between;
@@ -59,7 +63,7 @@
             color: #58a6ff;
             text-align: center;
             line-height: 1;
-            margin-bottom: 5px;
+            margin: 5px 10px;
         }
 
         .repository-description {

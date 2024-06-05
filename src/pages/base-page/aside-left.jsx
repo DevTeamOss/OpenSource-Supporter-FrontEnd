@@ -19,7 +19,7 @@ export default function AsideLeft() {
         <div className="aside-left-container">
             <div className="content-box">
                 <div className="content-title">Profile</div>
-                <ProfileBox />
+                <ProfileBox data={userController.data} />
                 <div className="divide-line large-space" />
                 <div className="content-title">Support Tier</div>
                 <div className="supporter-card-box">

@@ -6,4 +6,24 @@ export const reposService = {
 
         return { status, data }
     },
+
+    callGetSupportedList: async ({ username }) => {
+        const { status, data } = await client.get('/api/repos/supported', {
+            params: {
+                userName: username,
+            },
+        })
+
+        return { status, data }
+    },
+
+    callGetSupportingList: async ({ username }) => {
+        const { status, data } = await client.get('/api/repos/supporting', {
+            params: {
+                userName: username,
+            },
+        })
+
+        return { status, data }
+    },
 }

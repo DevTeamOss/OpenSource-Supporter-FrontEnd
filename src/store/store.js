@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import { user, githubRepoList, repoInfo } from '@/store'
+import { user, githubRepoList, repoInfo, profile } from '@/store'
 
-const rootReducer = combineReducers({ user, githubRepoList, repoInfo })
+const rootReducer = combineReducers({ user, githubRepoList, repoInfo, profile })
 
 const store = configureStore({
     reducer: rootReducer,

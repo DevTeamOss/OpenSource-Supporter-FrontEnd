@@ -4,12 +4,12 @@ import {
     faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 
-import { useRepoList } from '@/hooks/use-repo-list.js'
+import { useRepoListPagination } from '@/hooks/use-repo-list-pagination.js'
 import RepositoryCard from '@/components/repostitory-card.jsx'
 import Spinner from '@/assets/img/spinner.svg'
 
 export default function RepositoryCardList({ type }) {
-    const repoList = useRepoList(type)
+    const repoList = useRepoListPagination(type)
 
     return (
         <div className="repository-card-list-container">
