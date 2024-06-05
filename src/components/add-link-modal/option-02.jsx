@@ -13,9 +13,7 @@ export default function Option02() {
     const copyToClipboard = () => {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard
-                .writeText(
-                    `https://www.opensource-supporter.com/card/Share?${userController.data.username}`,
-                )
+                .writeText(`${userController.data.cardLink}`)
                 .then(() => {
                     setCopyState((prev) => !prev)
                     setTimeout(() => {
@@ -24,7 +22,7 @@ export default function Option02() {
                 })
         } else {
             const textArea = textAreaRef.current
-            textArea.value = `https://www.opensource-supporter.com/card/Share?${userController.data.username}`
+            textArea.value = `${userController.data.cardLink}`
             textArea.select()
             document.execCommand('copy')
             setCopyState((prev) => !prev)
@@ -35,23 +33,22 @@ export default function Option02() {
     }
 
     return (
-        <div className="option02-container">
-            <div className="option02-header">
+        <div className="option-container">
+            <div className="option-header">
                 <div className="description-text">
                     Let’s copy your profile card link
                 </div>
             </div>
-            <div className="option02-body">
+            <div className="option-body">
                 <div className="link-box">
                     <textarea
                         ref={textAreaRef}
-                        value={`https://www.opensource-supporter.com/card/Share?${userController.data.username}`}
+                        value={`${userController.data.cardLink}`}
                         readOnly
                         style={{ position: 'absolute', left: '-9999px' }}
                     />
                     <div className="link-text">
-                        https://www.opensource-supporter.com/card/Share?
-                        {userController.data.username}
+                        {userController.data.cardLink}
                     </div>
                     <div className="btn-box">
                         <div className="tooltip-text">
