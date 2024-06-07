@@ -1,0 +1,53 @@
+@import '@/assets/scss/color.scss';
+
+.earned-point-box-container {
+    display: flex;
+    background: $header-black;
+    align-items: center;
+    padding: 10px 0;
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid $border-gray;
+
+    .date-box {
+        width: 15%;
+        font-size: 13px;
+        font-weight: 500;
+        margin-left: 20px;
+        color: $ligter-gray;
+    }
+
+    .points-box {
+        display: flex;
+        justify-content: center;
+        width: 20%;
+        font-size: 17px;
+        font-weight: 600;
+        color: $purple;
+    }
+
+    .method-box {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        font-size: 13px;
+        font-weight: 500;
+        color: $ligter-gray;
+    }
+
+    .status-box {
+        display: flex;
+        justify-content: center;
+        width: 15%;
+        font-size: 15px;
+        font-weight: 500;
+
+        &.Completed {
+            color: $number-green;
+        }
+
+        &.PROGRESS {
+            color: $text-blue;
+        }
+    }
+}
