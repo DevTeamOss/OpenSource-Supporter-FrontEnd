@@ -4,7 +4,7 @@ import { useGithubRepoListController } from '@/controllers/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 import Stage01 from '@/components/add-repository-modal/stage-01'
 import Stage02 from '@/components/add-repository-modal/stage-02'
-import LoadingScreen from '@/components/loading-screen'
+import SmallLoadingScreen from '@/components/small-loading-screen'
 
 import '@/assets/scss/components/add-repository-modal.scss'
 
@@ -84,7 +84,9 @@ export default function AddRepositoryModal({ close }) {
                     </div>
                 </div>
                 <div className="add-repository-modal-body">
-                    {stage === 1 && <Stage01 select={setRepoInfo} />}
+                    {stage === 1 && (
+                        <Stage01 select={setRepoInfo} isLoading={isLoading} />
+                    )}
                     {stage === 2 && (
                         <Stage02
                             close={close}
@@ -94,8 +96,8 @@ export default function AddRepositoryModal({ close }) {
                         />
                     )}
                 </div>
+                {isLoading && <SmallLoadingScreen />}
             </div>
-            {isLoading && <LoadingScreen />}
         </BaseModal>
     )
 }
