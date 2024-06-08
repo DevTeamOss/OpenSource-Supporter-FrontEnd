@@ -9,8 +9,8 @@ import Header from '@/components/header'
 import BasePage from '@/pages/base-page'
 import RankingPage from '@/pages/ranking-page'
 import AdvertisementPage from '@/pages/advertisement-page'
-import SupporterCardPage from './pages/supporter-card-page'
-import PointPage from './pages/point-page'
+import SupporterCardPage from '@/pages/supporter-card-page'
+import PointPage from '@/pages/point-page'
 
 const PATH = {
     WELCOME: '/',
