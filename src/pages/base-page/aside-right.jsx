@@ -48,7 +48,10 @@ export default function AsideRight() {
                         <FontAwesomeIcon icon={faGlobe} />
                         <div className="menu-item-text">Your Links</div>
                     </div>
-                    <div className="menu-item">
+                    <div
+                        className="menu-item"
+                        onClick={() => navigate('/point')}
+                    >
                         <FontAwesomeIcon icon={faCoins} />
                         <div className="menu-item-text">Your Points</div>
                     </div>

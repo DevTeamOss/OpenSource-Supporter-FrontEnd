@@ -1,9 +1,16 @@
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 import { useRankInfo } from '@/hooks/use-rank-info.js'
+import { useState, useEffect } from 'react'
 
 export default function UserRankingSection() {
     const rankInfo = useRankInfo()
+
+    const [percentage, setPercentage] = useState(0)
+
+    useEffect(() => {
+        setPercentage(rankInfo.data.progress)
+    }, [rankInfo.data])
 
     return (
         <div className="user-ranking-section-container">
@@ -22,7 +29,7 @@ export default function UserRankingSection() {
                         </defs>
                     </svg>
                     <CircularProgressbarWithChildren
-                        value={rankInfo.data.progress}
+                        value={percentage}
                         strokeWidth={16}
                         circleRatio={0.75}
                         styles={{

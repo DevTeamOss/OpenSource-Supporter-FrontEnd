@@ -1,0 +1,208 @@
+@import '@/assets/scss/color.scss';
+
+/* Point Page Common */
+.point-page-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Point Summary Section */
+.point-summary-section-container {
+    margin: 30px 0;
+
+    .point-summary-section-header {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+
+        .hearder-title {
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .charge-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            height: 30px;
+            background: $red;
+            color: $white;
+            font-size: 14px;
+            border: 1px solid $border-gray;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    }
+
+    .point-summary-section-body {
+        .summary-box {
+            display: flex;
+            justify-content: space-around;
+            margin-left: 5px;
+        }
+    }
+}
+
+/* Point History Section*/
+.point-history-section-container {
+    .point-history-section-header {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 10px 5px 10px;
+
+        .header-title {
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .option-btn-box {
+            display: flex;
+            font-size: 14px;
+
+            .spent-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80px;
+                height: 30px;
+                background: $delete-black;
+                border: 1px solid $border-gray;
+                border-radius: 6px;
+                margin-right: 10px;
+                cursor: pointer;
+
+                &.active {
+                    color: $white;
+                    background: $text-blue;
+                }
+            }
+
+            .earned-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80px;
+                height: 30px;
+                background: $delete-black;
+                border: 1px solid $border-gray;
+                border-radius: 6px;
+                cursor: pointer;
+
+                &.active {
+                    color: $white;
+                    background: $text-blue;
+                }
+            }
+        }
+    }
+
+    .point-history-section-body {
+        .spent-point-list-section-container {
+            .spent-point-list-section-header {
+                display: flex;
+                width: 100%;
+                padding: 10px 0;
+                font-size: 12px;
+                color: $light-gray;
+
+                .date-title {
+                    width: 15%;
+                    margin-left: 20px;
+
+                    .date-text {
+                        display: flex;
+                        justify-content: center;
+                        width: 75%;
+                    }
+                }
+
+                .point-title {
+                    display: flex;
+                    justify-content: center;
+                    width: 20%;
+                }
+
+                .info-title {
+                    display: flex;
+                    justify-content: center;
+                    width: 50%;
+                }
+
+                .status-title {
+                    display: flex;
+                    justify-content: center;
+                    width: 15%;
+                }
+            }
+
+            .spent-point-list-section-footer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 15px 0;
+
+                .show-more-btn {
+                    color: $text-blue;
+                    cursor: pointer;
+                    font-weight: 300;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .earned-point-list-section-container {
+            .earned-point-list-section-header {
+                display: flex;
+                width: 100%;
+                padding: 10px 0;
+                font-size: 12px;
+                color: $light-gray;
+
+                .date-title {
+                    width: 15%;
+                    margin-left: 20px;
+
+                    .date-text {
+                        display: flex;
+                        justify-content: center;
+                        width: 75%;
+                    }
+                }
+
+                .point-title {
+                    display: flex;
+                    justify-content: center;
+                    width: 20%;
+                }
+
+                .method-title {
+                    display: flex;
+                    justify-content: center;
+                    width: 50%;
+                }
+
+                .status-title {
+                    display: flex;
+                    justify-content: center;
+                    width: 15%;
+                }
+            }
+
+            .earned-point-list-section-footer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 15px 0;
+
+                .show-more-btn {
+                    color: $text-blue;
+                    cursor: pointer;
+                    font-weight: 300;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

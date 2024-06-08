@@ -1,0 +1,105 @@
+@import '@/assets/scss/color.scss';
+
+.point-summary-box-container {
+    display: flex;
+    flex-direction: column;
+    background: $point-gray;
+    min-width: 260px;
+    margin-right: 5px;
+
+    .title-section {
+        display: flex;
+        margin: 15px;
+
+        .logo-img {
+            .github-logo-img {
+                width: 45px;
+                height: 45px;
+            }
+
+            .paypal-logo-img {
+                width: 45px;
+                height: 45px;
+            }
+
+            .ads-icon {
+                width: 45px;
+                height: 45px;
+            }
+
+            .sponsor-icon {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        .type-box {
+            margin: 0 50px 0 10px;
+            .point-types {
+                font-size: 18px;
+                font-weight: 600;
+
+                &.Github {
+                    color: $text-blue;
+                }
+
+                &.Paypal,
+                &.Ads,
+                &.Sponsor {
+                    color: $number-green;
+                }
+            }
+
+            .type-description {
+                font-size: 11px;
+            }
+        }
+    }
+
+    .profit-rate-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px 15px 15px 15px;
+
+        .left-box {
+            .points-text {
+                font-size: 20px;
+                font-weight: 800;
+                margin-bottom: 3px;
+            }
+
+            .last-month-text {
+                font-size: 14px;
+                font-weight: 300;
+                color: $count-gray;
+            }
+        }
+
+        .right-box {
+            .profit-rate-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 12px;
+                font-weight: 700;
+
+                &.up {
+                    background: $up-red-bg;
+                    color: $up-red;
+                }
+
+                &.down {
+                    background: $down-blue-bg;
+                    color: $down-blue;
+                }
+
+                &.unchanged {
+                    background: $gray;
+                }
+            }
+        }
+    }
+}
