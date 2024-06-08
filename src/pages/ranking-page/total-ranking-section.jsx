@@ -30,38 +30,6 @@ export default function TotalRankingSection() {
                         avatar={info.avatarUrl}
                     />
                 ))}
-                {/*<RankingBox*/}
-                {/*    ranking="2"*/}
-                {/*    name="고강민"*/}
-                {/*    username="kmwyatt"*/}
-                {/*    points="134000"*/}
-                {/*    tier="GOLD"*/}
-                {/*    background="aside-black"*/}
-                {/*/>*/}
-                {/*<RankingBox*/}
-                {/*    ranking="3"*/}
-                {/*    name="김한나"*/}
-                {/*    username="khanna01"*/}
-                {/*    points="15000"*/}
-                {/*    tier="SLIVER"*/}
-                {/*    background="header-black"*/}
-                {/*/>*/}
-                {/*<RankingBox*/}
-                {/*    ranking="4"*/}
-                {/*    name="김재형"*/}
-                {/*    username="21divcert"*/}
-                {/*    points="10025"*/}
-                {/*    tier="SLIVER"*/}
-                {/*    background="aside-black"*/}
-                {/*/>*/}
-                {/*<RankingBox*/}
-                {/*    ranking="5"*/}
-                {/*    name="강다연"*/}
-                {/*    username="daniyeoni"*/}
-                {/*    points="2400"*/}
-                {/*    tier="BRONZE"*/}
-                {/*    background="header-black"*/}
-                {/*/>*/}
             </div>
             <div className="total-ranking-footer">
                 {rankList.hasNextPage && (
