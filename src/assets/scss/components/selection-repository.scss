@@ -7,6 +7,8 @@
     border-radius: 10px;
     margin: 15px;
     padding: 15px 15px;
+    box-sizing: border-box;
+    width: 550px;
 
     .selection-repository-section {
         display: flex;
@@ -25,6 +27,7 @@
                 font-size: 13px;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                max-width: 270px;
             }
 
             .repository-info {

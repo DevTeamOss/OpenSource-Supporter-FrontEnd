@@ -20,6 +20,18 @@ export default function ProfileInfoSection() {
         setSelectedYear(year)
     }
 
+    const [calendarData, setCalendarData] = useState({})
+    const [hasData, setHasData] = useState(1)
+
+    useEffect(() => {
+        console.log(calendarData)
+        if (calendarData.length > 0) {
+            setHasData(1)
+        } else {
+            setHasData(0)
+        }
+    }, [calendarData])
+
     return (
         <div className="profile-info-section-container">
             <div className="content-box">
@@ -37,13 +49,21 @@ export default function ProfileInfoSection() {
                         <GitHubCalendar
                             username={username}
                             colorScheme="dark"
-                            blockSize={10}
-                            blockMargin={4}
+                            blockSize={9}
+                            blockMargin={2}
                             fontSize={10}
                             year={selectedYear}
                             throwOnError={false}
-                            errorMessage="Not signed up on GitHub yet."
+                            transformData={(days) => {
+                                setCalendarData(days)
+                                return days
+                            }}
                         />
+                        {hasData === 0 && (
+                            <div className="no-data-description">
+                                Not signed up on GitHub yet.
+                            </div>
+                        )}
                     </div>
                     <div className="year-btn-box">
                         <div
