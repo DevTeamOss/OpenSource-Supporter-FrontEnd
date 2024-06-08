@@ -17,4 +17,23 @@ describe('Rank Service Test', () => {
             expect(data).toHaveProperty(prop)
         })
     })
+
+    test('랭크 리스트를 요청하면 랭크 정보 객체의 배열을 받고 사용할 수 있도록 가공한다', async () => {
+        const { data } = await rankService.callGetRankList({ page: 0 })
+
+        const properties = [
+            'username',
+            'name',
+            'avatarUrl',
+            'rank',
+            'usedPoint',
+            'tier',
+        ]
+
+        data.list.forEach((rankInfo) => {
+            properties.forEach((prop) => {
+                expect(rankInfo).toHaveProperty(prop)
+            })
+        })
+    })
 })
