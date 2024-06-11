@@ -24,7 +24,12 @@ const authHandlers = [
 
     http.delete(`${BACKEND_URL}/api/auth/logout`, () => {
         console.log('logout requested')
-        return HttpResponse.json({ status: 200 })
+        return HttpResponse.json({}, { status: 200 })
+    }),
+
+    http.delete(`${BACKEND_URL}/api/auth/withdrawal`, () => {
+        console.log('withdraw requested')
+        return HttpResponse.json({}, { status: 200 })
     }),
 ]
 

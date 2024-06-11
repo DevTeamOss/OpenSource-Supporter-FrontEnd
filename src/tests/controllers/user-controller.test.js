@@ -43,4 +43,15 @@ describe('User Controller Test', () => {
 
         expect(result.current.isLoggedIn).toBe(false)
     })
+
+    test('탈퇴를 하면 자동으로 로그아웃 된다', async () => {
+        const { result } = createTestHook()
+        await result.current.login({ code: 'cec6f9d35b782d7cb31b' })
+
+        expect(result.current.isLoggedIn).toBe(true)
+
+        await result.current.withdraw()
+
+        expect(result.current.isLoggedIn).toBe(false)
+    })
 })

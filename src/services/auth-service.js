@@ -32,4 +32,10 @@ export const authService = {
 
         return { status, data: dataToUse }
     },
+
+    callWithdraw: async () => {
+        const { status, data } = await client.delete('/api/auth/withdrawal')
+
+        return { status, data }
+    },
 }
