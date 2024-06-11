@@ -60,7 +60,7 @@ await userController.login({ code: '[토큰 값]' })
 위의 코드와 같이 login 사용 가능
 
 
-### function logout()
+### async function logout()
 
 #### 용도
 유저 로그아웃
@@ -73,7 +73,7 @@ await userController.login({ code: '[토큰 값]' })
 
 #### 사용법
 ```javascript
-userController.logout()
+await userController.logout()
 ```
 위의 코드와 같이 logout 사용 가능
 

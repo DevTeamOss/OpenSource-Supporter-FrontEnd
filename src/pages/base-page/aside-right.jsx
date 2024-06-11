@@ -19,8 +19,10 @@ export default function AsideRight() {
     const addRepositoryModal = useModal()
     const addLinkModal = useModal()
 
-    function logout() {
-        userController.logout()
+    async function logout() {
+        if (userController.isLoggedIn) {
+            await userController.logout()
+        }
         navigate('/')
     }
 

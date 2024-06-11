@@ -23,6 +23,12 @@ describe('Auth Service Test', () => {
         })
     })
 
+    test('로그아웃에 성공하면 상태값으로 200을 받는다', async () => {
+        const { status } = await authService.callLogout()
+
+        expect(status).toBe(200)
+    })
+
     test('탈퇴에 성공하면 상태값으로 200을 받는다', async () => {
         const { status } = await authService.callWithdraw()
 

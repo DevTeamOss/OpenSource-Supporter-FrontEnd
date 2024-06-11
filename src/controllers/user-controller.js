@@ -22,8 +22,19 @@ export function useUserController() {
         }
     }
 
-    function logout() {
-        dispatch(userSlice.actions.clear())
+    async function logout() {
+        try {
+            const { status, data } = await authService.callLogout()
+            if (status !== 200) {
+                return false
+            }
+
+            dispatch(userSlice.actions.clear())
+            return true
+        } catch (err) {
+            console.error(err)
+            return false
+        }
     }
 
     async function withdraw() {

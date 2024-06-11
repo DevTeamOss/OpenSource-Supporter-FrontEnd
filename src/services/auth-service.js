@@ -33,6 +33,12 @@ export const authService = {
         return { status, data: dataToUse }
     },
 
+    callLogout: async () => {
+        const { status, data } = await client.delete('/api/auth/logout')
+
+        return { status, data }
+    },
+
     callWithdraw: async () => {
         const { status, data } = await client.delete('/api/auth/withdrawal')
 

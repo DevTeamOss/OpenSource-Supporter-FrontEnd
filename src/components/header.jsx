@@ -22,7 +22,7 @@ export default function Header() {
                 </div>
             </div>
             <div className="right-section">
-                {userController.data.avatarUrl ? (
+                {userController.data.avatarUrl && (
                     <img
                         src={userController.data.avatarUrl}
                         alt={userController.data.username}
@@ -30,11 +30,6 @@ export default function Header() {
                         onClick={() =>
                             navigate(`/profile/${userController.data.username}`)
                         }
-                    />
-                ) : (
-                    <div
-                        className="profile-btn"
-                        onClick={() => navigate('/profile')}
                     />
                 )}
             </div>
