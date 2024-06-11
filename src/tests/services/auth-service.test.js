@@ -22,4 +22,10 @@ describe('Auth Service Test', () => {
             expect(data).toHaveProperty(prop)
         })
     })
+
+    test('탈퇴에 성공하면 상태값으로 200을 받는다', async () => {
+        const { status } = await authService.callWithdraw()
+
+        expect(status).toBe(200)
+    })
 })

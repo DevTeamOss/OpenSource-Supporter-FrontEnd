@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import GitHubCalendar from 'react-github-calendar'
 
 import { useProfileController, useUserController } from '@/controllers/index.js'
 import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
+import { useModal } from '@/hooks/use-modal.js'
 import ProfileBox from '@/components/profile-box'
 import SupporterCard from '@/components/supporter-card'
+import ConfirmModal from '@/components/confirm-modal'
 
 export default function ProfileInfoSection() {
+    const navigate = useNavigate()
     const { username } = useParams()
     const userController = useUserController()
     const profileController = useProfileController()
     const supporterInfo = useSupporterInfo(username)
+    const deleteAccountModal = useModal()
 
     const currentYear = new Date().getFullYear()
     const [selectedYear, setSelectedYear] = useState(currentYear)
@@ -22,6 +26,15 @@ export default function ProfileInfoSection() {
 
     const [calendarData, setCalendarData] = useState({})
     const [hasData, setHasData] = useState(1)
+
+    async function withdraw() {
+        const result = await userController.withdraw()
+        if (!result) {
+            return
+        }
+        alert('Your account has been deleted')
+        navigate('/')
+    }
 
     useEffect(() => {
         console.log(calendarData)
@@ -99,7 +112,20 @@ export default function ProfileInfoSection() {
                     </div>
                 </div>
                 {userController.data.username === username && (
-                    <div className="account-delete-btn">Delete Account</div>
+                    <div
+                        className="account-delete-btn"
+                        onClick={deleteAccountModal.open}
+                    >
+                        Delete Account
+                    </div>
+                )}
+                {deleteAccountModal.visible && (
+                    <ConfirmModal
+                        close={deleteAccountModal.close}
+                        next={withdraw}
+                    >
+                        Are you sure you want to delete your account?
+                    </ConfirmModal>
                 )}
             </div>
         </div>

@@ -1,0 +1,63 @@
+@import '@/assets/scss/color.scss';
+
+.confirm-modal-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .confirm-modal-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+
+        .confirm-modal-icon {
+            font-size: 100px;
+            color: $light-gray;
+            margin-bottom: 5px;
+        }
+    }
+
+    .confirm-modal-footer {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        margin-top: 25px;
+        width: 100%;
+
+        .confirm-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            font-size: 12px;
+            background: $text-blue;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .cancel-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            width: 100px;
+            height: 30px;
+            border: 1px solid $red;
+            border-radius: 5px;
+            font-size: 12px;
+            color: $red;
+            background: $line-black;
+            cursor: pointer;
+        }
+
+        .btn-spinner {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

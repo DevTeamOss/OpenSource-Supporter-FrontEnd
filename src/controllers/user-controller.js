@@ -26,11 +26,27 @@ export function useUserController() {
         dispatch(userSlice.actions.clear())
     }
 
+    async function withdraw() {
+        try {
+            const { status, data } = await authService.callWithdraw()
+            if (status !== 200) {
+                return false
+            }
+
+            dispatch(userSlice.actions.clear())
+            return true
+        } catch (err) {
+            console.error(err)
+            return false
+        }
+    }
+
     return {
         data: user,
         isLoggedIn: user.username !== 'guest',
 
         login,
         logout,
+        withdraw,
     }
 }
