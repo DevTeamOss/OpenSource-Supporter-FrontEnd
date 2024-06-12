@@ -88,7 +88,7 @@ export default function UserRankingSection() {
                         >
                             {rankInfo.data.tierText}
                         </span>
-                        Partner
+                        {'\u00A0'}Partner
                     </div>
                 </div>
                 <div className="info-divide-line"></div>
