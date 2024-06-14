@@ -1,0 +1,728 @@
+@import '@/assets/scss/color.scss';
+
+/* Add Repository Detail Modal Common */
+.add-repository-detail-modal-container {
+    width: 900px;
+    margin: 10px 0;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .add-repository-detail-modal-header {
+        display: flex;
+        margin: 0 10px;
+
+        .progress-group {
+            flex-grow: 1;
+            margin: 0 10px;
+
+            .progress-bar {
+                width: 100%;
+                height: 4px;
+                background: $gray;
+
+                .progress-value {
+                    width: 0;
+                    height: 4px;
+                    background: $text-blue;
+                    transition-property: width;
+                    transition-duration: 0.5s;
+                    transition-timing-function: ease-out;
+                }
+            }
+
+            .progress-text {
+                font-size: 12px;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+/* Detail01 Modal */
+.detail01-container {
+    margin: 20px 30px;
+    max-height: 500px;
+
+    .detail01-header  {
+        display: flex;
+        width: 100%;
+
+        .profile-img {
+            width: 60px;
+            height: 60px;
+            background: $white;
+            border-radius: 60px;
+            margin-right: 10px;
+        }
+
+        .detail01-header-box {
+            width: 93%;
+            display: flex;
+
+            .title-left-box {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 480px;
+                margin-right: 10px;
+
+                .repository-title {
+                    font-size: 17px;
+                    font-weight: 600;
+                    margin-bottom: 3px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+
+                    .repoName {
+                        color: $text-blue;
+                    }
+                }
+
+                .tag-box {
+                    display: flex;
+                    overflow-y: scroll;
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                    margin-right: 5px;
+                }
+            }
+
+            .title-right-box {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 40%;
+                color: $detail-gray;
+
+                .view-count-box {
+                    display: flex;
+                    justify-content: end;
+                    align-items: center;
+
+                    .view-count-text {
+                        margin-left: 3px;
+                    }
+                }
+
+                .repository-info-box {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 11px;
+                    color: $detail-gray;
+
+                    .repository-info-section {
+                        display: flex;
+
+                        .language-circle {
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 10px;
+                            border: 1px solid $gray;
+                            margin-right: 4px;
+                            margin-top: 3px;
+                            background: $text-blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .detail01-body {
+        width: 100%;
+        margin-top: 20px;
+
+        .repository-description-container {
+            margin-bottom: 20px;
+
+            .repository-description-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+
+                .title-text {
+                    font-size: 17px;
+                    font-weight: 600;
+                }
+
+                .btn-group {
+                    display: flex;
+                    font-size: 11px;
+
+                    .language-select-btn {
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100px;
+                        height: 25px;
+                        box-sizing: border-box;
+                        line-height: 25px;
+                        border-radius: 6px;
+                        border: 1px solid white;
+                        margin-right: 7px;
+                        background: $delete-black;
+                        color: $placeholder-gray;
+                        padding-right: 10px;
+                        cursor: pointer;
+
+                        .arrow-btn {
+                            position: absolute;
+                            right: 6px;
+                            top: 1px;
+                        }
+
+                        .option-box {
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 100%;
+                            box-sizing: border-box;
+                            border: 1px solid $white;
+                            border-radius: 6px;
+                            z-index: 100;
+
+                            .option {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 100%;
+                                height: 25px;
+                                background: $delete-black;
+                                box-sizing: border-box;
+                                border-bottom: 1px solid $dark-gray;
+                                line-height: 25px;
+                                padding: 0 10px;
+                                font-size: 11px;
+                                color: $placeholder-gray;
+                                cursor: pointer;
+
+                                &:first-child {
+                                    border-radius: 6px 6px 0 0;
+                                }
+
+                                &:last-child {
+                                    border-radius: 0 0 6px 6px;
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                    }
+
+                    .translate-btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 80px;
+                        height: 25px;
+                        box-sizing: border-box;
+                        line-height: 25px;
+                        background: $text-blue;
+                        border-radius: 6px;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .repository-description-body {
+                .repository-description-box {
+                    background: $description-black;
+                    border: 2px solid $border-blue;
+                    border-radius: 5px;
+                    font-size: 13px;
+                    padding: 10px;
+                }
+            }
+
+        }
+        .quantitative-analysis-chart-container {
+            margin-bottom: 20px;
+
+            .quantitative-analysis-chart-header {
+                margin-bottom: 10px;
+
+                .title-text {
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: $text-blue;
+                }
+            }
+
+            .quantitative-analysis-chart-body {
+                .quantitative-analysis-chart-box {
+                    display: flex;
+                    justify-content: space-evenly;
+                    height: 100px;
+                    background: #303641;
+
+                    .info-box {
+                        display: flex;
+                        flex: 1;
+                        flex-direction: column;
+                        align-items: center;
+                        height: 100%;
+                        border-right: 1px solid $gray;
+
+                        &:last-child {
+                            border-right: none;
+                        }
+
+                        .info-title {
+                            display: flex;
+                            align-items: center;
+                            height: 25%;
+                            font-size: 10px;
+                            font-weight: 400;
+                            color: $light-gray;
+                        }
+
+                        .info-text {
+                            display: flex;
+                            align-items: center;
+                            height: 75%;
+                            font-size: 30px;
+                            font-weight: 700;
+                            color: $text-blue;
+
+                            &.rank {
+                                color: $title-green;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .graph-content-container {
+            .graph-content-header {
+                .title-text {
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: $tile-green;
+                }
+            }
+
+            .graph-content-body {
+                margin-top: 10px;
+            }
+        }
+
+        .quantitative-analysis-content-container {
+            margin-bottom: 20px;
+
+            .quantitative-analysis-content-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+
+                .title-text {
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: $chip-purple;
+                }
+
+                .btn-group {
+                    display: flex;
+                    font-size: 11px;
+
+                    .language-select-btn {
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100px;
+                        height: 25px;
+                        box-sizing: border-box;
+                        line-height: 25px;
+                        border-radius: 6px;
+                        border: 1px solid white;
+                        margin-right: 7px;
+                        background: $delete-black;
+                        color: $placeholder-gray;
+                        padding-right: 10px;
+                        cursor: pointer;
+
+                        .arrow-btn {
+                            position: absolute;
+                            right: 6px;
+                            top: 1px;
+                        }
+
+                        .option-box {
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 100%;
+                            box-sizing: border-box;
+                            border: 1px solid $white;
+                            border-radius: 6px;
+                            z-index: 100;
+
+                            .option {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 100%;
+                                height: 25px;
+                                background: $delete-black;
+                                box-sizing: border-box;
+                                border-bottom: 1px solid $dark-gray;
+                                line-height: 25px;
+                                padding: 0 10px;
+                                font-size: 11px;
+                                color: $placeholder-gray;
+                                cursor: pointer;
+
+                                &:first-child {
+                                    border-radius: 6px 6px 0 0;
+                                }
+
+                                &:last-child {
+                                    border-radius: 0 0 6px 6px;
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                    }
+
+                    .translate-btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 80px;
+                        height: 25px;
+                        box-sizing: border-box;
+                        line-height: 25px;
+                        background: $text-blue;
+                        border-radius: 6px;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .quantitative-analysis-content-body {
+                .quantitative-analysis-content-box {
+                    background: $description-black;
+                    border: 2px solid $border-blue;
+                    border-radius: 5px;
+                    font-size: 13px;
+                    padding: 10px;
+
+                    .analysis {
+                        a {
+                            color: $text-blue;
+                        }
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .repository-readme-container {
+            margin-bottom: 40px;
+
+            .repository-readme-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+
+                .title-text {
+                    font-size: 17px;
+                    font-weight: 600;
+                }
+
+                .btn-group {
+                    display: flex;
+                    font-size: 11px;
+
+                    .language-select-btn {
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100px;
+                        height: 25px;
+                        box-sizing: border-box;
+                        line-height: 25px;
+                        border-radius: 6px;
+                        border: 1px solid white;
+                        margin-right: 7px;
+                        background: $delete-black;
+                        color: $placeholder-gray;
+                        padding-right: 10px;
+                        cursor: pointer;
+
+                        .arrow-btn {
+                            position: absolute;
+                            right: 6px;
+                            top: 1px;
+                        }
+
+                        .option-box {
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 100%;
+                            box-sizing: border-box;
+                            border: 1px solid $white;
+                            border-radius: 6px;
+                            z-index: 100;
+
+                            .option {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 100%;
+                                height: 25px;
+                                background: $delete-black;
+                                box-sizing: border-box;
+                                border-bottom: 1px solid $dark-gray;
+                                line-height: 25px;
+                                padding: 0 10px;
+                                font-size: 11px;
+                                color: $placeholder-gray;
+                                cursor: pointer;
+
+                                &:first-child {
+                                    border-radius: 6px 6px 0 0;
+                                }
+
+                                &:last-child {
+                                    border-radius: 0 0 6px 6px;
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                    }
+
+                    .translate-btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 80px;
+                        height: 25px;
+                        box-sizing: border-box;
+                        line-height: 25px;
+                        background: $text-blue;
+                        border-radius: 6px;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .repository-readme-body {
+                width: 100%;
+
+                .repository-readme-box {
+                    background: $description-black;
+                    border: 2px solid $border-blue;
+                    border-radius: 5px;
+                    font-size: 13px;
+                    padding: 10px;
+                    overflow-y: scroll;
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                }
+
+                .readme {
+                    a {
+                        color: $text-blue;
+                    }
+
+                    summary {
+                        cursor: pointer;
+                    }
+
+                    td, th {
+                        padding: 6px 15px;
+                    }
+
+                    th {
+                        background: $table-bg;
+                        border-right: 1px solid $dark-gray;
+                        border-bottom: 1px solid $dark-gray;
+                        border-top: 1px solid $dark-gray;
+                    }
+
+                    th:first-child {
+                        border-left: 1px solid $dark-gray;
+                    }
+
+                    td {
+                        border-right: 1px solid $dark-gray;
+                        border-bottom: 1px solid $dark-gray;
+                    }
+
+                    td:first-child {
+                        border-left: 1px solid $dark-gray;
+                    }
+
+                    tr:nth-child(odd) td {
+                        background: $table-bg;
+                    }
+                }
+            }
+        }
+    }
+
+    .detail01-footer {
+        display: flex;
+        justify-content: space-between;
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+            .close-btn {
+                border: 1px solid $gray;
+                border-radius: 5px;
+                padding: 5px 15px;
+                font-size: 13px;
+                font-weight: 500;
+                color: $light-gray;
+                background: $line-black;
+                cursor: pointer;
+            }
+
+            .navigate-github-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+                border: 1px solid $gray;
+                border-radius: 5px;
+                width: 160px;
+                height: 31px;
+                font-size: 13px;
+                font-weight: 500;
+                color: $light-gray;
+                background: $line-black;
+                margin-right: 15px;
+                cursor: pointer;
+
+                .github-icon {
+                    height: 20px;
+                    margin-right: 5px;
+                }
+            }
+
+            .point-sponsorship-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid $border-gray;
+                border-radius: 5px;
+                box-sizing: border-box;
+                width: 145px;
+                height: 31px;
+                font-size: 13px;
+                font-weight: 500;
+                color: $white;
+                background: $dark-green;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+/* Detail02 Modal */
+.detail02-container {
+    width: 100%;
+
+    .detail02-header {
+        margin: 0 45px;
+
+        .title-text {
+            margin: 15px 5px 5px 5px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .description-text {
+            margin: 0 5px 15px 5px;
+            font-size: 13px;
+            color: $detail-gray;
+        }
+    }
+
+    .detail02-body {
+        margin: 0 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .content-box {
+            margin-bottom: 15px;
+
+            .points-option-box {
+                display: flex;
+                justify-content: space-between;
+                width: 800px;
+                margin: 0 50px;
+
+                .points-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 75px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: $light-gray;
+                    padding: 6px 0;
+                    border: 1px solid $white;
+                    border-radius: 4px;
+                    background: $delete-black;
+                    cursor: pointer;
+
+                    &.active {
+                        background: $text-blue;
+                        color: $white;
+                    }
+                }
+            }
+
+            .points-input {
+                width: 800px;
+                height: 34px;
+                box-sizing: border-box;
+                background: $delete-black;
+                border: 1px solid $white;
+                border-radius: 4px;
+                padding: 3px 10px;
+                margin: 0 50px;
+                font-size: 15px;
+                color: $white;
+            }
+
+            .sponsor-btn {
+                width: 800px;
+                margin: 0 50px 5px 50px;
+                padding: 4px 0;
+                border: 4px solid $text-blue;
+                border-radius: 4px;
+                background: $text-blue;
+                font-size: 16px;
+                font-weight: 600;
+                color: $transparent-white;
+                text-align: center;
+                cursor: pointer;
+            }
+        }
+    }
+}
