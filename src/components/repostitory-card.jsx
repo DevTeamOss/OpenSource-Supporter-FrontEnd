@@ -7,9 +7,12 @@ import TagChip from '@/components/tag-chip'
 
 import '@/assets/scss/components/repository-card.scss'
 
-export default function RepositoryCard({ repoInfo, forProfile }) {
+export default function RepositoryCard({ repoInfo, forProfile, onClick }) {
     return (
-        <div className={`repository-card-container ${forProfile && 'my-card'}`}>
+        <div
+            className={`repository-card-container ${forProfile && 'my-card'}`}
+            onClick={onClick}
+        >
             <div className="repository-card-header">
                 <div className="card-header-section">
                     <img

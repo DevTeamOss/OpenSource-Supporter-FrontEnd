@@ -6,6 +6,7 @@ import '@/assets/scss/components/profile-box.scss'
 
 export default function ProfileBox({ data }) {
     const navigate = useNavigate()
+    const userController = useUserController()
 
     return (
         <div className="profile-box-container">
@@ -13,7 +14,9 @@ export default function ProfileBox({ data }) {
                 className="profile-img"
                 src={data.avatarUrl}
                 alt={data.username}
-                onClick={() => navigate('/profile')}
+                onClick={() =>
+                    navigate(`/profile/${userController.data.username}`)
+                }
             />
             <div className="profile-info-box">
                 <div className="profile-info-section">
