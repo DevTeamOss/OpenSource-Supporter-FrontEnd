@@ -45,6 +45,10 @@ export default function ProfileInfoSection() {
         }
     }, [calendarData])
 
+    useEffect(() => {
+        supporterInfo.getData(profileController.data.username).then()
+    }, [profileController.data.username])
+
     return (
         <div className="profile-info-section-container">
             <div className="content-box">

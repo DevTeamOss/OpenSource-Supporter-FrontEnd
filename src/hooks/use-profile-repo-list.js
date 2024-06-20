@@ -35,7 +35,7 @@ export function useProfileRepoList(type) {
 
     useEffect(() => {
         getRepoList().then()
-    }, [])
+    }, [username])
 
     return { data: list, isLoading }
 }

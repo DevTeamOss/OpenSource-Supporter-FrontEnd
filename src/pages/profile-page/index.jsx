@@ -7,6 +7,7 @@ import ProfileContentSection from '@/pages/profile-page/profile-content-section.
 import LoadingScreen from '@/components/loading-screen'
 
 import '@/assets/scss/pages/profile-page.scss'
+import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
 
 export default function ProfilePage() {
     const profileController = useProfileController()
@@ -21,7 +22,7 @@ export default function ProfilePage() {
 
     useEffect(() => {
         init().then()
-    }, [])
+    }, [username])
 
     return (
         <div className="profile-page-container">

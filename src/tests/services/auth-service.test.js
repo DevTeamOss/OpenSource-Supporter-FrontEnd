@@ -34,4 +34,23 @@ describe('Auth Service Test', () => {
 
         expect(status).toBe(200)
     })
+
+    test('새로고침을 하면 액세스 토큰을 이용해 유저 정보를 받는다', async () => {
+        const { data } = await authService.callRefresh()
+
+        const properties = [
+            'username',
+            'name',
+            'email',
+            'avatarUrl',
+            'remainingPoint',
+            'totalPoint',
+            'adLink',
+            'cardLink',
+        ]
+
+        properties.forEach((prop) => {
+            expect(data).toHaveProperty(prop)
+        })
+    })
 })

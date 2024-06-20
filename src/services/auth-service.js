@@ -44,4 +44,32 @@ export const authService = {
 
         return { status, data }
     },
+
+    callRefresh: async () => {
+        const { status, data } = await client.get('/api/auth/refresh')
+
+        const {
+            userName,
+            customName,
+            email,
+            avatarUrl,
+            remainingPoint,
+            totalPoint,
+            adLink,
+            cardLink,
+        } = data
+
+        const dataToUse = {
+            username: userName,
+            name: customName,
+            email,
+            avatarUrl,
+            remainingPoint,
+            totalPoint,
+            adLink,
+            cardLink,
+        }
+
+        return { status, data: dataToUse }
+    },
 }

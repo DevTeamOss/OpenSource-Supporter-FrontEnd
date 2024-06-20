@@ -52,6 +52,30 @@ export function useUserController() {
         }
     }
 
+    async function refresh() {
+        try {
+            const { status, data } = await authService.callRefresh()
+            if (status !== 200) {
+                return false
+            }
+            if (user.username !== data.username) {
+                dispatch(userSlice.actions.clear())
+                return false
+            }
+
+            dispatch(
+                userSlice.actions.set({
+                    accessToken: user.accessToken,
+                    ...data,
+                }),
+            )
+            return true
+        } catch (err) {
+            console.error(err)
+            return false
+        }
+    }
+
     return {
         data: user,
         isLoggedIn: user.username !== 'guest',
@@ -59,5 +83,6 @@ export function useUserController() {
         login,
         logout,
         withdraw,
+        refresh,
     }
 }

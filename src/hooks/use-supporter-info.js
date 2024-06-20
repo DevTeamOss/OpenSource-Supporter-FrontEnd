@@ -9,21 +9,17 @@ const initialState = {
     donatedRepoNames: '',
 }
 
-export function useSupporterInfo(username) {
+export function useSupporterInfo() {
     const [info, setInfo] = useState(initialState)
     const [level, setLevel] = useState('NORMAL')
     const [progress, setProgress] = useState(0)
 
-    async function getData() {
+    async function getData(username) {
         const { data } = await userService.callGetCardInfo({ username })
         if (data) {
             setInfo(data)
         }
     }
-
-    useEffect(() => {
-        getData().then()
-    }, [])
 
     useEffect(() => {
         if (info.totalDonated <= MAX_POINT.NORMAL) {
@@ -63,5 +59,5 @@ export function useSupporterInfo(username) {
         }
     }, [level])
 
-    return { data: { ...info, level, progress } }
+    return { data: { ...info, level, progress }, getData }
 }

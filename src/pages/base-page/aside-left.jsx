@@ -3,10 +3,11 @@ import SupporterCard from '@/components/supporter-card'
 import GitHubCalendar from 'react-github-calendar'
 import { useUserController } from '@/controllers/index.js'
 import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
+import { useEffect } from 'react'
 
 export default function AsideLeft() {
     const userController = useUserController()
-    const supporterInfo = useSupporterInfo(userController.data.username)
+    const supporterInfo = useSupporterInfo()
 
     const selectContributionsOfDays = (contributions) => {
         const count = 210
@@ -16,6 +17,10 @@ export default function AsideLeft() {
         const selectedContributions = sortedContributions.slice(-count)
         return selectedContributions
     }
+
+    useEffect(() => {
+        supporterInfo.getData(userController.data.username).then()
+    }, [])
 
     return (
         <div className="aside-left-container">

@@ -94,3 +94,22 @@ await userController.logout()
 await userController.withdraw()
 ```
 위의 코드와 같이 withdraw 사용 가능
+
+
+### async function refresh()
+
+#### 용도
+새로고침 시 액세스 토큰 검증 및 유저 정보 갱신
+
+#### 입력사항
+없음
+
+#### 실행 시 변화
+성공 시 데이터가 새로운 값으로 변경된다.
+실패 시 데이터가 초기 값으로 변경된다.
+
+#### 사용법
+```javascript
+await userController.refresh()
+```
+위의 코드와 같이 refresh 사용 가능

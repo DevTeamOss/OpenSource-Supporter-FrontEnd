@@ -1,14 +1,22 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { persistReducer, persistStore } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 import { user, githubRepoList, repoInfo, profile } from '@/store'
+import { REDUX_LOCAL_STORAGE } from '@/constants/config.js'
 
 const rootReducer = combineReducers({ user, githubRepoList, repoInfo, profile })
 
+const persistConfig = { storage, key: REDUX_LOCAL_STORAGE, whitelist: ['user'] }
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 const store = configureStore({
-    reducer: rootReducer,
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({ serializableCheck: false }),
     devTools: true,
 })
+
+export const persistor = persistStore(store)
 
 export default store
