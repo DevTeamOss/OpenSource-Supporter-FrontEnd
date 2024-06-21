@@ -11,13 +11,13 @@ import {
 import { useUserController } from '@/controllers/index.js'
 import { useModal } from '@/hooks/use-modal.js'
 import AddRepositoryModal from '@/components/add-repository-modal/index.jsx'
-import AddLinkModal from '@/components/add-link-modal'
+import LinkModal from '@/components/link-modal'
 
 export default function AsideRight() {
     const navigate = useNavigate()
     const userController = useUserController()
     const addRepositoryModal = useModal()
-    const addLinkModal = useModal()
+    const linkModal = useModal()
 
     async function logout() {
         if (userController.isLoggedIn) {
@@ -46,7 +46,7 @@ export default function AsideRight() {
                         <FontAwesomeIcon icon={faBook} />
                         <div className="menu-item-text">Your Repositories</div>
                     </div>
-                    <div className="menu-item" onClick={addLinkModal.open}>
+                    <div className="menu-item" onClick={linkModal.open}>
                         <FontAwesomeIcon icon={faGlobe} />
                         <div className="menu-item-text">Your Links</div>
                     </div>
@@ -74,9 +74,7 @@ export default function AsideRight() {
                 {addRepositoryModal.visible && (
                     <AddRepositoryModal close={addRepositoryModal.close} />
                 )}
-                {addLinkModal.visible && (
-                    <AddLinkModal close={addLinkModal.close} />
-                )}
+                {linkModal.visible && <LinkModal close={linkModal.close} />}
             </div>
         </>
     )

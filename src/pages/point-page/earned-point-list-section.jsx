@@ -1,4 +1,4 @@
-import EarnedPointBox from '@/components/earned-point-box'
+import EarnedPointBox from '@/pages/point-page/earned-point-box.jsx'
 
 export default function EarnedPointListSection() {
     return (

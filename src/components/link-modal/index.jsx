@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import BaseModal from '../base-modal'
-import Option01 from '@/components/add-link-modal/option-01'
-import Option02 from '@/components/add-link-modal/option-02'
 
-import '@/assets/scss/components/add-link-modal.scss'
+import BaseModal from '@/components/base-modal'
+import Option01 from '@/components/link-modal/option-01'
+import Option02 from '@/components/link-modal/option-02'
 
-export default function AddLinkModal({ close }) {
+import '@/assets/scss/components/link-modal.scss'
+
+export default function LinkModal({ close }) {
     const [option, setOption] = useState(0)
 
     function setOption01() {
@@ -22,8 +23,8 @@ export default function AddLinkModal({ close }) {
 
     return (
         <BaseModal close={close}>
-            <div className="add-link-modal-container">
-                <div className="add-link-modal-header">
+            <div className="link-modal-container">
+                <div className="link-modal-header">
                     <div className="btn-box">
                         <div
                             className={`option-btn ${option === 1 ? 'btn-active' : ''}`}
@@ -45,7 +46,7 @@ export default function AddLinkModal({ close }) {
                         />
                     </div>
                 </div>
-                <div className="add-link-modal-body">
+                <div className="link-modal-body">
                     {option === 1 && <Option01 />}
                     {option === 2 && <Option02 />}
                 </div>

@@ -8,7 +8,7 @@ import { useRepoListPagination } from '@/hooks/use-repo-list-pagination.js'
 import RepositoryCard from '@/components/repostitory-card.jsx'
 import Spinner from '@/assets/img/spinner.svg'
 import { useModal } from '@/hooks/use-modal.js'
-import AddRepositoryDetailModal from '@/components/add-repository-detail-modal/index.jsx'
+import AddRepositoryDetailModal from '@/components/repository-detail-modal/index.jsx'
 
 export default function RepositoryCardList({ type }) {
     const repoList = useRepoListPagination(type)

@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
-
 import { useRankList } from '@/hooks/use-rank-list.js'
-import RankingBox from '@/components/ranking-box'
+import RankingBox from '@/pages/ranking-page/ranking-box.jsx'
 
 export default function TotalRankingSection() {
     const rankList = useRankList()

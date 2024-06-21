@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
+
 import BaseModal from '@/components/base-modal.jsx'
-import Detail01 from '@/components/add-repository-detail-modal/detail-01.jsx'
-import Detail02 from '@/components/add-repository-detail-modal/detail-02.jsx'
+import Detail01 from '@/components/repository-detail-modal/detail-01.jsx'
+import Detail02 from '@/components/repository-detail-modal/detail-02.jsx'
 import SmallLoadingScreen from '@/components/small-loading-screen.jsx'
 
-import '@/assets/scss/components/add-repository-detail-modal.scss'
+import '@/assets/scss/components/repository-detail-modal.scss'
 
-export default function AddRepositoryDetailModal({ close }) {
+export default function RepositoryDetailModal({ close }) {
     const [detail, setDetail] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
 
@@ -24,8 +25,8 @@ export default function AddRepositoryDetailModal({ close }) {
 
     return (
         <BaseModal close={close}>
-            <div className="add-repository-detail-modal-container">
-                <div className="add-repository-detail-modal-header">
+            <div className="repository-detail-modal-container">
+                <div className="repository-detail-modal-header">
                     <div className="progress-group">
                         <div className="progress-bar">
                             <div
@@ -53,7 +54,7 @@ export default function AddRepositoryDetailModal({ close }) {
                         </div>
                     </div>
                 </div>
-                <div className="add-repository-detail-modal-body">
+                <div className="repository-detail-modal-body">
                     {detail === 1 && (
                         <Detail01 close={close} next={nextDetail} />
                     )}

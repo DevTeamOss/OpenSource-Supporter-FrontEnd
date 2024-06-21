@@ -2,7 +2,7 @@ import {
     useGithubRepoListController,
     useUserController,
 } from '@/controllers/index.js'
-import SelectionRepository from '@/components/selection-repository'
+import SelectionRepository from '@/components/add-repository-modal/selection-repository.jsx'
 
 export default function Stage01({ select }) {
     const githubRepoListController = useGithubRepoListController()

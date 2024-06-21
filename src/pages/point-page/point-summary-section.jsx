@@ -1,17 +1,17 @@
-import PointsSummaryBox from '@/components/points-summary-box'
 import { useModal } from '@/hooks/use-modal.js'
-import AddChargeModal from '@/components/add-charge-modal.jsx'
-import AddWithdrawCashModal from '@/components/add-withdraw-cash-modal.jsx'
+import PointsSummaryBox from '@/pages/point-page/points-summary-box.jsx'
+import ChargeModal from '@/pages/point-page/charge-modal.jsx'
+import WithdrawCashModal from '@/pages/point-page/withdraw-cash-modal.jsx'
 
 export default function PointSummarySection() {
-    const addChargeModal = useModal()
-    const addWithdrawCashModal = useModal()
+    const chargeModal = useModal()
+    const withdrawCashModal = useModal()
 
     return (
         <div className="point-summary-section-container">
             <div className="point-summary-section-header">
-                <div className="hearder-title">Summary</div>
-                <div className="charge-btn" onClick={addChargeModal.open}>
+                <div className="header-title">Summary</div>
+                <div className="charge-btn" onClick={chargeModal.open}>
                     PayPal Charge
                 </div>
             </div>
@@ -37,7 +37,7 @@ export default function PointSummarySection() {
                     />
                     <div
                         className="sponsor-summary-box"
-                        onClick={addWithdrawCashModal.open}
+                        onClick={withdrawCashModal.open}
                     >
                         <PointsSummaryBox
                             method="Sponsor"
@@ -48,11 +48,9 @@ export default function PointSummarySection() {
                     </div>
                 </div>
             </div>
-            {addChargeModal.visible && (
-                <AddChargeModal close={addChargeModal.close} />
-            )}
-            {addWithdrawCashModal.visible && (
-                <AddWithdrawCashModal close={addWithdrawCashModal.close} />
+            {chargeModal.visible && <ChargeModal close={chargeModal.close} />}
+            {withdrawCashModal.visible && (
+                <WithdrawCashModal close={withdrawCashModal.close} />
             )}
         </div>
     )

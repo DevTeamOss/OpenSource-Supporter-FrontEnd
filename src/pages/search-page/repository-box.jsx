@@ -1,7 +1,7 @@
-import '@/assets/scss/components/repository-box.scss'
-import TagChip from './tag-chip'
-import { COLOR } from '@/constants/color.js'
 import moment from 'moment'
+
+import TagChip from '@/components/tag-chip.jsx'
+import { COLOR } from '@/constants/color.js'
 
 export default function RepositoryBox({ data }) {
     return (

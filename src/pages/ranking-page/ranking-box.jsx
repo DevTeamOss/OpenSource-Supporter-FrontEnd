@@ -1,8 +1,6 @@
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMedal } from '@fortawesome/free-solid-svg-icons'
-
-import '@/assets/scss/components/ranking-box.scss'
-import { useNavigate } from 'react-router-dom'
 
 export default function RankingBox({
     ranking,

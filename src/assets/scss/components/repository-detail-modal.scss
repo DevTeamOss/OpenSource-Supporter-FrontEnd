@@ -1,7 +1,7 @@
 @import '@/assets/scss/color.scss';
 
-/* Add Repository Detail Modal Common */
-.add-repository-detail-modal-container {
+/* Repository Detail Modal Common */
+.repository-detail-modal-container {
     width: 900px;
     margin: 10px 0;
     overflow-y: scroll;
@@ -11,7 +11,7 @@
         display: none;
     }
 
-    .add-repository-detail-modal-header {
+    .repository-detail-modal-header {
         display: flex;
         margin: 0 10px;
 
@@ -47,7 +47,7 @@
     margin: 20px 30px;
     max-height: 500px;
 
-    .detail01-header  {
+    .detail01-header {
         display: flex;
         width: 100%;
 
@@ -241,7 +241,6 @@
                     padding: 10px;
                 }
             }
-
         }
         .quantitative-analysis-chart-container {
             margin-bottom: 20px;
@@ -547,7 +546,8 @@
                         cursor: pointer;
                     }
 
-                    td, th {
+                    td,
+                    th {
                         padding: 6px 15px;
                     }
 

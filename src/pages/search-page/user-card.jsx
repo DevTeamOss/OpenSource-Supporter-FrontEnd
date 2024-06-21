@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 
-import '@/assets/scss/components/user-card.scss'
-
 export default function UserCard({ data }) {
     const navigate = useNavigate()
 

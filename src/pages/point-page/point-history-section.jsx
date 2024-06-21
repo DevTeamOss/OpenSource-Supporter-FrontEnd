@@ -2,7 +2,7 @@ import { useState } from 'react'
 import SpentPointListSection from '@/pages/point-page/spent-point-list-section'
 import EarnedPointListSection from '@/pages/point-page/earned-point-list-section'
 
-export default function PointHistortSection() {
+export default function PointHistorySection() {
     const [option, setOption] = useState('spent')
 
     function onBtnClick(value) {

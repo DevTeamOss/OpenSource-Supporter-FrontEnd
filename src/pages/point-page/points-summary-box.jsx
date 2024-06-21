@@ -4,7 +4,6 @@ import { faRectangleAd } from '@fortawesome/free-solid-svg-icons'
 
 import GithubImg from '@/assets/img/github.png'
 import PaypalImg from '@/assets/img/paypal.png'
-import '@/assets/scss/components/points-summary-box.scss'
 
 export default function PointsSummaryBox({
     method,

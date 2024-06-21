@@ -1,9 +1,8 @@
-import BaseModal from '@/components/base-modal.jsx'
-
-import '@/assets/scss/components/add-charge-modal.scss'
 import { useState } from 'react'
 
-export default function AddChargeModal({ close }) {
+import BaseModal from '@/components/base-modal.jsx'
+
+export default function ChargeModal({ close }) {
     const [amount, setAmount] = useState(0)
     const [selection, setSelection] = useState(0)
 
@@ -19,16 +18,13 @@ export default function AddChargeModal({ close }) {
 
     return (
         <BaseModal close={close}>
-            <div className="add-charge-modal-container">
-                <div className="add-charge-modal-header">
+            <div className="charge-modal-container">
+                <div className="charge-modal-header">
                     <div className="title-text">
                         Select the desired amount and pay with PayPal
                     </div>
                 </div>
-                <form
-                    className="add-charge-modal-body"
-                    onSubmit={(e) => submit(e)}
-                >
+                <form className="charge-modal-body" onSubmit={(e) => submit(e)}>
                     <div className="content-box">
                         <div className="dollar-option-box">
                             <div

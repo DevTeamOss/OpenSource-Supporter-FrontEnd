@@ -1,12 +1,10 @@
-import BaseModal from '@/components/base-modal.jsx'
 import { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
-import '@/assets/scss/components/add-withdraw-cash-modal.scss'
-import { logDOM } from '@testing-library/react'
+import BaseModal from '@/components/base-modal.jsx'
 
-export default function AddWithdrawCashModal({ close }) {
+export default function WithdrawCashModal({ close }) {
     const [points, setPoints] = useState(0)
     const [selection, setSelection] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
@@ -34,8 +32,8 @@ export default function AddWithdrawCashModal({ close }) {
 
     return (
         <BaseModal close={close}>
-            <div className="add-withdraw-cash-modal-container">
-                <div className="add-withdraw-cash-modal-header">
+            <div className="withdraw-cash-modal-container">
+                <div className="withdraw-cash-modal-header">
                     <div className="title-text">
                         Select the desired points and withdraw to your account
                     </div>
@@ -44,7 +42,7 @@ export default function AddWithdrawCashModal({ close }) {
                     </div>
                 </div>
                 <form
-                    className="add-withdraw-cash-modal-body"
+                    className="withdraw-cash-modal-body"
                     onSubmit={(e) => submit(e)}
                 >
                     <div className="content-box">

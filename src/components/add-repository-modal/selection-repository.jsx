@@ -1,10 +1,9 @@
+import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import moment from 'moment'
 
-import '@/assets/scss/components/selection-repository.scss'
-import { useUserController } from '@/controllers'
+import { useUserController } from '@/controllers/index.js'
 
 export default function SelectionRepository({ select, data }) {
     const userController = useUserController()

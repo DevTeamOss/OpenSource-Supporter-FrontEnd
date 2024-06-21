@@ -1,4 +1,4 @@
-import SpentPointBox from '@/components/spent-point-box'
+import SpentPointBox from '@/pages/point-page/spent-point-box.jsx'
 
 export default function SpentPointListSection() {
     return (
