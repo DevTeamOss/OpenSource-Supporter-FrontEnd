@@ -39,6 +39,76 @@ const pointHandlers = [
             { status: 200 },
         )
     }),
+
+    http.get(`${BACKEND_URL}/api/point/spent`, () => {
+        console.log('spent point list requested')
+        return HttpResponse.json(
+            {
+                hasNextPage: true,
+                data: [
+                    {
+                        date: '2024-06-10T15:43:14.027105',
+                        point: -1000,
+                        description: 'khanna01 / basicweb',
+                        status: 'COMPLETED',
+                    },
+                    {
+                        date: '2024-05-30T23:51:00.08189',
+                        point: -4000,
+                        description: 'khanna01 / realhoonsman',
+                        status: 'COMPLETED',
+                    },
+                    {
+                        date: '2024-05-30T23:50:55.683531',
+                        point: -3000,
+                        description: 'khanna01 / hoonsman_ft',
+                        status: 'COMPLETED',
+                    },
+                ],
+            },
+            { status: 200 },
+        )
+    }),
+
+    http.get(`${BACKEND_URL}/api/point/earned`, () => {
+        console.log('earned point list requested')
+        return HttpResponse.json(
+            {
+                hasNextPage: true,
+                data: [
+                    {
+                        date: '2024-06-10T16:20:42.351894',
+                        point: 300,
+                        description:
+                            'ambition-kwon has sponsored the basicweb repository',
+                        status: 'COMPLETED',
+                    },
+                    {
+                        date: '2024-06-10T16:20:38.876349',
+                        point: 400,
+                        description:
+                            'ambition-kwon has sponsored the basicweb repository',
+                        status: 'COMPLETED',
+                    },
+                    {
+                        date: '2024-06-10T16:20:35.731493',
+                        point: 500,
+                        description:
+                            'ambition-kwon has sponsored the basicweb repository',
+                        status: 'COMPLETED',
+                    },
+                    {
+                        date: '2024-06-10T16:20:30.354903',
+                        point: 1000,
+                        description:
+                            'ambition-kwon has sponsored the basicweb repository',
+                        status: 'COMPLETED',
+                    },
+                ],
+            },
+            { status: 200 },
+        )
+    }),
 ]
 
 export default pointHandlers

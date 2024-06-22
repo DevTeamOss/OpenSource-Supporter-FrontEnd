@@ -1,8 +1,7 @@
 export default function EarnedPointBox({
     date,
     points,
-    method,
-    detail,
+    description,
     status,
     background,
 }) {
@@ -16,9 +15,7 @@ export default function EarnedPointBox({
         >
             <div className="date-box">{date}</div>
             <div className="points-box">+{points} P</div>
-            <div className="method-box">
-                {detail ? `${method} / ${detail}` : method}
-            </div>
+            <div className="method-box">{description}</div>
             <div className={`status-box ${status}`}>{status}</div>
         </div>
     )

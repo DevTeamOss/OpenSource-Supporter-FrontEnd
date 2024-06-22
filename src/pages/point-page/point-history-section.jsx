@@ -1,8 +1,9 @@
 import { useState } from 'react'
+
 import SpentPointListSection from '@/pages/point-page/spent-point-list-section'
 import EarnedPointListSection from '@/pages/point-page/earned-point-list-section'
 
-export default function PointHistorySection() {
+export default function PointHistorySection({ resetRequired, resetComplete }) {
     const [option, setOption] = useState('spent')
 
     function onBtnClick(value) {
@@ -33,7 +34,10 @@ export default function PointHistorySection() {
                 {option === 'spent' ? (
                     <SpentPointListSection />
                 ) : (
-                    <EarnedPointListSection />
+                    <EarnedPointListSection
+                        resetRequired={resetRequired}
+                        resetComplete={resetComplete}
+                    />
                 )}
             </div>
         </div>

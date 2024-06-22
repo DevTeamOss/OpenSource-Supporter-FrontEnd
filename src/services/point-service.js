@@ -14,4 +14,23 @@ export const pointService = {
 
         return { status, data }
     },
+
+    callGetSpentList: async ({ page }) => {
+        const { status, data } = await client.get('/api/point/spent', {
+            params: { page, size: 5 },
+        })
+
+        return { status, data }
+    },
+
+    callGetEarnedList: async ({ page }) => {
+        const { status, data } = await client.get('/api/point/earned', {
+            params: {
+                page,
+                size: 5,
+            },
+        })
+
+        return { status, data }
+    },
 }

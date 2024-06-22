@@ -1,6 +1,30 @@
+import { useEffect } from 'react'
+import moment from 'moment'
+
+import { usePointListPagination } from '@/hooks/use-point-list-pagination.js'
 import EarnedPointBox from '@/pages/point-page/earned-point-box.jsx'
 
-export default function EarnedPointListSection() {
+import Spinner from '@/assets/img/spinner.svg'
+
+export default function EarnedPointListSection({
+    resetRequired,
+    resetComplete,
+}) {
+    const pointListPagination = usePointListPagination('EARNED')
+
+    async function resetList() {
+        await pointListPagination.initList()
+        resetComplete()
+    }
+
+    useEffect(() => {
+        if (!resetRequired) {
+            return
+        }
+
+        resetList().then()
+    }, [resetRequired])
+
     return (
         <div className="earned-point-list-section-container">
             <div className="earned-point-list-section-header">
@@ -12,57 +36,33 @@ export default function EarnedPointListSection() {
                 <div className="status-title">STATUS</div>
             </div>
             <div className="earned-point-history-list-box">
-                <EarnedPointBox
-                    date="2024.06.03 22:48:18"
-                    points="213"
-                    method="Advertisement"
-                    detail="ads1"
-                    status="IN PROGRESS"
-                    background="header-black"
-                />
-                <EarnedPointBox
-                    date="2024.06.03 22:48:18"
-                    points="500"
-                    method="Paypal"
-                    detail=""
-                    status="Completed"
-                    background="aside-black"
-                />
-                <EarnedPointBox
-                    date="2024.06.03 22:48:18"
-                    points="213"
-                    method="Advertisement"
-                    detail="ads2"
-                    status="Completed"
-                    background="header-black"
-                />
-                <EarnedPointBox
-                    date="2024.06.03 22:48:18"
-                    points="500"
-                    method="Sponsored"
-                    detail="ambition-kwon"
-                    status="Completed"
-                    background="aside-black"
-                />
-                <EarnedPointBox
-                    date="2024.06.03 22:48:18"
-                    points="500"
-                    method="Sponsored"
-                    detail="ambition-kwon"
-                    status="Completed"
-                    background="header-black"
-                />
-                <EarnedPointBox
-                    date="2024.06.03 22:48:18"
-                    points="213"
-                    method="Advertisement"
-                    detail="ads2"
-                    status="Completed"
-                    background="aside-black"
-                />
+                {pointListPagination.data.map((info, i) => (
+                    <EarnedPointBox
+                        date={moment(info.date)
+                            .add(9, 'hours')
+                            .format('YYYY.MM.DD hh:mm:ss A')}
+                        points={info.point}
+                        description={info.description}
+                        status={info.status}
+                        background={
+                            i % 2 === 0 ? 'header-black' : 'aside-black'
+                        }
+                    />
+                ))}
             </div>
             <div className="earned-point-list-section-footer">
-                <div className="show-more-btn">Show more results</div>
+                {pointListPagination.hasNextPage &&
+                    !pointListPagination.isLoading && (
+                        <div
+                            className="show-more-btn"
+                            onClick={pointListPagination.getAdditionalData}
+                        >
+                            Show more results
+                        </div>
+                    )}
+                {pointListPagination.isLoading && (
+                    <img className="spinner-img" src={Spinner} alt="loading" />
+                )}
             </div>
         </div>
     )

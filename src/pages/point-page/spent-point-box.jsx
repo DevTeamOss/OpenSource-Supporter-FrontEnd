@@ -1,8 +1,7 @@
 export default function SpentPointBox({
     date,
     points,
-    username,
-    repository,
+    description,
     status,
     background,
 }) {
@@ -16,9 +15,7 @@ export default function SpentPointBox({
         >
             <div className="date-box">{date}</div>
             <div className="points-box">-{points} P</div>
-            <div className="info-box">
-                {username}/ {repository}
-            </div>
+            <div className="info-box">{description}</div>
             <div className={`status-box ${status}`}>{status}</div>
         </div>
     )

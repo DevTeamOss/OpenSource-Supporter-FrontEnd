@@ -6,7 +6,7 @@ import PointsSummaryBox from '@/pages/point-page/points-summary-box.jsx'
 import ChargeModal from '@/pages/point-page/charge-modal.jsx'
 import WithdrawCashModal from '@/pages/point-page/withdraw-cash-modal.jsx'
 
-export default function PointSummarySection() {
+export default function PointSummarySection({ resetList }) {
     const userController = useUserController()
     const pointController = usePointController()
     const chargeModal = useModal()
@@ -15,6 +15,7 @@ export default function PointSummarySection() {
     async function refresh() {
         await pointController.getSummary()
         await userController.refresh()
+        resetList()
     }
 
     function indicator(percentage) {

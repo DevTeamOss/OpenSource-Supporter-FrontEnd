@@ -25,4 +25,28 @@ describe('Point Service Test', () => {
 
         expect(status).toBe(200)
     })
+
+    test('사용한 포인트 목록을 요청하면 필요한 정보를 포함하는 객체의 배열을 받는다', async () => {
+        const { data } = await pointService.callGetSpentList({ page: 0 })
+
+        const properties = ['date', 'point', 'description', 'status']
+
+        data.data.forEach((info) => {
+            properties.forEach((prop) => {
+                expect(info).toHaveProperty(prop)
+            })
+        })
+    })
+
+    test('얻은 포인트 목록을 요청하면 필요한 정보를 포함하는 객체의 배열을 받는다', async () => {
+        const { data } = await pointService.callGetEarnedList({ page: 0 })
+
+        const properties = ['date', 'point', 'description', 'status']
+
+        data.data.forEach((info) => {
+            properties.forEach((prop) => {
+                expect(info).toHaveProperty(prop)
+            })
+        })
+    })
 })
