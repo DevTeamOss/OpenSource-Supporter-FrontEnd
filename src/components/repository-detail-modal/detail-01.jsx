@@ -152,7 +152,7 @@ export default function Detail01({ close, next }) {
         'Russian',
     ]
 
-    const decodeBase64 = (str) => {
+    function decodeBase64(str) {
         const base64Decoded = atob(str)
         const utf8Decoder = new TextDecoder('utf-8')
         const utf8Decoded = utf8Decoder.decode(

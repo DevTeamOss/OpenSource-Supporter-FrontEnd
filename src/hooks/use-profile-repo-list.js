@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { reposService } from '@/services/index.js'
-import { useProfileController } from '@/controllers/index.js'
 
 export function useProfileRepoList(type) {
     const { username } = useParams()

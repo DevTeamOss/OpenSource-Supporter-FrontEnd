@@ -2,10 +2,16 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-import { user, githubRepoList, repoInfo, profile } from '@/store'
+import { user, githubRepoList, repoInfo, profile, point } from '@/store'
 import { REDUX_LOCAL_STORAGE } from '@/constants/config.js'
 
-const rootReducer = combineReducers({ user, githubRepoList, repoInfo, profile })
+const rootReducer = combineReducers({
+    user,
+    githubRepoList,
+    repoInfo,
+    profile,
+    point,
+})
 
 const persistConfig = { storage, key: REDUX_LOCAL_STORAGE, whitelist: ['user'] }
 const persistedReducer = persistReducer(persistConfig, rootReducer)

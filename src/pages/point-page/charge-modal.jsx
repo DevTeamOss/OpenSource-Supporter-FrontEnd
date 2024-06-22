@@ -1,14 +1,32 @@
 import { useState } from 'react'
 
+import { usePointController } from '@/controllers/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 
-export default function ChargeModal({ close }) {
+import Spinner from '@/assets/img/spinner.svg'
+
+const amounts = [5, 10, 20, 50, 100, 200]
+
+export default function ChargeModal({ close, refresh }) {
+    const pointController = usePointController()
+
     const [amount, setAmount] = useState(0)
     const [selection, setSelection] = useState(0)
+    const [isLoading, setIsLoading] = useState(false)
 
-    function submit(e) {
+    async function submit(e) {
         e.preventDefault()
-        setAmount(0)
+        if (amount <= 0) {
+            return
+        }
+
+        setIsLoading(true)
+        const result = await pointController.chargePoint({ amount })
+        if (result) {
+            await refresh()
+            close()
+        }
+        setIsLoading(false)
     }
 
     function onChangePoints(value) {
@@ -27,42 +45,15 @@ export default function ChargeModal({ close }) {
                 <form className="charge-modal-body" onSubmit={(e) => submit(e)}>
                     <div className="content-box">
                         <div className="dollar-option-box">
-                            <div
-                                className={`dollar-btn ${selection === 5 ? 'active' : ''}`}
-                                onClick={() => onChangePoints(5)}
-                            >
-                                $5
-                            </div>
-                            <div
-                                className={`dollar-btn ${selection === 10 ? 'active' : ''}`}
-                                onClick={() => onChangePoints(10)}
-                            >
-                                $10
-                            </div>
-                            <div
-                                className={`dollar-btn ${selection === 20 ? 'active' : ''}`}
-                                onClick={() => onChangePoints(20)}
-                            >
-                                $20
-                            </div>
-                            <div
-                                className={`dollar-btn ${selection === 50 ? 'active' : ''}`}
-                                onClick={() => onChangePoints(50)}
-                            >
-                                $50
-                            </div>
-                            <div
-                                className={`dollar-btn ${selection === 100 ? 'active' : ''}`}
-                                onClick={() => onChangePoints(100)}
-                            >
-                                $100
-                            </div>
-                            <div
-                                className={`dollar-btn ${selection === 200 ? 'active' : ''}`}
-                                onClick={() => onChangePoints(200)}
-                            >
-                                $200
-                            </div>
+                            {amounts.map((v) => (
+                                <div
+                                    className={`dollar-btn ${selection === v ? 'active' : ''}`}
+                                    onClick={() => onChangePoints(v)}
+                                    key={v}
+                                >
+                                    ${v}
+                                </div>
+                            ))}
                         </div>
                     </div>
                     <div className="content-box">
@@ -71,7 +62,7 @@ export default function ChargeModal({ close }) {
                             type="number"
                             placeholder="Enter the desired amount"
                             min={1}
-                            value={amount === 0 ? '' : amount}
+                            value={amount}
                             onChange={(e) => {
                                 const value = parseInt(e.target.value, 10)
                                 setAmount(isNaN(value) ? 0 : value)
@@ -81,7 +72,15 @@ export default function ChargeModal({ close }) {
                     </div>
                     <div className="content-box">
                         <button className="charge-btn" type="submit">
-                            charge
+                            {isLoading ? (
+                                <img
+                                    className="spinner-img"
+                                    src={Spinner}
+                                    alt="loading"
+                                />
+                            ) : (
+                                'charge'
+                            )}
                         </button>
                     </div>
                 </form>

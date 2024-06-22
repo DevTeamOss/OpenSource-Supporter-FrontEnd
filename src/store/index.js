@@ -10,5 +10,8 @@ export * from './repo-info-slice.js'
 export { default as profile } from './profile-slice.js'
 export * from './profile-slice.js'
 
+export { default as point } from './point-slice.js'
+export * from './point-slice.js'
+
 export { default as store } from './store.js'
 export * from './store.js'
