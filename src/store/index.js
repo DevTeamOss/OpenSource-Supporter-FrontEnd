@@ -13,5 +13,8 @@ export * from './profile-slice.js'
 export { default as point } from './point-slice.js'
 export * from './point-slice.js'
 
+export { default as selectedRepoId } from './selected-repo-id-slice.js'
+export * from './selected-repo-id-slice.js'
+
 export { default as store } from './store.js'
 export * from './store.js'

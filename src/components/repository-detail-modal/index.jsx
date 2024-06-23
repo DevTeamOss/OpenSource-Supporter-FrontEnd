@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import { useRepoDetailController } from '@/controllers/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 import Detail01 from '@/components/repository-detail-modal/detail-01.jsx'
 import Detail02 from '@/components/repository-detail-modal/detail-02.jsx'
@@ -8,6 +9,7 @@ import SmallLoadingScreen from '@/components/small-loading-screen.jsx'
 import '@/assets/scss/components/repository-detail-modal.scss'
 
 export default function RepositoryDetailModal({ close }) {
+    const repoDetailController = useRepoDetailController()
     const [detail, setDetail] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
 
@@ -19,7 +21,14 @@ export default function RepositoryDetailModal({ close }) {
         setDetail((prev) => prev - 1)
     }
 
+    async function init() {
+        setIsLoading(true)
+        await repoDetailController.getData()
+        setIsLoading(false)
+    }
+
     useEffect(() => {
+        init().then()
         setDetail(1)
     }, [])
 
@@ -37,7 +46,8 @@ export default function RepositoryDetailModal({ close }) {
                             ></div>
                         </div>
                         <div className="progress-text">
-                            1. Explore repository
+                            1. Explore repository{' '}
+                            {repoDetailController.id.toString()}
                         </div>
                     </div>
                     <div className="progress-group">
@@ -56,7 +66,11 @@ export default function RepositoryDetailModal({ close }) {
                 </div>
                 <div className="repository-detail-modal-body">
                     {detail === 1 && (
-                        <Detail01 close={close} next={nextDetail} />
+                        <Detail01
+                            info={repoDetailController.data}
+                            close={close}
+                            next={nextDetail}
+                        />
                     )}
                     {detail === 2 && <Detail02 close={close} />}
                 </div>

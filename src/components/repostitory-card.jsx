@@ -2,16 +2,19 @@ import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 
+import { useRepoDetailController } from '@/controllers/index.js'
 import { COLOR } from '@/constants/color.js'
 import TagChip from '@/components/tag-chip'
 
 import '@/assets/scss/components/repository-card.scss'
 
-export default function RepositoryCard({ repoInfo, forProfile, onClick }) {
+export default function RepositoryCard({ repoInfo, forProfile }) {
+    const repoDetailController = useRepoDetailController()
+
     return (
         <div
             className={`repository-card-container ${forProfile && 'my-card'}`}
-            onClick={onClick}
+            onClick={() => repoDetailController.selectRepo(repoInfo.id)}
         >
             <div className="repository-card-header">
                 <div className="card-header-section">

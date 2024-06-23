@@ -87,4 +87,15 @@ export const repoService = {
 
         return { status, data }
     },
+
+    callGetDetails: async ({ repoId }) => {
+        const { status, data } = await client.get('/api/repo/detail', {
+            params: { repoId },
+        })
+
+        const dataToUse = { ...data, username: data.userName }
+        delete dataToUse.userName
+
+        return { status, data: dataToUse }
+    },
 }
