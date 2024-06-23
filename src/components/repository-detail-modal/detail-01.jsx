@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faEye } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
@@ -11,10 +11,16 @@ import ReactApexChart from 'react-apexcharts'
 import moment from 'moment'
 
 import { useUserController } from '@/controllers/index.js'
+import { useTranslate } from '@/hooks/use-translate.js'
 import TagChip from '@/components/tag-chip.jsx'
+
+import Spinner from '@/assets/img/spinner.svg'
 
 export default function Detail01({ info, close, next }) {
     const userController = useUserController()
+    const description = useTranslate()
+    const analysis = useTranslate()
+    const readme = useTranslate()
 
     const [languageList, setLanguageList] = useState({
         description: 'default',
@@ -135,6 +141,12 @@ export default function Detail01({ info, close, next }) {
         window.open(info.repositoryLink, '_blank')
     }
 
+    useEffect(() => {
+        description.setOrigin(info.description)
+        analysis.setOrigin(info.chatgptAnalysis)
+        readme.setOrigin(info.readmeContent)
+    }, [info])
+
     return (
         <div className="detail01-container">
             <div className="detail01-header">
@@ -218,12 +230,29 @@ export default function Detail01({ info, close, next }) {
                                     </div>
                                 )}
                             </div>
-                            <div className="translate-btn">Translate</div>
+                            <div
+                                className="translate-btn"
+                                onClick={() =>
+                                    description.changeLanguage(
+                                        languageList.description,
+                                    )
+                                }
+                            >
+                                {description.isLoading ? (
+                                    <img
+                                        className="btn-spinner"
+                                        src={Spinner}
+                                        alt="loading"
+                                    />
+                                ) : (
+                                    'Translate'
+                                )}
+                            </div>
                         </div>
                     </div>
                     <div className="repository-description-body">
                         <div className="repository-description-box">
-                            {info.description}
+                            {description.data}
                         </div>
                     </div>
                 </div>
@@ -336,12 +365,67 @@ export default function Detail01({ info, close, next }) {
                                     </div>
                                 )}
                             </div>
-                            <div className="translate-btn">Translate</div>
+                            <div
+                                className="translate-btn"
+                                onClick={() =>
+                                    analysis.changeLanguage(
+                                        languageList.analysis,
+                                    )
+                                }
+                            >
+                                {analysis.isLoading ? (
+                                    <img
+                                        className="btn-spinner"
+                                        src={Spinner}
+                                        alt="loading"
+                                    />
+                                ) : (
+                                    'Translate'
+                                )}
+                            </div>
                         </div>
                     </div>
                     <div className="quantitative-analysis-content-body">
                         <div className="quantitative-analysis-content-box">
-                            {info.chatgptAnalysis}
+                            <ReactMarkdown
+                                children={analysis.data}
+                                remarkPlugins={[remarkGfm]}
+                                rehypePlugins={[rehypeRaw]}
+                                components={{
+                                    code({
+                                        node,
+                                        inline,
+                                        className,
+                                        children,
+                                        ...props
+                                    }) {
+                                        const match = /language-(\w+)/.exec(
+                                            className || '',
+                                        )
+                                        return !inline && match ? (
+                                            <SyntaxHighlighter
+                                                style={github}
+                                                language={match[1]}
+                                                PreTag="div"
+                                                {...props}
+                                            >
+                                                {String(children).replace(
+                                                    /\n$/,
+                                                    '',
+                                                )}
+                                            </SyntaxHighlighter>
+                                        ) : (
+                                            <code
+                                                className={className}
+                                                {...props}
+                                            >
+                                                {children}
+                                            </code>
+                                        )
+                                    },
+                                }}
+                                className="readme"
+                            />
                         </div>
                     </div>
                 </div>
@@ -383,13 +467,28 @@ export default function Detail01({ info, close, next }) {
                                     </div>
                                 )}
                             </div>
-                            <div className="translate-btn">Translate</div>
+                            <div
+                                className="translate-btn"
+                                onClick={() =>
+                                    readme.changeLanguage(languageList.readme)
+                                }
+                            >
+                                {readme.isLoading ? (
+                                    <img
+                                        className="btn-spinner"
+                                        src={Spinner}
+                                        alt="loading"
+                                    />
+                                ) : (
+                                    'Translate'
+                                )}
+                            </div>
                         </div>
                     </div>
                     <div className="repository-readme-body">
                         <div className="repository-readme-box">
                             <ReactMarkdown
-                                children={info.readmeContent}
+                                children={readme.data}
                                 remarkPlugins={[remarkGfm]}
                                 rehypePlugins={[rehypeRaw]}
                                 components={{

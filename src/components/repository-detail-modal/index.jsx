@@ -17,10 +17,6 @@ export default function RepositoryDetailModal({ close }) {
         setDetail((prev) => prev + 1)
     }
 
-    function prevDetail() {
-        setDetail((prev) => prev - 1)
-    }
-
     async function init() {
         setIsLoading(true)
         await repoDetailController.getData()
@@ -46,8 +42,7 @@ export default function RepositoryDetailModal({ close }) {
                             ></div>
                         </div>
                         <div className="progress-text">
-                            1. Explore repository{' '}
-                            {repoDetailController.id.toString()}
+                            1. Explore repository
                         </div>
                     </div>
                     <div className="progress-group">
