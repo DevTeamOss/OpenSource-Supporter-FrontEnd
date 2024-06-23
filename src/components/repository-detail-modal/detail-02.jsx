@@ -79,7 +79,7 @@ export default function Detail02({ close }) {
                         type="number"
                         placeholder="Enter the desired amount"
                         min={1}
-                        value={points}
+                        value={points === 0 ? '' : points}
                         onChange={(e) => {
                             const value = parseInt(e.target.value, 10)
                             setPoints(isNaN(value) ? 0 : value)

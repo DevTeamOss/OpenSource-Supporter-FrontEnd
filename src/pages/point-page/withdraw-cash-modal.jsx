@@ -2,9 +2,12 @@ import { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
+import { useUserController } from '@/controllers/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 
 export default function WithdrawCashModal({ close }) {
+    const userController = useUserController()
+
     const [points, setPoints] = useState(0)
     const [selection, setSelection] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
@@ -13,7 +16,7 @@ export default function WithdrawCashModal({ close }) {
     function submit(e) {
         e.preventDefault()
 
-        if (1203 < points) {
+        if (userController.data.remainingPoint < points) {
             alert('“You have exceeded your available points.”')
             return
         }
@@ -38,7 +41,11 @@ export default function WithdrawCashModal({ close }) {
                         Select the desired points and withdraw to your account
                     </div>
                     <div className="description-text">
-                        Available Points: <span className="points">1203</span>P
+                        Available Points:{' '}
+                        <span className="points">
+                            {userController.data.remainingPoint}
+                        </span>
+                        P
                     </div>
                 </div>
                 <form
@@ -117,15 +124,7 @@ export default function WithdrawCashModal({ close }) {
                                             setAccount(e.target.innerText)
                                         }
                                     >
-                                        account1
-                                    </div>
-                                    <div
-                                        className="option"
-                                        onClick={(e) =>
-                                            setAccount(e.target.innerText)
-                                        }
-                                    >
-                                        account2
+                                        No account available
                                     </div>
                                 </div>
                             )}

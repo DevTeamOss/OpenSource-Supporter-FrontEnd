@@ -62,7 +62,7 @@ export default function ChargeModal({ close, refresh }) {
                             type="number"
                             placeholder="Enter the desired amount"
                             min={1}
-                            value={amount}
+                            value={amount === 0 ? '' : amount}
                             onChange={(e) => {
                                 const value = parseInt(e.target.value, 10)
                                 setAmount(isNaN(value) ? 0 : value)
