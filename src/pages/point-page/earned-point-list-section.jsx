@@ -47,6 +47,7 @@ export default function EarnedPointListSection({
                         background={
                             i % 2 === 0 ? 'header-black' : 'aside-black'
                         }
+                        key={i}
                     />
                 ))}
             </div>

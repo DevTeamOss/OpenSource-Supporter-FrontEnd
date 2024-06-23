@@ -162,8 +162,8 @@ export default function Detail01({ info, close, next }) {
                             <span className="repoName">{info.repoName}</span>
                         </div>
                         <div className="tag-box">
-                            {(info.tags || []).map((tag) => (
-                                <TagChip>{tag}</TagChip>
+                            {(info.tags || []).map((tag, i) => (
+                                <TagChip key={i}>{tag}</TagChip>
                             ))}
                         </div>
                     </div>

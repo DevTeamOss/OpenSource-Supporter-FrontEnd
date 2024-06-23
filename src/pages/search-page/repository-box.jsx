@@ -2,10 +2,16 @@ import moment from 'moment'
 
 import TagChip from '@/components/tag-chip.jsx'
 import { COLOR } from '@/constants/color.js'
+import { useRepoDetailController } from '@/controllers/index.js'
 
-export default function RepositoryBox({ data }) {
+export default function RepositoryBox({ data, onClick }) {
+    const repoDetailController = useRepoDetailController()
+
     return (
-        <div className="repository-box-container">
+        <div
+            className="repository-box-container"
+            onClick={() => repoDetailController.selectRepo(data.id)}
+        >
             <div className="repository-box-header">
                 <div className="box-header-section">
                     <img

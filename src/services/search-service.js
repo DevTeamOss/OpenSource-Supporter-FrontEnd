@@ -15,6 +15,7 @@ export const searchService = {
 
         const repositoriesToUse = repositories.map((info) => {
             const {
+                id,
                 userName,
                 avatarUrl,
                 repoName,
@@ -25,6 +26,7 @@ export const searchService = {
                 lastCommitAt,
             } = info
             return {
+                id,
                 username: userName,
                 avatarUrl,
                 repoName,
