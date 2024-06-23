@@ -26,6 +26,24 @@ export default function AsideRight() {
         navigate('/')
     }
 
+    function loginRequiredNavigate(url) {
+        if (!userController.isLoggedIn) {
+            alert("You haven't logged in")
+            return
+        }
+
+        navigate(url)
+    }
+
+    function loginRequiredModalOpen(open) {
+        if (!userController.isLoggedIn) {
+            alert("You haven't logged in")
+            return
+        }
+
+        open()
+    }
+
     return (
         <>
             <div className="aside-right-container">
@@ -33,7 +51,9 @@ export default function AsideRight() {
                     <div
                         className="menu-item"
                         onClick={() =>
-                            navigate(`/profile/${userController.data.username}`)
+                            loginRequiredNavigate(
+                                `/profile/${userController.data.username}`,
+                            )
                         }
                     >
                         <FontAwesomeIcon icon={faUser} />
@@ -41,25 +61,30 @@ export default function AsideRight() {
                     </div>
                     <div
                         className="menu-item"
-                        onClick={addRepositoryModal.open}
+                        onClick={() =>
+                            loginRequiredModalOpen(addRepositoryModal.open)
+                        }
                     >
                         <FontAwesomeIcon icon={faBook} />
                         <div className="menu-item-text">Your Repositories</div>
                     </div>
-                    <div className="menu-item" onClick={linkModal.open}>
+                    <div
+                        className="menu-item"
+                        onClick={() => loginRequiredModalOpen(linkModal.open)}
+                    >
                         <FontAwesomeIcon icon={faGlobe} />
                         <div className="menu-item-text">Your Links</div>
                     </div>
                     <div
                         className="menu-item"
-                        onClick={() => navigate('/point')}
+                        onClick={() => loginRequiredNavigate('/point')}
                     >
                         <FontAwesomeIcon icon={faCoins} />
                         <div className="menu-item-text">Your Points</div>
                     </div>
                     <div
                         className="menu-item"
-                        onClick={() => navigate('/ranking')}
+                        onClick={() => loginRequiredNavigate('/ranking')}
                     >
                         <FontAwesomeIcon icon={faTrophy} />
                         <div className="menu-item-text">Your Rank</div>

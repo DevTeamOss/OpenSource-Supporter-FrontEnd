@@ -1,5 +1,7 @@
-import { useRoutes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useNavigate, useRoutes } from 'react-router-dom'
 
+import { useUserController } from '@/controllers/index.js'
 import WelcomePage from '@/pages/welcome-page'
 import GithubAuthPage from '@/pages/github-auth-page'
 import MainPage from '@/pages/main-page'
@@ -63,16 +65,6 @@ export default function PageRoutes() {
             ),
         },
         {
-            path: PATH.RANKING,
-            element: (
-                <WithHeader>
-                    <BasePage>
-                        <RankingPage />
-                    </BasePage>
-                </WithHeader>
-            ),
-        },
-        {
             path: PATH.ADVERTISEMENT,
             element: <AdvertisementPage />,
         },
@@ -80,18 +72,36 @@ export default function PageRoutes() {
             path: PATH.SUPPORTERCARD,
             element: <SupporterCardPage />,
         },
-        {
-            path: PATH.POINT,
-            element: (
+        ...loginRequiredRoutes,
+    ])
+}
+
+const loginRequiredRoutes = [
+    {
+        path: PATH.RANKING,
+        element: (
+            <LoginRequired>
+                <WithHeader>
+                    <BasePage>
+                        <RankingPage />
+                    </BasePage>
+                </WithHeader>
+            </LoginRequired>
+        ),
+    },
+    {
+        path: PATH.POINT,
+        element: (
+            <LoginRequired>
                 <WithHeader>
                     <BasePage>
                         <PointPage />
                     </BasePage>
                 </WithHeader>
-            ),
-        },
-    ])
-}
+            </LoginRequired>
+        ),
+    },
+]
 
 function WithHeader({ children }) {
     return (
@@ -100,4 +110,17 @@ function WithHeader({ children }) {
             {children}
         </>
     )
+}
+
+function LoginRequired({ children }) {
+    const navigate = useNavigate()
+    const userController = useUserController()
+
+    useEffect(() => {
+        if (!userController.isLoggedIn) {
+            navigate('/')
+        }
+    }, [])
+
+    return children
 }

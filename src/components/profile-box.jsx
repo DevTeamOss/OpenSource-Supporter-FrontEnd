@@ -8,6 +8,15 @@ export default function ProfileBox({ data }) {
     const navigate = useNavigate()
     const userController = useUserController()
 
+    function loginRequiredNavigate(url) {
+        if (!userController.isLoggedIn) {
+            alert("You haven't logged in")
+            return
+        }
+
+        navigate(url)
+    }
+
     return (
         <div className="profile-box-container">
             <img
@@ -15,7 +24,9 @@ export default function ProfileBox({ data }) {
                 src={data.avatarUrl}
                 alt={data.username}
                 onClick={() =>
-                    navigate(`/profile/${userController.data.username}`)
+                    loginRequiredNavigate(
+                        `/profile/${userController.data.username}`,
+                    )
                 }
             />
             <div className="profile-info-box">
