@@ -12,6 +12,7 @@ import moment from 'moment'
 
 import { useUserController } from '@/controllers/index.js'
 import { useTranslate } from '@/hooks/use-translate.js'
+import { COLOR } from '@/constants/color.js'
 import TagChip from '@/components/tag-chip.jsx'
 
 import Spinner from '@/assets/img/spinner.svg'
@@ -176,7 +177,12 @@ export default function Detail01({ info, close, next }) {
                         </div>
                         <div className="repository-info-box">
                             <div className="repository-info-section">
-                                <div className="language-circle" />
+                                <div
+                                    className="language-circle"
+                                    style={{
+                                        background: COLOR[info.mostLanguage],
+                                    }}
+                                />
                                 {info.mostLanguage}
                             </div>
                             <div className="repository-info-section">/</div>
