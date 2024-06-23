@@ -37,7 +37,6 @@ export default function ProfileInfoSection() {
     }
 
     useEffect(() => {
-        console.log(calendarData)
         if (calendarData.length > 0) {
             setHasData(1)
         } else {
@@ -48,6 +47,14 @@ export default function ProfileInfoSection() {
     useEffect(() => {
         supporterInfo.getData(profileController.data.username).then()
     }, [profileController.data.username])
+
+    useEffect(() => {
+        if (profileController.data.username !== userController.data.username) {
+            return
+        }
+
+        supporterInfo.getData(profileController.data.username).then()
+    }, [userController.data])
 
     return (
         <div className="profile-info-section-container">

@@ -716,6 +716,9 @@
             }
 
             .sponsor-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 width: 800px;
                 margin: 0 50px 5px 50px;
                 padding: 4px 0;

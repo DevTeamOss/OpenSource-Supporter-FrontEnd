@@ -33,4 +33,13 @@ export const pointService = {
 
         return { status, data }
     },
+
+    callSupport: async ({ repoId, price }) => {
+        const { status, data } = await client.post('/api/repo/point', {
+            repoId,
+            price,
+        })
+
+        return { status, data }
+    },
 }

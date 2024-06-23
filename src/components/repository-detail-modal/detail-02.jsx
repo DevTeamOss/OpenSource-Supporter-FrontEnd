@@ -1,16 +1,40 @@
 import { useState } from 'react'
 
+import {
+    useRepoDetailController,
+    useUserController,
+} from '@/controllers/index.js'
+
+import Spinner from '@/assets/img/spinner.svg'
+
+const amounts = [5, 10, 20, 50, 100, 200]
+
 export default function Detail02({ close }) {
+    const userController = useUserController()
+    const repoDetailController = useRepoDetailController()
+
     const [points, setPoints] = useState(0)
     const [selection, setSelection] = useState(0)
+    const [isLoading, setIsLoading] = useState(false)
 
-    function submit(e) {
+    async function submit(e) {
         e.preventDefault()
 
-        if (42203 < points) {
+        if (isLoading) {
+            return
+        }
+        if (points <= 0) {
+            return
+        }
+        if (userController.data.remainingPoint < points) {
             alert('“You have exceeded your available points.”')
             return
         }
+
+        setIsLoading(true)
+        await repoDetailController.support(points)
+        await userController.refresh()
+        setIsLoading(false)
 
         setPoints(0)
         close()
@@ -28,48 +52,25 @@ export default function Detail02({ close }) {
                     Select the desired points and sponsor to Repository
                 </div>
                 <div className="description-text">
-                    Available Points: <span className="points">42203</span>P
+                    Available Points:{' '}
+                    <span className="points">
+                        {userController.data.remainingPoint}
+                    </span>
+                    P
                 </div>
             </div>
             <form className="detail02-body" onSubmit={(e) => submit(e)}>
                 <div className="content-box">
                     <div className="points-option-box">
-                        <div
-                            className={`points-btn ${selection === 5 ? 'active' : ''}`}
-                            onClick={() => onChangePoints(5)}
-                        >
-                            5P
-                        </div>
-                        <div
-                            className={`points-btn ${selection === 10 ? 'active' : ''}`}
-                            onClick={() => onChangePoints(10)}
-                        >
-                            10P
-                        </div>
-                        <div
-                            className={`points-btn ${selection === 20 ? 'active' : ''}`}
-                            onClick={() => onChangePoints(20)}
-                        >
-                            20P
-                        </div>
-                        <div
-                            className={`points-btn ${selection === 50 ? 'active' : ''}`}
-                            onClick={() => onChangePoints(50)}
-                        >
-                            50P
-                        </div>
-                        <div
-                            className={`points-btn ${selection === 100 ? 'active' : ''}`}
-                            onClick={() => onChangePoints(100)}
-                        >
-                            100P
-                        </div>
-                        <div
-                            className={`points-btn ${selection === 200 ? 'active' : ''}`}
-                            onClick={() => onChangePoints(200)}
-                        >
-                            200P
-                        </div>
+                        {amounts.map((v) => (
+                            <div
+                                className={`points-btn ${selection === v ? 'active' : ''}`}
+                                onClick={() => onChangePoints(v)}
+                                key={v}
+                            >
+                                {v}P
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div className="content-box">
@@ -78,7 +79,7 @@ export default function Detail02({ close }) {
                         type="number"
                         placeholder="Enter the desired amount"
                         min={1}
-                        value={points === 0 ? '' : points}
+                        value={points}
                         onChange={(e) => {
                             const value = parseInt(e.target.value, 10)
                             setPoints(isNaN(value) ? 0 : value)
@@ -88,7 +89,15 @@ export default function Detail02({ close }) {
                 </div>
                 <div className="content-box">
                     <button className="sponsor-btn" type="submit">
-                        Sponsor
+                        {isLoading ? (
+                            <img
+                                className="btn-spinner"
+                                src={Spinner}
+                                alt="loading"
+                            />
+                        ) : (
+                            'Sponsor'
+                        )}
                     </button>
                 </div>
             </form>

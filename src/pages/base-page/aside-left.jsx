@@ -1,9 +1,10 @@
+import { useEffect } from 'react'
+import GitHubCalendar from 'react-github-calendar'
+
 import ProfileBox from '@/components/profile-box'
 import SupporterCard from '@/components/supporter-card'
-import GitHubCalendar from 'react-github-calendar'
 import { useUserController } from '@/controllers/index.js'
 import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
-import { useEffect } from 'react'
 
 export default function AsideLeft() {
     const userController = useUserController()
@@ -20,7 +21,7 @@ export default function AsideLeft() {
 
     useEffect(() => {
         supporterInfo.getData(userController.data.username).then()
-    }, [])
+    }, [userController.data])
 
     return (
         <div className="aside-left-container">

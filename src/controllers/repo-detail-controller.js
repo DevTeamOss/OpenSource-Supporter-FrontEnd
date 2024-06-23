@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { repoService } from '@/services/index.js'
+import { pointService, repoService } from '@/services/index.js'
 import { selectedRepoIdSlice } from '@/store/index.js'
 
 export function useRepoDetailController() {
@@ -19,10 +19,24 @@ export function useRepoDetailController() {
     }
 
     async function getData() {
-        const { data } = await repoService.callGetDetails({
+        const { status, data } = await repoService.callGetDetails({
             repoId: selectedRepoId,
         })
+        if (status !== 200) {
+            return false
+        }
+
         setInfo({ ...data })
+        return true
+    }
+
+    async function support(amount) {
+        const { status } = await pointService.callSupport({
+            repoId: selectedRepoId,
+            price: amount,
+        })
+
+        return status === 200
     }
 
     return {
@@ -31,6 +45,7 @@ export function useRepoDetailController() {
 
         selectRepo,
         getData,
+        support,
         reset,
     }
 }

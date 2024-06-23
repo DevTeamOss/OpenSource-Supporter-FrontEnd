@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { useProfileController } from '@/controllers/index.js'
+import { useProfileController, useUserController } from '@/controllers/index.js'
 import ProfileInfoSection from '@/pages/profile-page/profile-info-section'
 import ProfileContentSection from '@/pages/profile-page/profile-content-section.jsx'
 import LoadingScreen from '@/components/loading-screen'
 
 import '@/assets/scss/pages/profile-page.scss'
-import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
 
 export default function ProfilePage() {
+    const userController = useUserController()
     const profileController = useProfileController()
     const { username } = useParams()
     const [isLoading, setIsLoading] = useState(false)
@@ -22,7 +22,7 @@ export default function ProfilePage() {
 
     useEffect(() => {
         init().then()
-    }, [username])
+    }, [username, userController.data])
 
     return (
         <div className="profile-page-container">
