@@ -1,6 +1,8 @@
 import { useRankList } from '@/hooks/use-rank-list.js'
 import RankingBox from '@/pages/ranking-page/ranking-box.jsx'
 
+import Spinner from '@/assets/img/spinner.svg'
+
 export default function TotalRankingSection() {
     const rankList = useRankList()
 
@@ -30,13 +32,16 @@ export default function TotalRankingSection() {
                 ))}
             </div>
             <div className="total-ranking-footer">
-                {rankList.hasNextPage && (
+                {rankList.hasNextPage && !rankList.isLoading && (
                     <div
                         className="show-more-btn"
                         onClick={rankList.getAdditionalData}
                     >
                         Show more results
                     </div>
+                )}
+                {rankList.isLoading && (
+                    <img className="spinner-img" src={Spinner} alt="loading" />
                 )}
             </div>
         </div>
