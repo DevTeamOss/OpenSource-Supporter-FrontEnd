@@ -1,28 +1,37 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { CircularProgressbar } from 'react-circular-progressbar'
-import { useUserController } from '@/controllers/index.js'
+import ReactPlayer from 'react-player'
+
+import { useAdvertisement } from '@/hooks/use-advertisement.js'
 
 import '@/assets/scss/pages/advertisement-page.scss'
 
 export default function AdvertisementPage() {
-    const userController = useUserController()
+    const { username } = useParams()
+    const advertisement = useAdvertisement()
+    const [remainingTime, setRemainingTime] = useState(99)
+    const [isLoading, setIsLoading] = useState(false)
 
-    const [remainingTime, setRemainingTime] = useState(30)
-
-    function navigateGithub() {
-        console.log(userController.data.username)
-        if (userController.data.username === 'guest')
-            window.location.href = 'https://github.com'
-        else
-            window.location.href = `https://github.com/${userController.data.username}`
+    const videoConfig = {
+        youtube: {
+            playerVars: {
+                controls: 0,
+                rel: 0,
+                disablekb: 1,
+                mute: 1,
+                fs: 0,
+            },
+        },
     }
 
-    useEffect(() => {
+    function startTimer() {
+        setRemainingTime(advertisement.data.videoLength)
         const intervalId = setInterval(() => {
             setRemainingTime((prev) => {
                 if (prev <= 1) {
                     clearInterval(intervalId)
-                    navigateGithub()
+                    complete().then()
                     return 0
                 }
                 return prev - 1
@@ -30,20 +39,55 @@ export default function AdvertisementPage() {
         }, 1000)
 
         return () => clearInterval(intervalId)
+    }
+
+    async function complete() {
+        if (isLoading) {
+            return
+        }
+
+        setIsLoading(true)
+        await advertisement.complete(username)
+        window.location.href = `https://github.com/${username}`
+    }
+
+    useEffect(() => {
+        advertisement.getData().then()
     }, [])
+
+    useEffect(() => {
+        if (remainingTime === 0) {
+            complete().then()
+        }
+    }, [remainingTime])
 
     return (
         <div className="advertisement-page-container">
-            <div className="video-container">
-                <div className="circle-progressbar">
-                    <CircularProgressbar
-                        value={remainingTime}
-                        maxValue={30}
-                        minValue={0}
-                        text={`${remainingTime}s`}
-                    />
+            {advertisement.data && (
+                <div className="video-container">
+                    <div className="video-player">
+                        <ReactPlayer
+                            url={advertisement.data.url}
+                            config={videoConfig}
+                            onPlay={startTimer}
+                            onEnded={complete}
+                            muted
+                            playing
+                            width="100%"
+                            height="100%"
+                        />
+                    </div>
+                    <div className="circular-progress-bar">
+                        <CircularProgressbar
+                            value={remainingTime}
+                            maxValue={advertisement.data.videoLength}
+                            minValue={0}
+                            text={`${remainingTime}s`}
+                        />
+                    </div>
                 </div>
-            </div>
+            )}
+            <div className={`blocking-screen ${isLoading && 'black'}`} />
         </div>
     )
 }

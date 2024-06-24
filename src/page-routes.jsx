@@ -21,8 +21,8 @@ const PATH = {
     PROFILE: '/profile/:username',
     SEARCH: '/search',
     RANKING: '/ranking',
-    ADVERTISEMENT: '/advertisement',
-    SUPPORTERCARD: '/supportercard',
+    ADVERTISEMENT: '/advertisement/:username',
+    SUPPORTER_CARD: '/supporter-card/:username',
     POINT: '/point',
 }
 
@@ -69,7 +69,7 @@ export default function PageRoutes() {
             element: <AdvertisementPage />,
         },
         {
-            path: PATH.SUPPORTERCARD,
+            path: PATH.SUPPORTER_CARD,
             element: <SupporterCardPage />,
         },
         ...loginRequiredRoutes,
