@@ -21,7 +21,7 @@ const PATH = {
     PROFILE: '/profile/:username',
     SEARCH: '/search',
     RANKING: '/ranking',
-    ADVERTISEMENT: '/advertisement',
+    ADVERTISEMENT: '/advertisement/:username',
     SUPPORTER_CARD: '/supporter-card/:username',
     POINT: '/point',
 }
