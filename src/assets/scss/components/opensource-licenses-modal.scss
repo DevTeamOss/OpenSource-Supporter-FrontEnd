@@ -1,0 +1,33 @@
+@import '@/assets/scss/color.scss';
+
+.opensource-licenses-modal-container {
+    width: 800px;
+
+    .opensource-licenses-modal-header {
+        margin: 0 10px 20px 10px;
+
+        .title-text {
+            margin: 15px 5px 10px 5px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+    }
+
+    .opensource-licenses-modal-body {
+        margin: 0 40px 10px 40px;
+
+        .opensource-licenses-box {
+            height: 500px;
+            background: $platinum;
+            border-radius: 5px;
+            font-size: 13px;
+            padding: 10px;
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+}
