@@ -42,15 +42,17 @@ export function useGithubRepoListController() {
             const { status, data } =
                 await repoService.callDeleteRepository(payload)
             if (status !== 200) {
-                if (status === 403) {
-                    alert('This repository already has sponsor')
-                }
-
+                // if (status === 403) {
+                //     alert('This repository already has sponsor')
+                // }
                 return false
             }
 
             return true
         } catch (err) {
+            if (err.response.status === 403) {
+                alert('This repository already has sponsor')
+            }
             console.error(err)
             return false
         }
