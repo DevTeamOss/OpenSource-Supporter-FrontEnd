@@ -238,11 +238,22 @@ export default function Detail01({ info, close, next }) {
                             </div>
                             <div
                                 className="translate-btn"
-                                onClick={() =>
-                                    description.changeLanguage(
-                                        languageList.description,
-                                    )
-                                }
+                                onClick={() => {
+                                    if (
+                                        description.data &&
+                                        description.data.trim().length > 0
+                                    ) {
+                                        description.changeLanguage(
+                                            languageList.description,
+                                        )
+                                    } else if (
+                                        languageList.description !==
+                                            'default' &&
+                                        'Language'
+                                    ) {
+                                        alert('No explanation to translate.')
+                                    }
+                                }}
                             >
                                 {description.isLoading ? (
                                     <img

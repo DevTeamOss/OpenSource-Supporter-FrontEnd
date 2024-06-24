@@ -32,6 +32,7 @@ export default function SelectionRepository({ select, data }) {
                 </div>
                 <div
                     className={`isposted-btn ${data.posted ? 'posted' : 'unposted'}`}
+                    onClick={() => select(data.repoId, data.repoName)}
                 >
                     {data.posted ? 'Posted' : 'Unposted'}
                 </div>
