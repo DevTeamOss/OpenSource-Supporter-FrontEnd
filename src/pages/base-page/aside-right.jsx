@@ -12,12 +12,14 @@ import { useUserController } from '@/controllers/index.js'
 import { useModal } from '@/hooks/use-modal.js'
 import AddRepositoryModal from '@/components/add-repository-modal/index.jsx'
 import LinkModal from '@/components/link-modal'
+import OpenSourceLicensesModal from '@/components/opensource-licenses-modal.jsx'
 
 export default function AsideRight() {
     const navigate = useNavigate()
     const userController = useUserController()
     const addRepositoryModal = useModal()
     const linkModal = useModal()
+    const opensourceLicenseModal = useModal()
 
     async function logout() {
         if (userController.isLoggedIn) {
@@ -90,7 +92,12 @@ export default function AsideRight() {
                         <div className="menu-item-text">Your Rank</div>
                     </div>
                     <div className="divide-line" />
-                    <div className="menu-item">Opensource Licenses</div>
+                    <div
+                        className="menu-item"
+                        onClick={opensourceLicenseModal.open}
+                    >
+                        Opensource Licenses
+                    </div>
                     <div className="divide-line" />
                     <div className="menu-item red" onClick={logout}>
                         Logout
@@ -100,6 +107,11 @@ export default function AsideRight() {
                     <AddRepositoryModal close={addRepositoryModal.close} />
                 )}
                 {linkModal.visible && <LinkModal close={linkModal.close} />}
+                {opensourceLicenseModal.visible && (
+                    <OpenSourceLicensesModal
+                        close={opensourceLicenseModal.close}
+                    />
+                )}
             </div>
         </>
     )
