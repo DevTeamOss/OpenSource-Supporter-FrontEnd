@@ -31,10 +31,10 @@ export default function SelectionRepository({ select, data }) {
                     {moment(data.lastCommitAt, 'YYYY-MM-DD').fromNow()}
                 </div>
                 <div
-                    className={`isposted-btn ${data.posted ? 'posted' : 'unposted'}`}
+                    className={`isposted-btn ${data.posted ? 'update' : 'post'}`}
                     onClick={() => select(data.repoId, data.repoName)}
                 >
-                    {data.posted ? 'Posted' : 'Unposted'}
+                    {data.posted ? 'Update' : 'Post'}
                 </div>
                 <div
                     className="next-stage-arrow"

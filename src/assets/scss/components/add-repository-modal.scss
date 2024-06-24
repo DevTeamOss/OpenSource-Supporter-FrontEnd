@@ -295,14 +295,14 @@
             margin-right: 15px;
             cursor: pointer;
 
-            &.posted {
+            &.post {
                 background: $text-blue;
             }
 
-            &.unposted {
-                font-size: 11px;
-                color: $red;
-                background: $unposted-black;
+            &.update {
+                color: $white;
+                background: $chip-purple;
+                border: 1px solid $gray;
             }
         }
 
