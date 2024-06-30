@@ -3,6 +3,7 @@ import { BACKEND_URL } from '@/constants/config.js'
 
 const userHandlers = [
     http.get(`${BACKEND_URL}/api/user`, () => {
+        console.log('user info requested')
         return HttpResponse.json(
             {
                 id: 2,
@@ -24,6 +25,7 @@ const userHandlers = [
     }),
 
     http.get(`${BACKEND_URL}/api/user/card`, () => {
+        console.log('supporter info requested')
         return HttpResponse.json(
             {
                 userName: 'ambition-kwon',

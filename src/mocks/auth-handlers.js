@@ -33,7 +33,7 @@ const authHandlers = [
     }),
 
     http.get(`${BACKEND_URL}/api/auth/refresh`, () => {
-        console.log('login requested')
+        console.log('refresh requested')
         return HttpResponse.json(
             {
                 id: 3,

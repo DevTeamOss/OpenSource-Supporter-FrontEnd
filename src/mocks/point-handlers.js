@@ -109,6 +109,28 @@ const pointHandlers = [
             { status: 200 },
         )
     }),
+
+    http.post(`${BACKEND_URL}/api/repo/point`, () => {
+        console.log('support repository requested')
+        return HttpResponse.json(
+            {
+                id: 1,
+                repoName: 'hoonsman_ft',
+                description:
+                    'my first repository. please fork and add star my repo',
+                tags: ['tag1', 'tag2', 'tag3', 'tag4'],
+                mostLanguage: 'JavaScript',
+                license: 'Unlicensed',
+                repositoryLink: 'https://github.com/khanna01/hoonsman_ft',
+                viewCount: 0,
+                totalPoint: 1000,
+                lastCommitAt: '2024-01-25T00:30:09',
+                createdAt: '2024-05-26T19:58:19.892834',
+                modifiedAt: '2024-05-26T20:01:58.350459',
+            },
+            { status: 200 },
+        )
+    }),
 ]
 
 export default pointHandlers
