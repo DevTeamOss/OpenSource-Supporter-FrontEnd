@@ -19,6 +19,9 @@ export const advertisementService = {
             },
         )
 
-        return { status, data }
+        const dataToUse = { ...data, username: data.userName }
+        delete dataToUse.userName
+
+        return { status, data: dataToUse }
     },
 }

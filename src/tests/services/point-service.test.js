@@ -49,4 +49,30 @@ describe('Point Service Test', () => {
             })
         })
     })
+
+    test('레포 후원을 요청하면 후원이 반영된 레포 정보를 받는다', async () => {
+        const { data } = await pointService.callSupport({
+            repoId: 2,
+            price: 300,
+        })
+
+        const properties = [
+            'id',
+            'repoName',
+            'description',
+            'tags',
+            'mostLanguage',
+            'license',
+            'repositoryLink',
+            'viewCount',
+            'totalPoint',
+            'lastCommitAt',
+            'createdAt',
+            'modifiedAt',
+        ]
+
+        properties.forEach((prop) => {
+            expect(data).toHaveProperty(prop)
+        })
+    })
 })

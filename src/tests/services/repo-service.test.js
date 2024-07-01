@@ -118,4 +118,34 @@ describe('Repo Service Test', () => {
             expect(data).toHaveProperty(prop)
         })
     })
+
+    test('레포 상세정보를 요청하면 모든 속성 값을 포함하는 정보를 받는다', async () => {
+        const { data } = await repoService.callGetDetails({ repoId: 7 })
+
+        const properties = [
+            'avatarUrl',
+            'username',
+            'repoName',
+            'tags',
+            'mostLanguage',
+            'license',
+            'repositoryLink',
+            'lastCommitAt',
+            'viewCount',
+            'description',
+            'readmeContent',
+            'weeklyCommitList',
+            'totalCommits',
+            'totalStars',
+            'totalPullRequests',
+            'totalIssues',
+            'totalContributions',
+            'rank',
+            'chatgptAnalysis',
+        ]
+
+        properties.forEach((prop) => {
+            expect(data).toHaveProperty(prop)
+        })
+    })
 })
