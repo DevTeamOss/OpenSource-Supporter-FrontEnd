@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = 0
+const initialState = null
 
 export const selectedRepoIdSlice = createSlice({
     name: 'selected-repo-id',
