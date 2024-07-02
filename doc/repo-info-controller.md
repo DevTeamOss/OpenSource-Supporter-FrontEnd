@@ -2,7 +2,7 @@
 
 ## Usage
 ```javascript
-const repoInfoController = repoInfoController()
+const repoInfoController = useRepoInfoController()
 ```
 위의 코드와 같이 필요한 컴포넌트에서 컨트롤러 사용 가능
 
