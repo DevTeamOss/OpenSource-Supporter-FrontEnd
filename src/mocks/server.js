@@ -7,6 +7,8 @@ import userHandlers from '@/mocks/user-handlers.js'
 import rankHandlers from '@/mocks/rank-handlers.js'
 import searchHandlers from '@/mocks/search-handlers.js'
 import pointHandlers from '@/mocks/point-handlers.js'
+import advertisementHandlers from '@/mocks/advertisement-handlers.js'
+import translateHandlers from '@/mocks/translate-handlers.js'
 
 const rootHandlers = [
     ...authHandlers,
@@ -16,6 +18,8 @@ const rootHandlers = [
     ...rankHandlers,
     ...searchHandlers,
     ...pointHandlers,
+    ...advertisementHandlers,
+    ...translateHandlers,
 ]
 
 export const server = setupServer(...rootHandlers)

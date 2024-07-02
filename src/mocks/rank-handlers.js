@@ -3,6 +3,7 @@ import { BACKEND_URL } from '@/constants/config.js'
 
 const rankHandlers = [
     http.get(`${BACKEND_URL}/api/rank/myRank`, () => {
+        console.log('my rank info requested')
         return HttpResponse.json(
             {
                 rank: 1,
@@ -18,6 +19,7 @@ const rankHandlers = [
     }),
 
     http.get(`${BACKEND_URL}/api/rank/userRank`, () => {
+        console.log('user rank list requested')
         return HttpResponse.json(
             {
                 hasNextPage: false,

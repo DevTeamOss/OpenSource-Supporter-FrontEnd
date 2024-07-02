@@ -125,6 +125,7 @@ const reposHandlers = [
     }),
 
     http.get(`${BACKEND_URL}/api/repos/supported`, () => {
+        console.log('supported list requested')
         return HttpResponse.json(
             [
                 {
@@ -167,6 +168,7 @@ const reposHandlers = [
     }),
 
     http.get(`${BACKEND_URL}/api/repos/supporting`, () => {
+        console.log('supporting list requested')
         return HttpResponse.json(
             [
                 {

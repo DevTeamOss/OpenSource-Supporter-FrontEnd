@@ -4,6 +4,7 @@ import { BACKEND_URL } from '@/constants/config.js'
 
 const searchHandlers = [
     http.get(`${BACKEND_URL}/api/search`, () => {
+        console.log('search requested')
         return HttpResponse.json(
             {
                 users: [
