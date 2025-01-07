@@ -1,12 +1,12 @@
 import {
-    useGithubRepoListController,
-    useUserController,
-} from '@/controllers/index.js'
+    useGithubRepoList,
+    useUser,
+} from '@/view-models/index.js'
 import SelectionRepository from '@/components/add-repository-modal/selection-repository.jsx'
 
 export default function Stage01({ select }) {
-    const githubRepoListController = useGithubRepoListController()
-    const userController = useUserController()
+    const githubRepoListController = useGithubRepoList()
+    const userController = useUser()
 
     return (
         <div className="stage01-container">

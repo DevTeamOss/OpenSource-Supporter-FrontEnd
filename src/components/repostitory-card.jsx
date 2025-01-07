@@ -2,14 +2,14 @@ import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 
-import { useRepoDetailController } from '@/controllers/index.js'
+import { useRepoDetail } from '@/view-models/index.js'
 import { COLOR } from '@/constants/color.js'
 import TagChip from '@/components/tag-chip'
 
 import '@/assets/scss/components/repository-card.scss'
 
 export default function RepositoryCard({ repoInfo, forProfile }) {
-    const repoDetailController = useRepoDetailController()
+    const repoDetailController = useRepoDetail()
 
     return (
         <div

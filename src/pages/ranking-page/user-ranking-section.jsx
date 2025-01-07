@@ -1,6 +1,6 @@
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
-import { useRankInfo } from '@/hooks/use-rank-info.js'
+import { useRankInfo } from '@/view-models/use-rank-info.js'
 import { useState, useEffect } from 'react'
 
 export default function UserRankingSection() {

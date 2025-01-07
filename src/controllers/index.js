@@ -1,6 +1,0 @@
-export * from './user-controller.js'
-export * from './github-repo-list-controller.js'
-export * from './repo-info-controller.js'
-export * from './profile-controller.js'
-export * from './point-controller.js'
-export * from './repo-detail-controller.js'

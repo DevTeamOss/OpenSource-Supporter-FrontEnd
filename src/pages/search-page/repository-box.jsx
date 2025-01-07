@@ -2,10 +2,10 @@ import moment from 'moment'
 
 import TagChip from '@/components/tag-chip.jsx'
 import { COLOR } from '@/constants/color.js'
-import { useRepoDetailController } from '@/controllers/index.js'
+import { useRepoDetail } from '@/view-models/index.js'
 
 export default function RepositoryBox({ data, onClick }) {
-    const repoDetailController = useRepoDetailController()
+    const repoDetailController = useRepoDetail()
 
     return (
         <div

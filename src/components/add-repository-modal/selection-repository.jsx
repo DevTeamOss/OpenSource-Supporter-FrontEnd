@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-import { useUserController } from '@/controllers/index.js'
+import { useUser } from '@/view-models/index.js'
 
 export default function SelectionRepository({ select, data }) {
-    const userController = useUserController()
+    const userController = useUser()
 
     return (
         <div className="selection-repository-container">

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { usePointController } from '@/controllers/index.js'
+import { usePoint } from '@/view-models/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 
 import Spinner from '@/assets/img/spinner.svg'
@@ -8,7 +8,7 @@ import Spinner from '@/assets/img/spinner.svg'
 const amounts = [5, 10, 20, 50, 100, 200]
 
 export default function ChargeModal({ close, refresh }) {
-    const pointController = usePointController()
+    const pointController = usePoint()
 
     const [amount, setAmount] = useState(0)
     const [selection, setSelection] = useState(0)

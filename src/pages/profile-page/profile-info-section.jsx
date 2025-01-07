@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import GitHubCalendar from 'react-github-calendar'
 
-import { useProfileController, useUserController } from '@/controllers/index.js'
-import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
+import { useProfileRepoList, useUser,useSupporterInfo  } from '@/view-models'
 import { useModal } from '@/hooks/use-modal.js'
 import ProfileBox from '@/components/profile-box'
 import SupporterCard from '@/components/supporter-card'
@@ -12,8 +11,8 @@ import ConfirmModal from '@/components/confirm-modal'
 export default function ProfileInfoSection() {
     const navigate = useNavigate()
     const { username } = useParams()
-    const userController = useUserController()
-    const profileController = useProfileController()
+    const userController = useUser()
+    const profileController = useProfile()
     const supporterInfo = useSupporterInfo(username)
     const deleteAccountModal = useModal()
 

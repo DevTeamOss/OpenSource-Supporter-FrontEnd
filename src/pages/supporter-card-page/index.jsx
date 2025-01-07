@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
+import { useSupporterInfo } from '@/view-models/use-supporter-info.js'
 import SupporterCard from '@/components/supporter-card'
 
 import '@/assets/scss/pages/supporter-card-page.scss'

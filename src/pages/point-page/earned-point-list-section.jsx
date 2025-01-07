@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import moment from 'moment'
 
-import { usePointListPagination } from '@/hooks/use-point-list-pagination.js'
+import { usePointList } from '@/view-models/use-point-list.js'
 import EarnedPointBox from '@/pages/point-page/earned-point-box.jsx'
 
 import Spinner from '@/assets/img/spinner.svg'
@@ -10,7 +10,7 @@ export default function EarnedPointListSection({
     resetRequired,
     resetComplete,
 }) {
-    const pointListPagination = usePointListPagination('EARNED')
+    const pointListPagination = usePointList('EARNED')
 
     async function resetList() {
         await pointListPagination.initList()

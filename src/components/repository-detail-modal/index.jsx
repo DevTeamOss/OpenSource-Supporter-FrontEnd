@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useRepoDetailController } from '@/controllers/index.js'
+import { useRepoDetail } from '@/view-models/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 import Detail01 from '@/components/repository-detail-modal/detail-01.jsx'
 import Detail02 from '@/components/repository-detail-modal/detail-02.jsx'
@@ -9,7 +9,7 @@ import SmallLoadingScreen from '@/components/small-loading-screen.jsx'
 import '@/assets/scss/components/repository-detail-modal.scss'
 
 export default function RepositoryDetailModal({ close }) {
-    const repoDetailController = useRepoDetailController()
+    const repoDetailController = useRepoDetail()
     const [detail, setDetail] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
 

@@ -1,17 +1,17 @@
 import { useState } from 'react'
 
 import {
-    useRepoDetailController,
-    useUserController,
-} from '@/controllers/index.js'
+    useRepoDetail,
+    useUser,
+} from '@/view-models/index.js'
 
 import Spinner from '@/assets/img/spinner.svg'
 
 const amounts = [5, 10, 20, 50, 100, 200]
 
 export default function Detail02({ close }) {
-    const userController = useUserController()
-    const repoDetailController = useRepoDetailController()
+    const userController = useUser()
+    const repoDetailController = useRepoDetail()
 
     const [points, setPoints] = useState(0)
     const [selection, setSelection] = useState(0)

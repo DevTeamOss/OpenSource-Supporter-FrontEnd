@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useUser } from '@/view-models/index.js'
 
-import { useUserController } from '@/controllers'
 
 export default function GithubAuthPage() {
-    const userController = useUserController()
+    const userController = useUser()
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
 

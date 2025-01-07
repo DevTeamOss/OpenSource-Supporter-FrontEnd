@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useGithubRepoListController } from '@/controllers/index.js'
+import { useGithubRepoList } from '@/view-models/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 import Stage01 from '@/components/add-repository-modal/stage-01'
 import Stage02 from '@/components/add-repository-modal/stage-02'
@@ -9,7 +9,7 @@ import SmallLoadingScreen from '@/components/small-loading-screen'
 import '@/assets/scss/components/add-repository-modal.scss'
 
 export default function AddRepositoryModal({ close }) {
-    const githubRepoListController = useGithubRepoListController()
+    const githubRepoListController = useGithubRepoList()
 
     const [stage, setStage] = useState(0)
     const [repoName, setRepoName] = useState('')

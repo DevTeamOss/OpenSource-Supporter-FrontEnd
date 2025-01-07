@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 
 import {
-    useRepoDetailController,
-    useUserController,
-} from '@/controllers/index.js'
+    useRepoDetail,
+    useUser,
+} from '@/view-models/index.js'
 import { useModal } from '@/hooks/use-modal.js'
 import PageRoutes from '@/page-routes'
 import RepositoryDetailModal from '@/components/repository-detail-modal'
@@ -11,8 +11,8 @@ import RepositoryDetailModal from '@/components/repository-detail-modal'
 import '@/assets/scss/basic.scss'
 
 export default function App() {
-    const userController = useUserController()
-    const repoDetailController = useRepoDetailController()
+    const userController = useUser()
+    const repoDetailController = useRepoDetail()
     const repositoryDetailModal = useModal()
 
     async function refresh() {

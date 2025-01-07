@@ -1,12 +1,12 @@
 import moment from 'moment'
 
 import SpentPointBox from '@/pages/point-page/spent-point-box.jsx'
-import { usePointListPagination } from '@/hooks/use-point-list-pagination.js'
+import { usePointList } from '@/view-models/use-point-list.js'
 
 import Spinner from '@/assets/img/spinner.svg'
 
 export default function SpentPointListSection() {
-    const pointListPagination = usePointListPagination('SPENT')
+    const pointListPagination = usePointList('SPENT')
 
     return (
         <div className="spent-point-list-section-container">

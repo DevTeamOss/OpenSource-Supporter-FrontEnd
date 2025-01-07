@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { useProfileController, useUserController } from '@/controllers/index.js'
+import { useProfileRepoList, useUser } from '@/view-models/index.js'
 import ProfileInfoSection from '@/pages/profile-page/profile-info-section'
 import ProfileContentSection from '@/pages/profile-page/profile-content-section.jsx'
 import LoadingScreen from '@/components/loading-screen'
@@ -9,8 +9,8 @@ import LoadingScreen from '@/components/loading-screen'
 import '@/assets/scss/pages/profile-page.scss'
 
 export default function ProfilePage() {
-    const userController = useUserController()
-    const profileController = useProfileController()
+    const userController = useUser()
+    const profileController = useProfile()
     const { username } = useParams()
     const [isLoading, setIsLoading] = useState(false)
 

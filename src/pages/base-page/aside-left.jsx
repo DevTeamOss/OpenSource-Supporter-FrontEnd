@@ -3,11 +3,11 @@ import GitHubCalendar from 'react-github-calendar'
 
 import ProfileBox from '@/components/profile-box'
 import SupporterCard from '@/components/supporter-card'
-import { useUserController } from '@/controllers/index.js'
-import { useSupporterInfo } from '@/hooks/use-supporter-info.js'
+import { useUser } from '@/view-models/index.js'
+import { useSupporterInfo } from '@/view-models/use-supporter-info.js'
 
 export default function AsideLeft() {
-    const userController = useUserController()
+    const userController = useUser()
     const supporterInfo = useSupporterInfo()
 
     const selectContributionsOfDays = (contributions) => {

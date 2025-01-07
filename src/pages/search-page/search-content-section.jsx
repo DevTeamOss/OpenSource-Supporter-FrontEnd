@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-import { useSearch } from '@/hooks/use-search.js'
+import { useSearch } from '@/view-models/use-search.js'
 import RepositoryBox from '@/pages/search-page/repository-box.jsx'
 import UserCard from '@/pages/search-page/user-card.jsx'
 import LoadingScreen from '@/components/loading-screen'

@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 
-import { useUserController } from '@/controllers/index.js'
+import { useUser } from '@/view-models/index.js'
 
 import '@/assets/scss/components/profile-box.scss'
 
 export default function ProfileBox({ data }) {
     const navigate = useNavigate()
-    const userController = useUserController()
+    const userController = useUser()
 
     function loginRequiredNavigate(url) {
         if (!userController.isLoggedIn) {

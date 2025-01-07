@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { CircularProgressbar } from 'react-circular-progressbar'
 import ReactPlayer from 'react-player'
 
-import { useAdvertisement } from '@/hooks/use-advertisement.js'
+import { useAdvertisement } from '@/view-models/use-advertisement.js'
 
 import '@/assets/scss/pages/advertisement-page.scss'
 

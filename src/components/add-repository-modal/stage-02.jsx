@@ -3,15 +3,15 @@ import { useEffect, useState } from 'react'
 import TagChip from '@/components/tag-chip'
 import LoadingScreen from '@/components/loading-screen'
 import {
-    useGithubRepoListController,
-    useUserController,
-    useRepoInfoController,
-} from '@/controllers/index.js'
+    useGithubRepoList,
+    useUser,
+    useRepoInfo,
+} from '@/view-models/index.js'
 
 export default function Stage02({ close, repoName, repoId, cancel }) {
-    const userController = useUserController()
-    const githubRepoListController = useGithubRepoListController()
-    const repoInfoController = useRepoInfoController()
+    const userController = useUser()
+    const githubRepoListController = useGithubRepoList()
+    const repoInfoController = useRepoInfo()
 
     const [description, setDescription] = useState('')
     const [newTagName, setNewTagName] = useState('')

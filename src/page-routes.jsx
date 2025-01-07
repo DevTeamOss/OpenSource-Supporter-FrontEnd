@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate, useRoutes } from 'react-router-dom'
 
-import { useUserController } from '@/controllers/index.js'
+import { useUser } from '@/view-models/index.js'
 import WelcomePage from '@/pages/welcome-page'
 import GithubAuthPage from '@/pages/github-auth-page'
 import MainPage from '@/pages/main-page'
@@ -114,7 +114,7 @@ function WithHeader({ children }) {
 
 function LoginRequired({ children }) {
     const navigate = useNavigate()
-    const userController = useUserController()
+    const userController = useUser()
 
     useEffect(() => {
         if (!userController.isLoggedIn) {

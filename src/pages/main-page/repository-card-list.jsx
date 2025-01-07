@@ -4,7 +4,7 @@ import {
     faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 
-import { useRepoListPagination } from '@/hooks/use-repo-list-pagination.js'
+import { useRepoListPagination } from '@/view-models/use-repo-list-pagination.js'
 import RepositoryCard from '@/components/repostitory-card.jsx'
 
 import Spinner from '@/assets/img/spinner.svg'

@@ -1,4 +1,4 @@
-import { useProfileRepoList } from '@/hooks/use-profile-repo-list.js'
+import { useProfileRepoList } from '@/view-models/use-profile-repo-list.js'
 import RepositoryCard from '@/components/repostitory-card.jsx'
 
 export default function ProfileContentSection() {

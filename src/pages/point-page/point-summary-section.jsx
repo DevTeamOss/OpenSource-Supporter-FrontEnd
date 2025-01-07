@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
 
-import { useUserController, usePointController } from '@/controllers/index.js'
+import { useUser, usePoint } from '@/view-models/index.js'
 import { useModal } from '@/hooks/use-modal.js'
 import PointsSummaryBox from '@/pages/point-page/points-summary-box.jsx'
 import ChargeModal from '@/pages/point-page/charge-modal.jsx'
 import WithdrawCashModal from '@/pages/point-page/withdraw-cash-modal.jsx'
 
 export default function PointSummarySection({ resetList }) {
-    const userController = useUserController()
-    const pointController = usePointController()
+    const userController = useUser()
+    const pointController = usePoint()
     const chargeModal = useModal()
     const withdrawCashModal = useModal()
 

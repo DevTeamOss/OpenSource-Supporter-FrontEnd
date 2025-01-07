@@ -8,7 +8,7 @@ import {
     faUser,
 } from '@fortawesome/free-solid-svg-icons'
 
-import { useUserController } from '@/controllers/index.js'
+import { useUser } from '@/view-models/index.js'
 import { useModal } from '@/hooks/use-modal.js'
 import AddRepositoryModal from '@/components/add-repository-modal/index.jsx'
 import LinkModal from '@/components/link-modal'
@@ -16,7 +16,7 @@ import OpenSourceLicensesModal from '@/components/opensource-licenses-modal.jsx'
 
 export default function AsideRight() {
     const navigate = useNavigate()
-    const userController = useUserController()
+    const userController = useUser()
     const addRepositoryModal = useModal()
     const linkModal = useModal()
     const opensourceLicenseModal = useModal()

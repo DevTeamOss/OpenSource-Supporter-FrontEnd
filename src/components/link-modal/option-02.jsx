@@ -2,10 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef } from 'react'
-import { useUserController } from '@/controllers/index.js'
+import { useUser } from '@/view-models/index.js'
 
 export default function Option02() {
-    const userController = useUserController()
+    const userController = useUser()
 
     const [copyState, setCopyState] = useState(false)
     const textAreaRef = useRef(null)

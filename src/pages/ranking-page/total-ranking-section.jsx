@@ -1,4 +1,4 @@
-import { useRankList } from '@/hooks/use-rank-list.js'
+import { useRankList } from '@/view-models/use-rank-list.js'
 import RankingBox from '@/pages/ranking-page/ranking-box.jsx'
 
 import Spinner from '@/assets/img/spinner.svg'

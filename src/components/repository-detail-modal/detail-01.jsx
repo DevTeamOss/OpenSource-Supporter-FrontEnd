@@ -10,15 +10,15 @@ import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import ReactApexChart from 'react-apexcharts'
 import moment from 'moment'
 
-import { useUserController } from '@/controllers/index.js'
-import { useTranslate } from '@/hooks/use-translate.js'
+import { useUser } from '@/view-models/index.js'
+import { useTranslate } from '@/view-models/use-translate.js'
 import { COLOR } from '@/constants/color.js'
 import TagChip from '@/components/tag-chip.jsx'
 
 import Spinner from '@/assets/img/spinner.svg'
 
 export default function Detail01({ info, close, next }) {
-    const userController = useUserController()
+    const userController = useUser()
     const description = useTranslate()
     const analysis = useTranslate()
     const readme = useTranslate()

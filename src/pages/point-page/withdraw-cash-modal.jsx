@@ -2,11 +2,11 @@ import { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
-import { useUserController } from '@/controllers/index.js'
+import { useUser } from '@/view-models/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 
 export default function WithdrawCashModal({ close }) {
-    const userController = useUserController()
+    const userController = useUser()
 
     const [points, setPoints] = useState(0)
     const [selection, setSelection] = useState(0)

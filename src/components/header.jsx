@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 
-import { useUserController } from '@/controllers/index.js'
+import { useUser } from '@/view-models/index.js'
 
 import LogoImg from '@/assets/img/logo.svg'
 import '@/assets/scss/components/header.scss'
 
 export default function Header() {
-    const userController = useUserController()
+    const userController = useUser()
     const navigate = useNavigate()
 
     return (
