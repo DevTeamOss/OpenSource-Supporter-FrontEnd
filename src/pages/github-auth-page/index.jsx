@@ -4,22 +4,22 @@ import { useUser } from '@/view-models/index.js'
 
 
 export default function GithubAuthPage() {
-    const userController = useUser()
+    const userViewModel = useUser()
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
 
     useEffect(() => {
         ;(async () => {
             const code = searchParams.get('code')
-            await userController.login({ code })
+            await userViewModel.login({ code })
         })()
     }, [])
 
     useEffect(() => {
-        if (userController.data.username !== 'guest') {
+        if (userViewModel.data.username !== 'guest') {
             navigate('/main')
         }
-    }, [userController.data])
+    }, [userViewModel.data])
 
     return <div></div>
 }

@@ -6,7 +6,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { useUser } from '@/view-models/index.js'
 
 export default function SelectionRepository({ select, data }) {
-    const userController = useUser()
+    const userViewModel = useUser()
 
     return (
         <div className="selection-repository-container">
@@ -14,7 +14,7 @@ export default function SelectionRepository({ select, data }) {
                 <FontAwesomeIcon icon={faGithub} className="repository-img" />
                 <div className="repository-description">
                     <div className="repository-title">
-                        {userController.data.username} / {data.repoName}
+                        {userViewModel.data.username} / {data.repoName}
                     </div>
                     <div className="repository-info">
                         <div className="fork-info">

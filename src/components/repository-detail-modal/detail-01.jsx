@@ -18,7 +18,7 @@ import TagChip from '@/components/tag-chip.jsx'
 import Spinner from '@/assets/img/spinner.svg'
 
 export default function Detail01({ info, close, next }) {
-    const userController = useUser()
+    const userViewModel = useUser()
     const description = useTranslate()
     const analysis = useTranslate()
     const readme = useTranslate()
@@ -564,8 +564,8 @@ export default function Detail01({ info, close, next }) {
                         />
                         Navigate to Github
                     </div>
-                    {userController.isLoggedIn &&
-                        userController.data.username !== info.username && (
+                    {userViewModel.isLoggedIn &&
+                        userViewModel.data.username !== info.username && (
                             <div
                                 className="point-sponsorship-btn"
                                 onClick={next}

@@ -9,20 +9,20 @@ import LoadingScreen from '@/components/loading-screen'
 import '@/assets/scss/pages/profile-page.scss'
 
 export default function ProfilePage() {
-    const userController = useUser()
-    const profileController = useProfile()
+    const userViewModel = useUser()
+    const profileViewModel = useProfile()
     const { username } = useParams()
     const [isLoading, setIsLoading] = useState(false)
 
     async function init() {
         setIsLoading(true)
-        await profileController.getData({ username })
+        await profileViewModel.getData({ username })
         setIsLoading(false)
     }
 
     useEffect(() => {
         init().then()
-    }, [username, userController.data])
+    }, [username, userViewModel.data])
 
     return (
         <div className="profile-page-container">

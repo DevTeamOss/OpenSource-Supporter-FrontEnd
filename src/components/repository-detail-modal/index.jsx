@@ -9,7 +9,7 @@ import SmallLoadingScreen from '@/components/small-loading-screen.jsx'
 import '@/assets/scss/components/repository-detail-modal.scss'
 
 export default function RepositoryDetailModal({ close }) {
-    const repoDetailController = useRepoDetail()
+    const repoDetailViewModel = useRepoDetail()
     const [detail, setDetail] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
 
@@ -19,7 +19,7 @@ export default function RepositoryDetailModal({ close }) {
 
     async function init() {
         setIsLoading(true)
-        await repoDetailController.getData()
+        await repoDetailViewModel.getData()
         setIsLoading(false)
     }
 
@@ -62,7 +62,7 @@ export default function RepositoryDetailModal({ close }) {
                 <div className="repository-detail-modal-body">
                     {detail === 1 && (
                         <Detail01
-                            info={repoDetailController.data}
+                            info={repoDetailViewModel.data}
                             close={close}
                             next={nextDetail}
                         />

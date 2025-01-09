@@ -9,7 +9,7 @@ import SmallLoadingScreen from '@/components/small-loading-screen'
 import '@/assets/scss/components/add-repository-modal.scss'
 
 export default function AddRepositoryModal({ close }) {
-    const githubRepoListController = useGithubRepoList()
+    const githubRepoListViewModel = useGithubRepoList()
 
     const [stage, setStage] = useState(0)
     const [repoName, setRepoName] = useState('')
@@ -37,7 +37,7 @@ export default function AddRepositoryModal({ close }) {
 
     async function loadData() {
         setIsLoading(true)
-        await githubRepoListController.getList()
+        await githubRepoListViewModel.getList()
         setIsLoading(false)
     }
 

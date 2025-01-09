@@ -10,8 +10,8 @@ import Spinner from '@/assets/img/spinner.svg'
 const amounts = [5, 10, 20, 50, 100, 200]
 
 export default function Detail02({ close }) {
-    const userController = useUser()
-    const repoDetailController = useRepoDetail()
+    const userViewModel = useUser()
+    const repoDetailViewModel = useRepoDetail()
 
     const [points, setPoints] = useState(0)
     const [selection, setSelection] = useState(0)
@@ -26,14 +26,14 @@ export default function Detail02({ close }) {
         if (points <= 0) {
             return
         }
-        if (userController.data.remainingPoint < points) {
+        if (userViewModel.data.remainingPoint < points) {
             alert('“You have exceeded your available points.”')
             return
         }
 
         setIsLoading(true)
-        await repoDetailController.support(points)
-        await userController.refresh()
+        await repoDetailViewModel.support(points)
+        await userViewModel.refresh()
         setIsLoading(false)
 
         setPoints(0)
@@ -54,7 +54,7 @@ export default function Detail02({ close }) {
                 <div className="description-text">
                     Available Points:{' '}
                     <span className="points">
-                        {userController.data.remainingPoint}
+                        {userViewModel.data.remainingPoint}
                     </span>
                     P
                 </div>

@@ -8,7 +8,7 @@ import { persistor, store } from '@/store/index.js'
 import App from './app.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
@@ -16,5 +16,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 </PersistGate>
             </Provider>
         </BrowserRouter>
-    </React.StrictMode>,
+    // </React.StrictMode>,
 )

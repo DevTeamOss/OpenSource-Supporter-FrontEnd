@@ -11,19 +11,19 @@ import RepositoryDetailModal from '@/components/repository-detail-modal'
 import '@/assets/scss/basic.scss'
 
 export default function App() {
-    const userController = useUser()
-    const repoDetailController = useRepoDetail()
+    const userViewModel = useUser()
+    const repoDetailViewModel = useRepoDetail()
     const repositoryDetailModal = useModal()
 
     async function refresh() {
-        if (!userController.data.accessToken) {
+        if (!userViewModel.data.accessToken) {
             return
         }
-        await userController.refresh()
+        await userViewModel.refresh()
     }
 
     function closeRepoDetailModal() {
-        repoDetailController.reset()
+        repoDetailViewModel.reset()
         repositoryDetailModal.close()
     }
 
@@ -32,11 +32,11 @@ export default function App() {
     }, [])
 
     useEffect(() => {
-        if (!repoDetailController.id) {
+        if (!repoDetailViewModel.id) {
             return
         }
         repositoryDetailModal.open()
-    }, [repoDetailController.id])
+    }, [repoDetailViewModel.id])
 
     return (
         <>

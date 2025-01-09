@@ -11,8 +11,8 @@ import ConfirmModal from '@/components/confirm-modal'
 export default function ProfileInfoSection() {
     const navigate = useNavigate()
     const { username } = useParams()
-    const userController = useUser()
-    const profileController = useProfile()
+    const userViewModel = useUser()
+    const profileViewModel = useProfile()
     const supporterInfo = useSupporterInfo(username)
     const deleteAccountModal = useModal()
 
@@ -27,7 +27,7 @@ export default function ProfileInfoSection() {
     const [hasData, setHasData] = useState(1)
 
     async function withdraw() {
-        const result = await userController.withdraw()
+        const result = await userViewModel.withdraw()
         if (!result) {
             return
         }
@@ -44,22 +44,22 @@ export default function ProfileInfoSection() {
     }, [calendarData])
 
     useEffect(() => {
-        supporterInfo.getData(profileController.data.username).then()
-    }, [profileController.data.username])
+        supporterInfo.getData(profileViewModel.data.username).then()
+    }, [profileViewModel.data.username])
 
     useEffect(() => {
-        if (profileController.data.username !== userController.data.username) {
+        if (profileViewModel.data.username !== userViewModel.data.username) {
             return
         }
 
-        supporterInfo.getData(profileController.data.username).then()
-    }, [userController.data])
+        supporterInfo.getData(profileViewModel.data.username).then()
+    }, [userViewModel.data])
 
     return (
         <div className="profile-info-section-container">
             <div className="content-box">
                 <div className="content-title">Profile</div>
-                <ProfileBox data={profileController.data} />
+                <ProfileBox data={profileViewModel.data} />
             </div>
             <div className="content-box">
                 <div className="content-title">Support Tier</div>
@@ -121,7 +121,7 @@ export default function ProfileInfoSection() {
                         </div>
                     </div>
                 </div>
-                {userController.data.username === username && (
+                {userViewModel.data.username === username && (
                     <div
                         className="account-delete-btn"
                         onClick={deleteAccountModal.open}

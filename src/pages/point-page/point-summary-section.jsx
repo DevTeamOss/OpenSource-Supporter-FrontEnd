@@ -7,14 +7,14 @@ import ChargeModal from '@/pages/point-page/charge-modal.jsx'
 import WithdrawCashModal from '@/pages/point-page/withdraw-cash-modal.jsx'
 
 export default function PointSummarySection({ resetList }) {
-    const userController = useUser()
-    const pointController = usePoint()
+    const userViewModel = useUser()
+    const pointViewModel = usePoint()
     const chargeModal = useModal()
     const withdrawCashModal = useModal()
 
     async function refresh() {
-        await pointController.getSummary()
-        await userController.refresh()
+        await pointViewModel.getSummary()
+        await userViewModel.refresh()
         resetList()
     }
 
@@ -44,33 +44,33 @@ export default function PointSummarySection({ resetList }) {
                 <div className="summary-box">
                     <PointsSummaryBox
                         method="Github"
-                        points={pointController.data.spentPoints}
+                        points={pointViewModel.data.spentPoints}
                         profitRate={
-                            pointController.data.monthlySpentPointsPercentage
+                            pointViewModel.data.monthlySpentPointsPercentage
                         }
                         indicator={indicator(
-                            pointController.data.monthlySpentPointsPercentage,
+                            pointViewModel.data.monthlySpentPointsPercentage,
                         )}
                     />
                     <PointsSummaryBox
                         method="Paypal"
-                        points={pointController.data.paypalPoints}
+                        points={pointViewModel.data.paypalPoints}
                         profitRate={
-                            pointController.data.monthlyPaypalPointsPercentage
+                            pointViewModel.data.monthlyPaypalPointsPercentage
                         }
                         indicator={indicator(
-                            pointController.data.monthlyPaypalPointsPercentage,
+                            pointViewModel.data.monthlyPaypalPointsPercentage,
                         )}
                     />
                     <PointsSummaryBox
                         method="Ads"
-                        points={pointController.data.advertisementPoints}
+                        points={pointViewModel.data.advertisementPoints}
                         profitRate={
-                            pointController.data
+                            pointViewModel.data
                                 .monthlyAdvertisementPointsPercentage
                         }
                         indicator={indicator(
-                            pointController.data
+                            pointViewModel.data
                                 .monthlyAdvertisementPointsPercentage,
                         )}
                     />
@@ -80,13 +80,13 @@ export default function PointSummarySection({ resetList }) {
                     >
                         <PointsSummaryBox
                             method="Sponsor"
-                            points={pointController.data.sponsoredPoints}
+                            points={pointViewModel.data.sponsoredPoints}
                             profitRate={
-                                pointController.data
+                                pointViewModel.data
                                     .monthlySponsoredPointsPercentage
                             }
                             indicator={indicator(
-                                pointController.data
+                                pointViewModel.data
                                     .monthlySponsoredPointsPercentage,
                             )}
                         />

@@ -8,7 +8,7 @@ import Spinner from '@/assets/img/spinner.svg'
 const amounts = [5, 10, 20, 50, 100, 200]
 
 export default function ChargeModal({ close, refresh }) {
-    const pointController = usePoint()
+    const pointViewModel = usePoint()
 
     const [amount, setAmount] = useState(0)
     const [selection, setSelection] = useState(0)
@@ -21,7 +21,7 @@ export default function ChargeModal({ close, refresh }) {
         }
 
         setIsLoading(true)
-        const result = await pointController.chargePoint({ amount })
+        const result = await pointViewModel.chargePoint({ amount })
         if (result) {
             await refresh()
             close()

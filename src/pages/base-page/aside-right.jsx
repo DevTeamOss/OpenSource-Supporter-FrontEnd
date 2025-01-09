@@ -16,20 +16,20 @@ import OpenSourceLicensesModal from '@/components/opensource-licenses-modal.jsx'
 
 export default function AsideRight() {
     const navigate = useNavigate()
-    const userController = useUser()
+    const userViewModel = useUser()
     const addRepositoryModal = useModal()
     const linkModal = useModal()
     const opensourceLicenseModal = useModal()
 
     async function logout() {
-        if (userController.isLoggedIn) {
-            await userController.logout()
+        if (userViewModel.isLoggedIn) {
+            await userViewModel.logout()
         }
         navigate('/')
     }
 
     function loginRequiredNavigate(url) {
-        if (!userController.isLoggedIn) {
+        if (!userViewModel.isLoggedIn) {
             alert("You haven't logged in")
             return
         }
@@ -38,7 +38,7 @@ export default function AsideRight() {
     }
 
     function loginRequiredModalOpen(open) {
-        if (!userController.isLoggedIn) {
+        if (!userViewModel.isLoggedIn) {
             alert("You haven't logged in")
             return
         }
@@ -54,7 +54,7 @@ export default function AsideRight() {
                         className="menu-item"
                         onClick={() =>
                             loginRequiredNavigate(
-                                `/profile/${userController.data.username}`,
+                                `/profile/${userViewModel.data.username}`,
                             )
                         }
                     >

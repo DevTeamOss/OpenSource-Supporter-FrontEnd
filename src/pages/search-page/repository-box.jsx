@@ -5,12 +5,12 @@ import { COLOR } from '@/constants/color.js'
 import { useRepoDetail } from '@/view-models/index.js'
 
 export default function RepositoryBox({ data, onClick }) {
-    const repoDetailController = useRepoDetail()
+    const repoDetailViewModel = useRepoDetail()
 
     return (
         <div
             className="repository-box-container"
-            onClick={() => repoDetailController.selectRepo(data.id)}
+            onClick={() => repoDetailViewModel.selectRepo(data.id)}
         >
             <div className="repository-box-header">
                 <div className="box-header-section">

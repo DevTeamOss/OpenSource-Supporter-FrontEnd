@@ -6,7 +6,7 @@ import { useUser } from '@/view-models/index.js'
 import BaseModal from '@/components/base-modal.jsx'
 
 export default function WithdrawCashModal({ close }) {
-    const userController = useUser()
+    const userViewModel = useUser()
 
     const [points, setPoints] = useState(0)
     const [selection, setSelection] = useState(0)
@@ -16,7 +16,7 @@ export default function WithdrawCashModal({ close }) {
     function submit(e) {
         e.preventDefault()
 
-        if (userController.data.remainingPoint < points) {
+        if (userViewModel.data.remainingPoint < points) {
             alert('“You have exceeded your available points.”')
             return
         }
@@ -43,7 +43,7 @@ export default function WithdrawCashModal({ close }) {
                     <div className="description-text">
                         Available Points:{' '}
                         <span className="points">
-                            {userController.data.remainingPoint}
+                            {userViewModel.data.remainingPoint}
                         </span>
                         P
                     </div>

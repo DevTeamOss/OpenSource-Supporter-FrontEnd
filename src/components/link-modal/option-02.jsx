@@ -5,7 +5,7 @@ import { useState, useRef } from 'react'
 import { useUser } from '@/view-models/index.js'
 
 export default function Option02() {
-    const userController = useUser()
+    const userViewModel = useUser()
 
     const [copyState, setCopyState] = useState(false)
     const textAreaRef = useRef(null)
@@ -13,7 +13,7 @@ export default function Option02() {
     const copyToClipboard = () => {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard
-                .writeText(`${userController.data.cardLink}`)
+                .writeText(`${userViewModel.data.cardLink}`)
                 .then(() => {
                     setCopyState((prev) => !prev)
                     setTimeout(() => {
@@ -22,7 +22,7 @@ export default function Option02() {
                 })
         } else {
             const textArea = textAreaRef.current
-            textArea.value = `${userController.data.cardLink}`
+            textArea.value = `${userViewModel.data.cardLink}`
             textArea.select()
             document.execCommand('copy')
             setCopyState((prev) => !prev)
@@ -43,12 +43,12 @@ export default function Option02() {
                 <div className="link-box">
                     <textarea
                         ref={textAreaRef}
-                        value={`${userController.data.cardLink}`}
+                        value={`${userViewModel.data.cardLink}`}
                         readOnly
                         style={{ position: 'absolute', left: '-9999px' }}
                     />
                     <div className="link-text">
-                        {userController.data.cardLink}
+                        {userViewModel.data.cardLink}
                     </div>
                     <div className="btn-box">
                         <div className="tooltip-text">

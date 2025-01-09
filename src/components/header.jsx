@@ -6,7 +6,7 @@ import LogoImg from '@/assets/img/logo.svg'
 import '@/assets/scss/components/header.scss'
 
 export default function Header() {
-    const userController = useUser()
+    const userViewModel = useUser()
     const navigate = useNavigate()
 
     return (
@@ -22,13 +22,13 @@ export default function Header() {
                 </div>
             </div>
             <div className="right-section">
-                {userController.data.avatarUrl && (
+                {userViewModel.data.avatarUrl && (
                     <img
-                        src={userController.data.avatarUrl}
-                        alt={userController.data.username}
+                        src={userViewModel.data.avatarUrl}
+                        alt={userViewModel.data.username}
                         className="profile-btn"
                         onClick={() =>
-                            navigate(`/profile/${userController.data.username}`)
+                            navigate(`/profile/${userViewModel.data.username}`)
                         }
                     />
                 )}

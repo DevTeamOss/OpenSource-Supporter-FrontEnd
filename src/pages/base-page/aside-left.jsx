@@ -7,7 +7,7 @@ import { useUser } from '@/view-models/index.js'
 import { useSupporterInfo } from '@/view-models/use-supporter-info.js'
 
 export default function AsideLeft() {
-    const userController = useUser()
+    const userViewModel = useUser()
     const supporterInfo = useSupporterInfo()
 
     const selectContributionsOfDays = (contributions) => {
@@ -20,14 +20,14 @@ export default function AsideLeft() {
     }
 
     useEffect(() => {
-        supporterInfo.getData(userController.data.username).then()
-    }, [userController.data])
+        supporterInfo.getData(userViewModel.data.username).then()
+    }, [userViewModel.data])
 
     return (
         <div className="aside-left-container">
             <div className="content-box">
                 <div className="content-title">Profile</div>
-                <ProfileBox data={userController.data} />
+                <ProfileBox data={userViewModel.data} />
                 <div className="divide-line large-space" />
                 <div className="content-title">Support Tier</div>
                 <div className="supporter-card-box">
@@ -37,7 +37,7 @@ export default function AsideLeft() {
                 <div className="content-title">Contributions</div>
                 <div className="github-calendar">
                     <GitHubCalendar
-                        username={userController.data.username}
+                        username={userViewModel.data.username}
                         colorScheme="dark"
                         blockSize={7}
                         blockMargin={2}

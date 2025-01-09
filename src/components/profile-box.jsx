@@ -6,10 +6,10 @@ import '@/assets/scss/components/profile-box.scss'
 
 export default function ProfileBox({ data }) {
     const navigate = useNavigate()
-    const userController = useUser()
+    const userViewModel = useUser()
 
     function loginRequiredNavigate(url) {
-        if (!userController.isLoggedIn) {
+        if (!userViewModel.isLoggedIn) {
             alert("You haven't logged in")
             return
         }
@@ -25,7 +25,7 @@ export default function ProfileBox({ data }) {
                 alt={data.username}
                 onClick={() =>
                     loginRequiredNavigate(
-                        `/profile/${userController.data.username}`,
+                        `/profile/${userViewModel.data.username}`,
                     )
                 }
             />

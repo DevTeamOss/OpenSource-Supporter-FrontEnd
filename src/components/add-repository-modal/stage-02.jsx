@@ -9,9 +9,9 @@ import {
 } from '@/view-models/index.js'
 
 export default function Stage02({ close, repoName, repoId, cancel }) {
-    const userController = useUser()
-    const githubRepoListController = useGithubRepoList()
-    const repoInfoController = useRepoInfo()
+    const userViewModel = useUser()
+    const githubRepoListViewModel = useGithubRepoList()
+    const repoInfoViewModel = useRepoInfo()
 
     const [description, setDescription] = useState('')
     const [newTagName, setNewTagName] = useState('')
@@ -21,14 +21,14 @@ export default function Stage02({ close, repoName, repoId, cancel }) {
     async function submit() {
         setIsLoading(true)
         if (repoId === null) {
-            await githubRepoListController.addRepository({
-                username: userController.data.username,
+            await githubRepoListViewModel.addRepository({
+                username: userViewModel.data.username,
                 repoName,
                 description,
                 tags,
             })
         } else {
-            await githubRepoListController.modifyRepository({
+            await githubRepoListViewModel.modifyRepository({
                 repoId,
                 description,
                 tags,
@@ -40,7 +40,7 @@ export default function Stage02({ close, repoName, repoId, cancel }) {
 
     async function deleteRepo() {
         setIsLoading(true)
-        await githubRepoListController.deleteRepository({
+        await githubRepoListViewModel.deleteRepository({
             repoId,
         })
         setIsLoading(false)
@@ -64,21 +64,21 @@ export default function Stage02({ close, repoName, repoId, cancel }) {
 
     async function loadData() {
         setIsLoading(true)
-        await repoInfoController.getRepoInfo({ id: repoId })
+        await repoInfoViewModel.getRepoInfo({ id: repoId })
         setIsLoading(false)
     }
 
     useEffect(() => {
-        repoInfoController.clearData()
+        repoInfoViewModel.clearData()
         if (repoId !== null) {
             loadData().then()
         }
     }, [repoId])
 
     useEffect(() => {
-        setDescription(repoInfoController.data.description)
-        setTags(repoInfoController.data.tags || [])
-    }, [repoInfoController.data])
+        setDescription(repoInfoViewModel.data.description)
+        setTags(repoInfoViewModel.data.tags || [])
+    }, [repoInfoViewModel.data])
 
     return (
         <div className="stage02-container">
@@ -95,7 +95,7 @@ export default function Stage02({ close, repoName, repoId, cancel }) {
                             <input
                                 type="text"
                                 id="username"
-                                value={userController.data.username}
+                                value={userViewModel.data.username}
                                 disabled
                             />
                         </div>

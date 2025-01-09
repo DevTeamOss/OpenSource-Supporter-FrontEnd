@@ -9,12 +9,12 @@ import TagChip from '@/components/tag-chip'
 import '@/assets/scss/components/repository-card.scss'
 
 export default function RepositoryCard({ repoInfo, forProfile }) {
-    const repoDetailController = useRepoDetail()
+    const repoDetailViewModel = useRepoDetail()
 
     return (
         <div
             className={`repository-card-container ${forProfile && 'my-card'}`}
-            onClick={() => repoDetailController.selectRepo(repoInfo.id)}
+            onClick={() => repoDetailViewModel.selectRepo(repoInfo.id)}
         >
             <div className="repository-card-header">
                 <div className="card-header-section">

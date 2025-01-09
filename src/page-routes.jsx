@@ -114,10 +114,10 @@ function WithHeader({ children }) {
 
 function LoginRequired({ children }) {
     const navigate = useNavigate()
-    const userController = useUser()
+    const userViewModel = useUser()
 
     useEffect(() => {
-        if (!userController.isLoggedIn) {
+        if (!userViewModel.isLoggedIn) {
             navigate('/')
         }
     }, [])
